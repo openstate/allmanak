@@ -1,0 +1,85 @@
+<svelte:head>
+	<title>API</title>
+	<link rel="stylesheet" type="text/css" href="/swagger-ui.css" >
+	<script src="/swagger-ui-bundle.js" on:load='set({swaggerDep1:true})'></script>
+	<script src="/swagger-ui-standalone-preset.js" on:load='set({swaggerDep2:true})'></script>
+</svelte:head>
+<div class="searchbar">
+</div>
+<div id="over">
+	<div class="container">
+		<article>
+			<h2>API</h2>
+			<p>De databron wie wij gebruiken is <a rel="noopener" target="_blank" href="http://almanak.overheid.nl/archive/">Overheidsorganisaties XML</a>, deze XML converteren en importeren wij in een database die we met een REST API (PostREST) toegankelijk stellen. De API kan zowel JSON als CSV terug sturen. Let op, met PostgREST zijn database intensieve queries te maken, daarom hebben we de query limiet op tien seconden gezet.</p>
+			<p>De API heeft vele endpoints maar de overheidsorganisatie is de interessante, gezien alle objecten een overheidsorganisatie-object zijn, de andere endpoints zijn voor de onderlinge relaties, maar deze kunnen ook via PostgREST <a target="_blank" rel="noopener" href="https://postgrest.org/en/v5.2/api.html#resource-embedding">resource embedding</a> tot op zekere hoogte worden meegenomen in de overheidsorganisatie-call.
+			<div id="swagger-ui"></div>
+		</article>
+	</div>
+</div>
+<style>
+	.searchbar {
+		background: url(/denhaag-binnenhof.jpg) no-repeat 40%;
+		background-size: cover;
+		min-height: 400px;
+	}
+
+    :global(body.fontloaded-montserratsemibold) .categorybar, :global(body.fontloaded-montserratsemibold) h2 strong {
+        font-family: 'montserratsemibold';
+    }
+    :global(body.fontloaded-montserratregular) h2 {
+        font-family: 'montserratregular';
+    }
+/*    #swagger-ui :global(.topbar) {
+    	display: none !important;
+    }*/
+    :global(.swagger-ui .wrapper) {
+    	padding: 0 !important;
+    }
+    h2 {
+        font-size: 2rem;
+        font-weight: normal;
+        margin-bottom: 2rem;
+    }
+</style>
+<script>
+	//import SwaggerUI from 'swagger-ui'
+	import {apiBaseUri} from '../apibase.js';
+
+	function initSwagger() {
+		const ui = SwaggerUIBundle({
+			dom_id: "#swagger-ui",
+			// deepLinking: true,
+			presets: [
+			  SwaggerUIBundle.presets.apis,
+			  SwaggerUIStandalonePreset
+			],
+			plugins: [
+			  SwaggerUIBundle.plugins.DownloadUrl
+			],
+			layout: "BaseLayout",//BaseLayout StandaloneLayout
+			url: `${apiBaseUri}/`,
+			validatorUrl: null,
+		});
+	}
+	// function check() {
+	// 	//console.log('check', SwaggerUIBundle);
+	// 	if (SwaggerUIBundle) {
+	// 		initSwagger();
+	// 	} else {
+	// 		setTimeout(check, 1);
+	// 	}
+	// }
+
+	export default {
+		onstate({ changed, current, previous }) {
+			// this fires before oncreate, and on every state change.
+			// the first time it runs, `previous` is undefined
+			if ((changed.swaggerDep1 || changed.swaggerDep2) && current.swaggerDep1 && current.swaggerDep2) {
+				initSwagger();
+			}
+		},
+		// oncreate() {
+		//     check();
+		// }
+};
+</script>

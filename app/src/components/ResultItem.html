@@ -1,0 +1,34 @@
+<div><a href="{item.id}/{urlname(item.naam)}">
+	<h6>{item.naam} {#if item.partij}({item.partij}){/if}</h6>
+	{item.afkorting || item.functie || item.type}<br>
+	<!--{item.plaats || ''}-->
+	{(item.path || []).join(" > ")}<br>
+</a></div>
+
+<style>
+div {
+	margin: 0;
+	/*margin-bottom: 1rem;*/
+	padding: 0;
+	height: 78px;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+div > a {
+	display: block;
+	text-decoration: none;
+}
+div > a > h6 {
+	font-size: 1rem;
+	margin-bottom: 0;
+	font-weight: bold;
+}
+</style>
+<script>
+	import {urlname} from '../utils.js';
+	export default {
+	    helpers: {
+	        urlname,
+	    },
+	}
+</script>

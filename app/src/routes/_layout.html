@@ -1,0 +1,48 @@
+<Nav segment={child.segment} {categories}/>
+
+<main>
+	<svelte:component this={child.component} {...child.props} {categories}/>
+</main>
+
+<style>
+	main {
+		position: relative;
+		background-color: white;
+		/*max-width: 56em;
+		padding: 2em;
+		margin: 0 auto;*/
+		box-sizing: border-box;
+	}
+</style>
+
+<Footer {categories}/>
+
+<script>
+	import FontFaceObserver from 'fontfaceobserver';
+    import categories from './_categories.json';
+
+	export default {
+		oncreate() {
+			['montserratsemibold', 'montserratregular', 'open_sansbold', 'open_sansregular'].forEach(
+				fontName => {
+					const font = new FontFaceObserver(fontName);
+					font.load().then(_ => {
+						document.body.classList.add('fontloaded-' + fontName);
+					}).catch(e => {
+						console.log('Error lazy loading font', fontName, e);
+					});
+				}
+			);
+		},
+    data() {
+      return {
+        categories
+      };
+    },
+		components: {
+			Nav: '../components/Nav.html',
+			Footer: '../components/Footer.html'
+		}
+	};
+
+</script>

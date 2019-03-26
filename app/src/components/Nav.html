@@ -1,0 +1,156 @@
+<header>
+    <div class='navbar'>
+        <div class='container'>
+            <nav>
+                <ul>
+                    <li><a class:selected='segment === "waarom"' href='waarom' on:click='set({submenu:false})'>Waarom deze Allmamak</a></li>
+                    <li><span class:active='submenu' on:click='set({submenu:!submenu})'>Gegevens overheden</span></li>
+                    <li><a class:selected='segment === "api"' href='api' on:click='set({submenu:false})'>API</a></li>
+                    <li><a  href='https://openstate.eu/nl/contact' target='_blank' rel='noopener'>Contact</a></li>
+                    <li><a class="report-error" class:selected='segment === "fout-melden"' href='fout-melden' on:click='set({submenu:false})'>Meld een fout</a></li>
+                    <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
+                         the blog data when we hover over the link or tap it on a touchscreen -->
+                    <!--li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a></li-->
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {#if submenu}
+    <div class='subnavbar'>
+      <div class='container'>
+          <nav>
+            <ul class='submenu' transition:slide>
+            {#each categories as category}
+              <li><a href='cat/{category.catnr}/{urlname(category.naam)}' on:click='set({submenu:!submenu})'>{category.naam}</a></li>
+            {/each}
+            </ul>
+          </nav>
+      </div>
+    </div>
+    {/if}
+    <div class='lead'>
+        <div class='container'>
+            <h1 class='brand-header'><a href='.'><img class='logo' src='allmanak-logo.svg' alt='Allmanak'></a></h1><p class='lead-text'>Zoeken naar contactgegevens overheden en politici</p>
+        </div>
+    </div>
+</header>
+<style>
+    .navbar {
+        background-color: #FFF;
+        font-weight: 600;
+    }
+    :global(body.fontloaded-montserratsemibold) .navbar, :global(body.fontloaded-montserratsemibold) .subnavbar {
+        font-family: 'montserratsemibold';
+    }
+    .navbar > .container {
+        padding-bottom: 0;
+        padding-top: 0.5rem;
+    }
+    .lead {
+        background-color: #f2f2f2;
+        color: #3d4a4c;
+    }
+    :global(body.fontloaded-montserratregular) .lead {
+        font-family: 'montserratregular';
+    }
+    .lead > .container {
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+    .brand-header {
+        display: inline-block;
+        text-decoration: none;
+    }
+    .brand-header .logo {
+        height: 50px;
+    }
+    .lead-text {
+        display: inline-block;
+        font-size: 1.5rem;
+        margin-left: 2rem;
+        vertical-align: bottom;
+    }
+    .report-error {
+        color: #c2178a;
+    }
+    nav {
+        /*border-bottom: 1px solid rgba(170,30,30,0.1);*/
+        font-weight: 300;
+        padding: 0 1em;
+    }
+
+    .navbar ul {
+        margin: 0;
+        padding: 0;
+        float: right;
+    }
+    .subnavbar ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* clearfix */
+    ul::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    /* clearfix */
+    nav::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    .navbar li {
+        display: block;
+        float: left;
+    }
+
+    .selected {
+        position: relative;
+        display: inline-block;
+    }
+
+    /*.selected::after {
+        position: absolute;
+        content: '';
+        width: calc(100% - 1em);
+        height: 2px;
+        background-color: rgb(170,30,30);
+        display: block;
+        bottom: -1px;
+    }*/
+
+    nav a, nav span {
+        text-decoration: none;
+        padding: 1em 1em;
+        display: block;
+        cursor: pointer;
+    }
+    nav span.active, .subnavbar {
+      background-color: #f2f2f2;
+    }
+    .submenu li {
+      display: block;
+    }
+    .submenu a::after {
+      content: '>';
+      margin-left: 0.4rem;
+    }
+    .submenu li:hover {
+      color: #00938f;
+    }
+</style>
+<script>
+  import slide from 'svelte-transitions-slide';
+  import {urlname} from '../utils.js';
+
+  export default {
+    helpers: {
+        urlname,
+    },
+    transitions: { slide }
+  };
+</script>

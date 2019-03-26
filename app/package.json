@@ -1,0 +1,44 @@
+{
+  "name": "TODO",
+  "description": "TODO",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "sapper dev",
+    "build": "sapper build --legacy",
+    "export": "sapper export --legacy",
+    "start": "node __sapper__/build",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "test": "run-p --race dev cy:run",
+    "postinstall": "yarn install --cwd node_modules/sapper"
+  },
+  "dependencies": {
+    "@sveltejs/svelte-virtual-list": "^2.2.1",
+    "compression": "^1.7.3",
+    "fontfaceobserver": "^2.1.0",
+    "polka": "^0.5.1",
+    "sirv": "^0.2.2",
+    "svelte-transitions-slide": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/runtime": "^7.2.0",
+    "chokidar": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.0.1",
+    "rollup-plugin-babel": "^4.2.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-svelte": "^5.0.1",
+    "rollup-plugin-terser": "^4.0.1",
+    "sapper": "bwbroersma/sapper#gh-604",
+    "svelte": "^2.16.0",
+    "svelte-select": "^1.5.2",
+    "swagger-ui": "^3.21.0"
+  }
+}

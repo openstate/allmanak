@@ -1,0 +1,4852 @@
+[
+  {
+    "value": "50PLUS",
+    "label": "50PLUS",
+    "group": "Landelijk"
+  },
+  {
+    "value": "CDA",
+    "label": "CDA",
+    "group": "Landelijk"
+  },
+  {
+    "value": "CU",
+    "label": "CU",
+    "group": "Landelijk"
+  },
+  {
+    "value": "D66",
+    "label": "D66",
+    "group": "Landelijk"
+  },
+  {
+    "value": "DENK",
+    "label": "DENK",
+    "group": "Landelijk"
+  },
+  {
+    "value": "Forum voor Democratie",
+    "label": "Forum voor Democratie",
+    "group": "Landelijk"
+  },
+  {
+    "value": "GroenLinks",
+    "label": "GroenLinks",
+    "group": "Landelijk"
+  },
+  {
+    "value": "PVV",
+    "label": "PVV",
+    "group": "Landelijk"
+  },
+  {
+    "value": "PvdA",
+    "label": "PvdA",
+    "group": "Landelijk"
+  },
+  {
+    "value": "PvdD",
+    "label": "PvdD",
+    "group": "Landelijk"
+  },
+  {
+    "value": "SGP",
+    "label": "SGP",
+    "group": "Landelijk"
+  },
+  {
+    "value": "SP",
+    "label": "SP",
+    "group": "Landelijk"
+  },
+  {
+    "value": "VVD",
+    "label": "VVD",
+    "group": "Landelijk"
+  },
+  {
+    "value": "\"VOOR LOON\"",
+    "label": "\"VOOR LOON\"",
+    "group": "Lokaal"
+  },
+  {
+    "value": "100% Groningen",
+    "label": "100% Groningen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "1954",
+    "label": "1954",
+    "group": "Lokaal"
+  },
+  {
+    "value": "50Plus",
+    "label": "50Plus",
+    "group": "Lokaal"
+  },
+  {
+    "value": "AA",
+    "label": "AA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ABC",
+    "label": "ABC",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ABL",
+    "label": "ABL",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ABO",
+    "label": "ABO",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ABZ",
+    "label": "ABZ",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ABZ (Algemeen Belang Zuidwesthoek)",
+    "label": "ABZ (Algemeen Belang Zuidwesthoek)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "AGB (Algemeen Gemeenschaps Belang)",
+    "label": "AGB (Algemeen Gemeenschaps Belang)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "AKT (Alle Kernen Troef)",
+    "label": "AKT (Alle Kernen Troef)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "AOV",
+    "label": "AOV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "APB",
+    "label": "APB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "AVA",
+    "label": "AVA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "AWB",
+    "label": "AWB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "AWB/GroenLinks/ZW14",
+    "label": "AWB/GroenLinks/ZW14",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Actiepartij",
+    "label": "Actiepartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Algemeen Belang",
+    "label": "Algemeen Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Algemeen Belang '90",
+    "label": "Algemeen Belang '90",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Algemeen Belang Ameland",
+    "label": "Algemeen Belang Ameland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Algemeen Belang Dongeradeel",
+    "label": "Algemeen Belang Dongeradeel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Algemeen Belang Groot Hulst",
+    "label": "Algemeen Belang Groot Hulst",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Algemeen Belang Heeze-Leende",
+    "label": "Algemeen Belang Heeze-Leende",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Algemeen Belang Tholen (ABT)",
+    "label": "Algemeen Belang Tholen (ABT)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Algemeen Belang Vlieland",
+    "label": "Algemeen Belang Vlieland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Algemeen Belang Zwijndrecht",
+    "label": "Algemeen Belang Zwijndrecht",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Algemeen Plaatselijk Belang",
+    "label": "Algemeen Plaatselijk Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Almere Partij / OPA",
+    "label": "Almere Partij / OPA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "AltenaLokaal",
+    "label": "AltenaLokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ambacht Uw Belang",
+    "label": "Ambacht Uw Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ameland'82",
+    "label": "Ameland'82",
+    "group": "Lokaal"
+  },
+  {
+    "value": "AmelandEén",
+    "label": "AmelandEén",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Amersfoort2014",
+    "label": "Amersfoort2014",
+    "group": "Lokaal"
+  },
+  {
+    "value": "AndersNu",
+    "label": "AndersNu",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Arbeiderspartij Goirle-Riel",
+    "label": "Arbeiderspartij Goirle-Riel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Arnhem Centraal",
+    "label": "Arnhem Centraal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Arnhemse Ouderen Partij",
+    "label": "Arnhemse Ouderen Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "B.B.H. (Bevolkingsbelangen Hillegom)",
+    "label": "B.B.H. (Bevolkingsbelangen Hillegom)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "B06",
+    "label": "B06",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BAARLE!",
+    "label": "BAARLE!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BAB",
+    "label": "BAB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BALANS",
+    "label": "BALANS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BAMM",
+    "label": "BAMM",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BAS",
+    "label": "BAS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BBB Lijst Palmen",
+    "label": "BBB Lijst Palmen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BBC 2014",
+    "label": "BBC 2014",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BBC2014",
+    "label": "BBC2014",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BBO",
+    "label": "BBO",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BCD",
+    "label": "BCD",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BETER VOOR DORDT",
+    "label": "BETER VOOR DORDT",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BEtrokken Noord-Beveland",
+    "label": "BEtrokken Noord-Beveland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BGZ",
+    "label": "BGZ",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BIJ1",
+    "label": "BIJ1",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BINT",
+    "label": "BINT",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BRUG-M",
+    "label": "BRUG-M",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BSD",
+    "label": "BSD",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BVHlokaal",
+    "label": "BVHlokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BVV",
+    "label": "BVV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Baarnse Onafhankelijke Partij",
+    "label": "Baarnse Onafhankelijke Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Balans",
+    "label": "Balans",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Beemster Polder Partij",
+    "label": "Beemster Polder Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Beeselse Lijst",
+    "label": "Beeselse Lijst",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Beeselse Lijst (BL)",
+    "label": "Beeselse Lijst (BL)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Behoorlijk Bestuur",
+    "label": "Behoorlijk Bestuur",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Behoorlijk Bestuur Bergen N.H.",
+    "label": "Behoorlijk Bestuur Bergen N.H.",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Behoorljk bestuur bergen",
+    "label": "Behoorljk bestuur bergen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Belangengemeenschap Rozendaal",
+    "label": "Belangengemeenschap Rozendaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Best Open",
+    "label": "Best Open",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Betaalbaar en Duurzaam Vaals",
+    "label": "Betaalbaar en Duurzaam Vaals",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Beter Alphen",
+    "label": "Beter Alphen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Beter De Bilt",
+    "label": "Beter De Bilt",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Beter Oss",
+    "label": "Beter Oss",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Beter voor Den Helder",
+    "label": "Beter voor Den Helder",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Beter voor Rijswijk",
+    "label": "Beter voor Rijswijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Betrokken, Anders en Samen",
+    "label": "Betrokken, Anders en Samen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Beuningen Nu & Morgen",
+    "label": "Beuningen Nu & Morgen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BewustZW",
+    "label": "BewustZW",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Bilts Belang",
+    "label": "Bilts Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Bladel Transparant",
+    "label": "Bladel Transparant",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Blijf Stellingwarfs",
+    "label": "Blijf Stellingwarfs",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Bloeiend Hillegom",
+    "label": "Bloeiend Hillegom",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Borne-Nu",
+    "label": "Borne-Nu",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Borsele",
+    "label": "Borsele",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Bosch Belang",
+    "label": "Bosch Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Bossche Volkspartij",
+    "label": "Bossche Volkspartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Breda'97",
+    "label": "Breda'97",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BuitenGewoon Leefbaar",
+    "label": "BuitenGewoon Leefbaar",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burger Belang",
+    "label": "Burger Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burger Belangen Beek - Nieuwe Democraten Beek",
+    "label": "Burger Belangen Beek - Nieuwe Democraten Beek",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burger Belangen Moerdijk",
+    "label": "Burger Belangen Moerdijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burger Belangen Nuth",
+    "label": "Burger Belangen Nuth",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burger Initiatief",
+    "label": "Burger Initiatief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burger Partij Amersfoort",
+    "label": "Burger Partij Amersfoort",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burger op 1",
+    "label": "Burger op 1",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BurgerBelangen",
+    "label": "BurgerBelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BurgerBelangen Ermelo",
+    "label": "BurgerBelangen Ermelo",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BurgerBelangen Nuth",
+    "label": "BurgerBelangen Nuth",
+    "group": "Lokaal"
+  },
+  {
+    "value": "BurgerPartij Veldhoven",
+    "label": "BurgerPartij Veldhoven",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burgerbelang",
+    "label": "Burgerbelang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burgerbelangen",
+    "label": "Burgerbelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burgerbelangen Amstelveen (bbA)",
+    "label": "Burgerbelangen Amstelveen (bbA)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burgerbelangen Bodegraven-Reeuwijk",
+    "label": "Burgerbelangen Bodegraven-Reeuwijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burgerbelangen Enschede",
+    "label": "Burgerbelangen Enschede",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burgerbelangen Simpelveld",
+    "label": "Burgerbelangen Simpelveld",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burgerbelangen Soest-Soesterberg",
+    "label": "Burgerbelangen Soest-Soesterberg",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Burgerforum",
+    "label": "Burgerforum",
+    "group": "Lokaal"
+  },
+  {
+    "value": "CAB",
+    "label": "CAB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "CDVP",
+    "label": "CDVP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "CDW 2.0",
+    "label": "CDW 2.0",
+    "group": "Lokaal"
+  },
+  {
+    "value": "CMB (Communiceren Met Burgers)",
+    "label": "CMB (Communiceren Met Burgers)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "CU-SGP",
+    "label": "CU-SGP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "CU/SGP",
+    "label": "CU/SGP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Castricum Kern(en) Gezond",
+    "label": "Castricum Kern(en) Gezond",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Christelijke Arbeiders Partij",
+    "label": "Christelijke Arbeiders Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Christelijke Partij Burgerbelangen",
+    "label": "Christelijke Partij Burgerbelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Christen Unie",
+    "label": "Christen Unie",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ChristenUnie",
+    "label": "ChristenUnie",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ChristenUnie-SGP",
+    "label": "ChristenUnie-SGP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ChristenUnie/SGP",
+    "label": "ChristenUnie/SGP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Christenunie-SGP",
+    "label": "Christenunie-SGP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Combinatie Gemeentebelangen",
+    "label": "Combinatie Gemeentebelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Combinatie Nuenen c.a.",
+    "label": "Combinatie Nuenen c.a.",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Combinatie95",
+    "label": "Combinatie95",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Connect Wageningen",
+    "label": "Connect Wageningen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Cranendonck Actief!",
+    "label": "Cranendonck Actief!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Cromstrijen '98",
+    "label": "Cromstrijen '98",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Culemborg Centraal",
+    "label": "Culemborg Centraal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Culemborg van Nu",
+    "label": "Culemborg van Nu",
+    "group": "Lokaal"
+  },
+  {
+    "value": "D'66",
+    "label": "D'66",
+    "group": "Lokaal"
+  },
+  {
+    "value": "D.O.P. (Democratisch Onafhankelijke Partij)",
+    "label": "D.O.P. (Democratisch Onafhankelijke Partij)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "D18",
+    "label": "D18",
+    "group": "Lokaal"
+  },
+  {
+    "value": "D66-GroenLinks",
+    "label": "D66-GroenLinks",
+    "group": "Lokaal"
+  },
+  {
+    "value": "D66-HvA",
+    "label": "D66-HvA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "D66/GROENLINKS",
+    "label": "D66/GROENLINKS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DENK-Verenigd Arnhem",
+    "label": "DENK-Verenigd Arnhem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DGG",
+    "label": "DGG",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DGP",
+    "label": "DGP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DLW",
+    "label": "DLW",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DMP Heusden",
+    "label": "DMP Heusden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DNA",
+    "label": "DNA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DOE!",
+    "label": "DOE!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DOP",
+    "label": "DOP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DOS (Democratisch Onafhankelijken Stein)",
+    "label": "DOS (Democratisch Onafhankelijken Stein)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DPM",
+    "label": "DPM",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DS",
+    "label": "DS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DS97",
+    "label": "DS97",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DSSW/SW",
+    "label": "DSSW/SW",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DSV",
+    "label": "DSV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DTV",
+    "label": "DTV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DURF",
+    "label": "DURF",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DUS",
+    "label": "DUS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DUS Weert",
+    "label": "DUS Weert",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DUS!",
+    "label": "DUS!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DV (Democraten Voerendaal)",
+    "label": "DV (Democraten Voerendaal)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Aalburgse Alliantie",
+    "label": "De Aalburgse Alliantie",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Blaricumse Partij",
+    "label": "De Blaricumse Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Bossche Groenen",
+    "label": "De Bossche Groenen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Gestelse Coalitie",
+    "label": "De Gestelse Coalitie",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Gewone Man",
+    "label": "De Gewone Man",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Liberalen",
+    "label": "De Liberalen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Lokale Partij",
+    "label": "De Lokale Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Onafhankelijken",
+    "label": "De Onafhankelijken",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Partij voor Oud en Jong/GroenLinks",
+    "label": "De Partij voor Oud en Jong/GroenLinks",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Realistische Partij",
+    "label": "De Realistische Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Volkspartij",
+    "label": "De Volkspartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De VrijeLijst",
+    "label": "De VrijeLijst",
+    "group": "Lokaal"
+  },
+  {
+    "value": "De Werkgroep",
+    "label": "De Werkgroep",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democraten Beverwijk",
+    "label": "Democraten Beverwijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democraten Echt-Susteren",
+    "label": "Democraten Echt-Susteren",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democraten Gemeente Heumen",
+    "label": "Democraten Gemeente Heumen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democraten Gorinchem",
+    "label": "Democraten Gorinchem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democraten Onderbanken",
+    "label": "Democraten Onderbanken",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democraten Roerdalen",
+    "label": "Democraten Roerdalen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democraten Soest Natuurlijk",
+    "label": "Democraten Soest Natuurlijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democraten Voerendaal",
+    "label": "Democraten Voerendaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democraten.Nu",
+    "label": "Democraten.Nu",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democratisch Alternatief Blaricum DAB",
+    "label": "Democratisch Alternatief Blaricum DAB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democratisch Brummen",
+    "label": "Democratisch Brummen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democratisch Platform Enschede",
+    "label": "Democratisch Platform Enschede",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Democratisch Zaanstad",
+    "label": "Democratisch Zaanstad",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DeurneNU",
+    "label": "DeurneNU",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DeurneNu",
+    "label": "DeurneNu",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Deventer Belang",
+    "label": "Deventer Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Deventer Sociaal",
+    "label": "Deventer Sociaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DeventerNu",
+    "label": "DeventerNu",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dierbaar Krimpenerwaard",
+    "label": "Dierbaar Krimpenerwaard",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dongeradeel Sociaal",
+    "label": "Dongeradeel Sociaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpen Centraal",
+    "label": "Dorpen Centraal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DorpsBelangen",
+    "label": "DorpsBelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DorpsGoed",
+    "label": "DorpsGoed",
+    "group": "Lokaal"
+  },
+  {
+    "value": "DorpsVISIE",
+    "label": "DorpsVISIE",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpsbelang",
+    "label": "Dorpsbelang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpsbelang Langedijk",
+    "label": "Dorpsbelang Langedijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpsbelang Renswoude",
+    "label": "Dorpsbelang Renswoude",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpsbelang Son en Breugel",
+    "label": "Dorpsbelang Son en Breugel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpsbelangen",
+    "label": "Dorpsbelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpsbelangen & Toerisme",
+    "label": "Dorpsbelangen & Toerisme",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpsbelangen Huizen",
+    "label": "Dorpsbelangen Huizen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpslijst Afferden",
+    "label": "Dorpslijst Afferden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpslijst Deest",
+    "label": "Dorpslijst Deest",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpslijst Horssen",
+    "label": "Dorpslijst Horssen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpslijst Puiflijk/Druten-Zuid",
+    "label": "Dorpslijst Puiflijk/Druten-Zuid",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpspartij",
+    "label": "Dorpspartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpspartij Mierlo",
+    "label": "Dorpspartij Mierlo",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dorpsvisie",
+    "label": "Dorpsvisie",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Duurzaam Schagen",
+    "label": "Duurzaam Schagen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Dé Actieve Partij",
+    "label": "Dé Actieve Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "E.V.A.",
+    "label": "E.V.A.",
+    "group": "Lokaal"
+  },
+  {
+    "value": "EEN Haarlemmermeer",
+    "label": "EEN Haarlemmermeer",
+    "group": "Lokaal"
+  },
+  {
+    "value": "EENLokaal",
+    "label": "EENLokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ELAN",
+    "label": "ELAN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "EVA",
+    "label": "EVA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "EVB",
+    "label": "EVB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Echt Voor Ridderkerk",
+    "label": "Echt Voor Ridderkerk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Echt voor Ridderkerk",
+    "label": "Echt voor Ridderkerk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Eerlijk Alternatief",
+    "label": "Eerlijk Alternatief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Eersel Anders",
+    "label": "Eersel Anders",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Eersel Samen Anders",
+    "label": "Eersel Samen Anders",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Eerste Lokale Partij",
+    "label": "Eerste Lokale Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Eigen lijst (v.h. D66).",
+    "label": "Eigen lijst (v.h. D66).",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Eijsden Margraten Lokaal",
+    "label": "Eijsden Margraten Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Eiland van Vrijheid",
+    "label": "Eiland van Vrijheid",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Elburg Beleid",
+    "label": "Elburg Beleid",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Enkhuizen Vooruit",
+    "label": "Enkhuizen Vooruit",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Enschede Anders",
+    "label": "Enschede Anders",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Epe Liberaal",
+    "label": "Epe Liberaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Essentie",
+    "label": "Essentie",
+    "group": "Lokaal"
+  },
+  {
+    "value": "FD West Maas en Waal/FD Boven-Leeuwen",
+    "label": "FD West Maas en Waal/FD Boven-Leeuwen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "FD West Maas en Waal/FD Dreumel",
+    "label": "FD West Maas en Waal/FD Dreumel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "FD West Maas en Waal/FD Maasdorpen",
+    "label": "FD West Maas en Waal/FD Maasdorpen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "FD West Maas en Waal/FD Partij Beneden-Leeuwen",
+    "label": "FD West Maas en Waal/FD Partij Beneden-Leeuwen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "FD West Maas en Waal/FD Wamel",
+    "label": "FD West Maas en Waal/FD Wamel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "FD WestMaas en Waal/FD Dreumel",
+    "label": "FD WestMaas en Waal/FD Dreumel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "FNP",
+    "label": "FNP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "FOCUS",
+    "label": "FOCUS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Federatie Dorpslijsten West Maas en Waal",
+    "label": "Federatie Dorpslijsten West Maas en Waal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Forum voor Maassluis",
+    "label": "Forum voor Maassluis",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Forum voor de Ouderen",
+    "label": "Forum voor de Ouderen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Forza De Bilt",
+    "label": "Forza De Bilt",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Forza!",
+    "label": "Forza!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Forza! Haarlemmermeer",
+    "label": "Forza! Haarlemmermeer",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Forza! IJmond",
+    "label": "Forza! IJmond",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie  van Schoonhoven",
+    "label": "Fractie  van Schoonhoven",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie 2014",
+    "label": "Fractie 2014",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Baars",
+    "label": "Fractie Baars",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Bakker",
+    "label": "Fractie Bakker",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Brouwer",
+    "label": "Fractie Brouwer",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie De Boer",
+    "label": "Fractie De Boer",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Democratische Kiezers Ede",
+    "label": "Fractie Democratische Kiezers Ede",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie El Kaddouri / Moorman",
+    "label": "Fractie El Kaddouri / Moorman",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Gros",
+    "label": "Fractie Gros",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Gunther",
+    "label": "Fractie Gunther",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Hagen",
+    "label": "Fractie Hagen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Mulder",
+    "label": "Fractie Mulder",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Nieland",
+    "label": "Fractie Nieland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Pannekoek",
+    "label": "Fractie Pannekoek",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Polderwijk",
+    "label": "Fractie Polderwijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Renes",
+    "label": "Fractie Renes",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Smits",
+    "label": "Fractie Smits",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Tonnaer",
+    "label": "Fractie Tonnaer",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Ulicoten",
+    "label": "Fractie Ulicoten",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Van Elmpt",
+    "label": "Fractie Van Elmpt",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fractie Van der Giesen",
+    "label": "Fractie Van der Giesen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Franssen",
+    "label": "Franssen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fryske Frijheids Partij",
+    "label": "Fryske Frijheids Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Fryske Nasjonale Partij",
+    "label": "Fryske Nasjonale Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GB Heerenveen",
+    "label": "GB Heerenveen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GB'90",
+    "label": "GB'90",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GB/VVD",
+    "label": "GB/VVD",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBA",
+    "label": "GBA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBB",
+    "label": "GBB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBBL",
+    "label": "GBBL",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBD",
+    "label": "GBD",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBD (Gemeente Belangen Dantumadiel)",
+    "label": "GBD (Gemeente Belangen Dantumadiel)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBG",
+    "label": "GBG",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBK",
+    "label": "GBK",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBLV",
+    "label": "GBLV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBN",
+    "label": "GBN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBO",
+    "label": "GBO",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBT",
+    "label": "GBT",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GBWP",
+    "label": "GBWP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GOB",
+    "label": "GOB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GRP Burgerbelangen",
+    "label": "GRP Burgerbelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Geen lid politieke partij",
+    "label": "Geen lid politieke partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeenschapsbelang Venhorst Boekel",
+    "label": "Gemeenschapsbelang Venhorst Boekel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeenschapsbelangen Alphen",
+    "label": "Gemeenschapsbelangen Alphen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeenschapslijst",
+    "label": "Gemeenschapslijst",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GemeentBelangen",
+    "label": "GemeentBelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeente Belang Kampen",
+    "label": "Gemeente Belang Kampen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeente Belang Krimpenerwaard",
+    "label": "Gemeente Belang Krimpenerwaard",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeente Belangen",
+    "label": "Gemeente Belangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeente Belangen Veldhoven",
+    "label": "Gemeente Belangen Veldhoven",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeente Belangen Veldhoven (GBV)",
+    "label": "Gemeente Belangen Veldhoven (GBV)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeente en DorpsBelang",
+    "label": "Gemeente en DorpsBelang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeente-, Jeugd- en Sportbelangen",
+    "label": "Gemeente-, Jeugd- en Sportbelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GemeenteBelang Kampen",
+    "label": "GemeenteBelang Kampen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GemeenteBelang Westland",
+    "label": "GemeenteBelang Westland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GemeenteBelangen",
+    "label": "GemeenteBelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GemeenteBelangen Doetinchem",
+    "label": "GemeenteBelangen Doetinchem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GemeenteBelangen Marum",
+    "label": "GemeenteBelangen Marum",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GemeenteBelangen Samenwerkingsverband",
+    "label": "GemeenteBelangen Samenwerkingsverband",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GemeenteBelangen Scherpenzeel",
+    "label": "GemeenteBelangen Scherpenzeel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GemeenteBelangenScherpenzeel",
+    "label": "GemeenteBelangenScherpenzeel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GemeenteBelangenWoudenberg",
+    "label": "GemeenteBelangenWoudenberg",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelang",
+    "label": "Gemeentebelang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelang Boerenpartij",
+    "label": "Gemeentebelang Boerenpartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelang Meierijstad",
+    "label": "Gemeentebelang Meierijstad",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen",
+    "label": "Gemeentebelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Achtkarspelen",
+    "label": "Gemeentebelangen Achtkarspelen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Appingedam",
+    "label": "Gemeentebelangen Appingedam",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen BES",
+    "label": "Gemeentebelangen BES",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Dantumadiel",
+    "label": "Gemeentebelangen Dantumadiel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Den Helder",
+    "label": "Gemeentebelangen Den Helder",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Drechterland",
+    "label": "Gemeentebelangen Drechterland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Ferwerderadiel",
+    "label": "Gemeentebelangen Ferwerderadiel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Galder, Strijbeek, Ulvenhout AC (GSU)",
+    "label": "Gemeentebelangen Galder, Strijbeek, Ulvenhout AC (GSU)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Groen Soest",
+    "label": "Gemeentebelangen Groen Soest",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Korendijk",
+    "label": "Gemeentebelangen Korendijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Molenwaard",
+    "label": "Gemeentebelangen Molenwaard",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Oldambt",
+    "label": "Gemeentebelangen Oldambt",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Olst-Wijhe",
+    "label": "Gemeentebelangen Olst-Wijhe",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Rijswijk",
+    "label": "Gemeentebelangen Rijswijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Smilde-Beilen-Westerbork",
+    "label": "Gemeentebelangen Smilde-Beilen-Westerbork",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Stadskanaal",
+    "label": "Gemeentebelangen Stadskanaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Stede Broec",
+    "label": "Gemeentebelangen Stede Broec",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Twenterand",
+    "label": "Gemeentebelangen Twenterand",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Westvoorne",
+    "label": "Gemeentebelangen Westvoorne",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen Zandvoort",
+    "label": "Gemeentebelangen Zandvoort",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentebelangen-Totaal Lokaal",
+    "label": "Gemeentebelangen-Totaal Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gemeentelijke Groepering Haaksbergen",
+    "label": "Gemeentelijke Groepering Haaksbergen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gewoon Dordt",
+    "label": "Gewoon Dordt",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gewoon Ge-dreven",
+    "label": "Gewoon Ge-dreven",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gewoon Lokaal",
+    "label": "Gewoon Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gewoon Lokaal!",
+    "label": "Gewoon Lokaal!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gewoon Nijmegen",
+    "label": "Gewoon Nijmegen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gewoon Uden",
+    "label": "Gewoon Uden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gezond Burger Verstand",
+    "label": "Gezond Burger Verstand",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gezond verstand Haren",
+    "label": "Gezond verstand Haren",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GoPo",
+    "label": "GoPo",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Goois Democratisch Platform",
+    "label": "Goois Democratisch Platform",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gorcum Actief",
+    "label": "Gorcum Actief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gouda Positief",
+    "label": "Gouda Positief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Gouda's 50+",
+    "label": "Gouda's 50+",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GrienLinks",
+    "label": "GrienLinks",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groen Brabant",
+    "label": "Groen Brabant",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groen Drimmelen",
+    "label": "Groen Drimmelen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groen Drimmelen (VP/D66)",
+    "label": "Groen Drimmelen (VP/D66)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groen Links",
+    "label": "Groen Links",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groen Uithoorn",
+    "label": "Groen Uithoorn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groen Wit",
+    "label": "Groen Wit",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GroenLinks-PvdA",
+    "label": "GroenLinks-PvdA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GroenLinksaf",
+    "label": "GroenLinksaf",
+    "group": "Lokaal"
+  },
+  {
+    "value": "GroenWit",
+    "label": "GroenWit",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groenlinks-PvdA",
+    "label": "Groenlinks-PvdA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groep Bloemsma",
+    "label": "Groep Bloemsma",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groep Jan Zwerus",
+    "label": "Groep Jan Zwerus",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groep Melse",
+    "label": "Groep Melse",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groep Oerlemans",
+    "label": "Groep Oerlemans",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groep Verdam",
+    "label": "Groep Verdam",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groep Versteeg",
+    "label": "Groep Versteeg",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groep de Mos",
+    "label": "Groep de Mos",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groep de Mos/HvDH",
+    "label": "Groep de Mos/HvDH",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groesbeekse Volkspartij",
+    "label": "Groesbeekse Volkspartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groninger Belang",
+    "label": "Groninger Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Groot Hontenisse",
+    "label": "Groot Hontenisse",
+    "group": "Lokaal"
+  },
+  {
+    "value": "H&G",
+    "label": "H&G",
+    "group": "Lokaal"
+  },
+  {
+    "value": "HAP",
+    "label": "HAP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "HAP (Haarlemmermeerse Actieve Politiek)",
+    "label": "HAP (Haarlemmermeerse Actieve Politiek)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "HOI Werkt",
+    "label": "HOI Werkt",
+    "group": "Lokaal"
+  },
+  {
+    "value": "HOOP",
+    "label": "HOOP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "HOP",
+    "label": "HOP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Haagse Stadspartij",
+    "label": "Haagse Stadspartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Harderwijk Anders",
+    "label": "Harderwijk Anders",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Harlinger Belang",
+    "label": "Harlinger Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart Voor Katwijk",
+    "label": "Hart Voor Katwijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart voor BNM",
+    "label": "Hart voor BNM",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart voor Blaricum",
+    "label": "Hart voor Blaricum",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart voor Bloemendaal",
+    "label": "Hart voor Bloemendaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart voor Haarlem",
+    "label": "Hart voor Haarlem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart voor Hilversum",
+    "label": "Hart voor Hilversum",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart voor Langedijk/D66",
+    "label": "Hart voor Langedijk/D66",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart voor Oegstgeest",
+    "label": "Hart voor Oegstgeest",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart voor Schijndel",
+    "label": "Hart voor Schijndel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart voor Urk",
+    "label": "Hart voor Urk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart voor Wassenaar",
+    "label": "Hart voor Wassenaar",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hart-Leers",
+    "label": "Hart-Leers",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Heemskerk Lokaal",
+    "label": "Heemskerk Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Heemsteeds Burger Belang",
+    "label": "Heemsteeds Burger Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Heerenveen Lokaal",
+    "label": "Heerenveen Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Heiloo Lokaal",
+    "label": "Heiloo Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Heiloo-2000",
+    "label": "Heiloo-2000",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Helder Helmond",
+    "label": "Helder Helmond",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Helmond Aktief",
+    "label": "Helmond Aktief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "HenkMeerdinkVolksvertegenwoordiging",
+    "label": "HenkMeerdinkVolksvertegenwoordiging",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Het Alternatief",
+    "label": "Het Alternatief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Het Enkhuizer Alternatief",
+    "label": "Het Enkhuizer Alternatief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Het Origineel",
+    "label": "Het Origineel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Het Vechtse Verbond",
+    "label": "Het Vechtse Verbond",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Heusden Transparant",
+    "label": "Heusden Transparant",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Heusden één",
+    "label": "Heusden één",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hoorn Lokaal",
+    "label": "Hoorn Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hoorns Belang",
+    "label": "Hoorns Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Hoornse Senioren Partij",
+    "label": "Hoornse Senioren Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "HoutenAnders!",
+    "label": "HoutenAnders!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "HulstPLUS",
+    "label": "HulstPLUS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "HvL/D66",
+    "label": "HvL/D66",
+    "group": "Lokaal"
+  },
+  {
+    "value": "IBGB",
+    "label": "IBGB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "IBH",
+    "label": "IBH",
+    "group": "Lokaal"
+  },
+  {
+    "value": "INbox",
+    "label": "INbox",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ideaalburg",
+    "label": "Ideaalburg",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ieders Belang",
+    "label": "Ieders Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Inwoners Partij",
+    "label": "Inwoners Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "InwonersPartij",
+    "label": "InwonersPartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Inwonersbelang Westvoorne",
+    "label": "Inwonersbelang Westvoorne",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Inwonersbelangen",
+    "label": "Inwonersbelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Inwonersbelangen Montfoort Linschote",
+    "label": "Inwonersbelangen Montfoort Linschote",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Inwonersbelangen Montfoort Linschoten",
+    "label": "Inwonersbelangen Montfoort Linschoten",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Inwonerspartij Toekomst Houten (ITH)",
+    "label": "Inwonerspartij Toekomst Houten (ITH)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Islam Democraten",
+    "label": "Islam Democraten",
+    "group": "Lokaal"
+  },
+  {
+    "value": "J.A.N.",
+    "label": "J.A.N.",
+    "group": "Lokaal"
+  },
+  {
+    "value": "JAN",
+    "label": "JAN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "JESS",
+    "label": "JESS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Jong Lelystad",
+    "label": "Jong Lelystad",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Jong Uden",
+    "label": "Jong Uden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Jong en sterker Schagen (JESS)",
+    "label": "Jong en sterker Schagen (JESS)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Jongerenpartij JO",
+    "label": "Jongerenpartij JO",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Jouw Haarlem",
+    "label": "Jouw Haarlem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "KERN",
+    "label": "KERN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "KIES Lokaal",
+    "label": "KIES Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "KIJK!!! (PvdA GroenLinks D66)",
+    "label": "KIJK!!! (PvdA GroenLinks D66)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Kampen Sociaal",
+    "label": "Kampen Sociaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Keerpunt '98",
+    "label": "Keerpunt '98",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Keerpunt 2010",
+    "label": "Keerpunt 2010",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Keerpunt 98",
+    "label": "Keerpunt 98",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Keerpunt'74",
+    "label": "Keerpunt'74",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Kern'75",
+    "label": "Kern'75",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Kernachtig Druten",
+    "label": "Kernachtig Druten",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Kernachtig Wijchen",
+    "label": "Kernachtig Wijchen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Kernbeleid",
+    "label": "Kernbeleid",
+    "group": "Lokaal"
+  },
+  {
+    "value": "KiesKatwijk",
+    "label": "KiesKatwijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Kleurrijk Langedijk",
+    "label": "Kleurrijk Langedijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Krachtig Tiel",
+    "label": "Krachtig Tiel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Krimpens Belang",
+    "label": "Krimpens Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LADA (Democratie Anders)",
+    "label": "LADA (Democratie Anders)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LDIJ",
+    "label": "LDIJ",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LEF!",
+    "label": "LEF!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LGN",
+    "label": "LGN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LGV",
+    "label": "LGV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LOB",
+    "label": "LOB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LOF",
+    "label": "LOF",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LOF (Lokale Onafhankelijke Fracties)",
+    "label": "LOF (Lokale Onafhankelijke Fracties)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LOKAAL Heeze-Leende",
+    "label": "LOKAAL Heeze-Leende",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LOS",
+    "label": "LOS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LPO",
+    "label": "LPO",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LST",
+    "label": "LST",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LVR",
+    "label": "LVR",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Larens Behoud",
+    "label": "Larens Behoud",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar 's-Hertogenbosch",
+    "label": "Leefbaar 's-Hertogenbosch",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar 3B",
+    "label": "Leefbaar 3B",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Albrandswaard",
+    "label": "Leefbaar Albrandswaard",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Alkmaar",
+    "label": "Leefbaar Alkmaar",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Almelo",
+    "label": "Leefbaar Almelo",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Almere",
+    "label": "Leefbaar Almere",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Asten",
+    "label": "Leefbaar Asten",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Borger-Odoorn",
+    "label": "Leefbaar Borger-Odoorn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Capelle",
+    "label": "Leefbaar Capelle",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Diemen",
+    "label": "Leefbaar Diemen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Eindhoven",
+    "label": "Leefbaar Eindhoven",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Etten-Leur",
+    "label": "Leefbaar Etten-Leur",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Geldermalsen",
+    "label": "Leefbaar Geldermalsen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Haaksbergen",
+    "label": "Leefbaar Haaksbergen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Hilversum",
+    "label": "Leefbaar Hilversum",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Huizen",
+    "label": "Leefbaar Huizen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Krimpen",
+    "label": "Leefbaar Krimpen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Lelystad",
+    "label": "Leefbaar Lelystad",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Midden Groningen",
+    "label": "Leefbaar Midden Groningen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Nuth",
+    "label": "Leefbaar Nuth",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Purmerend 2001",
+    "label": "Leefbaar Purmerend 2001",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Reimerswaal",
+    "label": "Leefbaar Reimerswaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Ridderkerk",
+    "label": "Leefbaar Ridderkerk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Rotterdam",
+    "label": "Leefbaar Rotterdam",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Schouwen-Duiveland",
+    "label": "Leefbaar Schouwen-Duiveland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Simpelveld",
+    "label": "Leefbaar Simpelveld",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Someren",
+    "label": "Leefbaar Someren",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Tynaarlo",
+    "label": "Leefbaar Tynaarlo",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leefbaar Zeewolde",
+    "label": "Leefbaar Zeewolde",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LeefbaarDronten",
+    "label": "LeefbaarDronten",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leerdam2000",
+    "label": "Leerdam2000",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lelystads Belang",
+    "label": "Lelystads Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Leudal Sociaal",
+    "label": "Leudal Sociaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Liberaal Bloemendaal",
+    "label": "Liberaal Bloemendaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Liberaal Heemskerk",
+    "label": "Liberaal Heemskerk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Liberaal LVC",
+    "label": "Liberaal LVC",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Liberaal Laren",
+    "label": "Liberaal Laren",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Liberaal LvC",
+    "label": "Liberaal LvC",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Liberaal Wormerland",
+    "label": "Liberaal Wormerland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Liberale Partij Maastricht",
+    "label": "Liberale Partij Maastricht",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Liberale Volkspartij Maasgouw",
+    "label": "Liberale Volkspartij Maasgouw",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst 8 Kernen",
+    "label": "Lijst 8 Kernen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Arend",
+    "label": "Lijst Arend",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Babijn",
+    "label": "Lijst Babijn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Blanco",
+    "label": "Lijst Blanco",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Borger",
+    "label": "Lijst Borger",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Debby Mulder-Damme",
+    "label": "Lijst Debby Mulder-Damme",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Duijndam",
+    "label": "Lijst Duijndam",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Frans Schut",
+    "label": "Lijst Frans Schut",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Groot Montferland",
+    "label": "Lijst Groot Montferland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Haack",
+    "label": "Lijst Haack",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Harry Bakker",
+    "label": "Lijst Harry Bakker",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Hilbrand Nawijn",
+    "label": "Lijst Hilbrand Nawijn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst IJpelaar",
+    "label": "Lijst IJpelaar",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Kras",
+    "label": "Lijst Kras",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Linssen",
+    "label": "Lijst Linssen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Pim Fortuyn",
+    "label": "Lijst Pim Fortuyn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Riel Goirle",
+    "label": "Lijst Riel Goirle",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Riel-Goirle",
+    "label": "Lijst Riel-Goirle",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Salman Noordwijk",
+    "label": "Lijst Salman Noordwijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Samenwerking",
+    "label": "Lijst Samenwerking",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Someren-Heide",
+    "label": "Lijst Someren-Heide",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Stulp",
+    "label": "Lijst Stulp",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Van Campen",
+    "label": "Lijst Van Campen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Van Vrouwerff",
+    "label": "Lijst Van Vrouwerff",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Van der Linden",
+    "label": "Lijst Van der Linden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Wiel Heinrichs",
+    "label": "Lijst Wiel Heinrichs",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst Çete",
+    "label": "Lijst Çete",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lijst058",
+    "label": "Lijst058",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LijstHB",
+    "label": "LijstHB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LijstvanderDoes",
+    "label": "LijstvanderDoes",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaak Wassenaar!",
+    "label": "Lokaak Wassenaar!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal",
+    "label": "Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal +",
+    "label": "Lokaal +",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Actief",
+    "label": "Lokaal Actief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Alert",
+    "label": "Lokaal Alert",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Almelo Samen",
+    "label": "Lokaal Almelo Samen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Alternatief",
+    "label": "Lokaal Alternatief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Anders Soest",
+    "label": "Lokaal Anders Soest",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Apeldoorn",
+    "label": "Lokaal Apeldoorn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Belang",
+    "label": "Lokaal Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Belang Doetinchem",
+    "label": "Lokaal Belang Doetinchem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Belang Lingewaard",
+    "label": "Lokaal Belang Lingewaard",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Belang Montferland",
+    "label": "Lokaal Belang Montferland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Betrokken",
+    "label": "Lokaal Betrokken",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal DNA",
+    "label": "Lokaal DNA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Dinkelland",
+    "label": "Lokaal Dinkelland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Halderberge",
+    "label": "Lokaal Halderberge",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Heeze-Leende",
+    "label": "Lokaal Heeze-Leende",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Hellendoorn",
+    "label": "Lokaal Hellendoorn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Lelystad",
+    "label": "Lokaal Lelystad",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Liberaal",
+    "label": "Lokaal Liberaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Montfoort",
+    "label": "Lokaal Montfoort",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Peel en Maas",
+    "label": "Lokaal Peel en Maas",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Perspectief",
+    "label": "Lokaal Perspectief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Tilburg",
+    "label": "Lokaal Tilburg",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Veenendaal",
+    "label": "Lokaal Veenendaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal Wassenaar!",
+    "label": "Lokaal Wassenaar!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal op 1",
+    "label": "Lokaal op 1",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal sterk",
+    "label": "Lokaal sterk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal!",
+    "label": "Lokaal!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaal+",
+    "label": "Lokaal+",
+    "group": "Lokaal"
+  },
+  {
+    "value": "LokaalHengelo",
+    "label": "LokaalHengelo",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokaalbelang",
+    "label": "Lokaalbelang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokale Partij Bergeijk",
+    "label": "Lokale Partij Bergeijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokale Partij Grave",
+    "label": "Lokale Partij Grave",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokale Partij Groot Nuth",
+    "label": "Lokale Partij Groot Nuth",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokale Partij Leiderdorp LPL",
+    "label": "Lokale Partij Leiderdorp LPL",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokale Partij Middelburg",
+    "label": "Lokale Partij Middelburg",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokale Partij Middelburg (LPM)",
+    "label": "Lokale Partij Middelburg (LPM)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokale Partij Vlissingen",
+    "label": "Lokale Partij Vlissingen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokale Politieke Federatie Westland",
+    "label": "Lokale Politieke Federatie Westland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokale Realisten/ D66",
+    "label": "Lokale Realisten/ D66",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Lokale Vernieuwing",
+    "label": "Lokale Vernieuwing",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Loppersum Vooruit",
+    "label": "Loppersum Vooruit",
+    "group": "Lokaal"
+  },
+  {
+    "value": "M:OED",
+    "label": "M:OED",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Maarssen 2000",
+    "label": "Maarssen 2000",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Maashorst Vooruit",
+    "label": "Maashorst Vooruit",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Maassluis Belang",
+    "label": "Maassluis Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Meedenken Met Lochem",
+    "label": "Meedenken Met Lochem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Mijn Partij",
+    "label": "Mijn Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Moerdijk Lokaal",
+    "label": "Moerdijk Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Morgen!",
+    "label": "Morgen!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "NAP (Nieuwe Albrandswaardse Partij)",
+    "label": "NAP (Nieuwe Albrandswaardse Partij)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "NCPN",
+    "label": "NCPN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "NIDA",
+    "label": "NIDA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "NZ Lokaal",
+    "label": "NZ Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Natuurlijk Belang",
+    "label": "Natuurlijk Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Natuurlijk Nieuwkoop",
+    "label": "Natuurlijk Nieuwkoop",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nederland Duurzaam",
+    "label": "Nederland Duurzaam",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nederweert Anders",
+    "label": "Nederweert Anders",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuw Elan",
+    "label": "Nieuw Elan",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuw Elan Zuidplas",
+    "label": "Nieuw Elan Zuidplas",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuw Enkhuizen",
+    "label": "Nieuw Enkhuizen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuw Enter Wierden (NEW)",
+    "label": "Nieuw Enter Wierden (NEW)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuw Gemeentebelang",
+    "label": "Nieuw Gemeentebelang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuw Goes",
+    "label": "Nieuw Goes",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuw Liberaal Vlieland",
+    "label": "Nieuw Liberaal Vlieland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuw Links Maasgouw",
+    "label": "Nieuw Links Maasgouw",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuw Lisse",
+    "label": "Nieuw Lisse",
+    "group": "Lokaal"
+  },
+  {
+    "value": "NieuwDemocratischZeist",
+    "label": "NieuwDemocratischZeist",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuwe Democraten",
+    "label": "Nieuwe Democraten",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuwe Liberalen Oost Gelre (NLOG)",
+    "label": "Nieuwe Liberalen Oost Gelre (NLOG)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nieuwe Lijn",
+    "label": "Nieuwe Lijn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nissewaard Lokaal",
+    "label": "Nissewaard Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Noord-Bevelands Belang",
+    "label": "Noord-Bevelands Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Nuj Lies Vroemen",
+    "label": "Nuj Lies Vroemen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "OCA",
+    "label": "OCA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ODS",
+    "label": "ODS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "OGP",
+    "label": "OGP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ONS",
+    "label": "ONS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ONS Voorschoten",
+    "label": "ONS Voorschoten",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ONS. Vlaardingen",
+    "label": "ONS. Vlaardingen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ONS.Vlaardingen",
+    "label": "ONS.Vlaardingen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "OPA",
+    "label": "OPA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "OPEN",
+    "label": "OPEN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "OPH",
+    "label": "OPH",
+    "group": "Lokaal"
+  },
+  {
+    "value": "OPHaarlem",
+    "label": "OPHaarlem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "OPS",
+    "label": "OPS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Oldambt Aktief",
+    "label": "Oldambt Aktief",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijk",
+    "label": "Onafhankelijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijk Delft",
+    "label": "Onafhankelijk Delft",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijk Hollands Kroon",
+    "label": "Onafhankelijk Hollands Kroon",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijk Liberaal",
+    "label": "Onafhankelijk Liberaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijk Moerdijk",
+    "label": "Onafhankelijk Moerdijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijk Papendrecht",
+    "label": "Onafhankelijk Papendrecht",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijk Rijswijk",
+    "label": "Onafhankelijk Rijswijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijke Partij",
+    "label": "Onafhankelijke Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijke Partij Zundert (OPZ)",
+    "label": "Onafhankelijke Partij Zundert (OPZ)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijke Senaatsfractie",
+    "label": "Onafhankelijke Senaatsfractie",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijke Senaatsfractie (OSF)",
+    "label": "Onafhankelijke Senaatsfractie (OSF)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijke fractie Bert Weijers",
+    "label": "Onafhankelijke fractie Bert Weijers",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Onafhankelijken Oost Gelre (OOG)",
+    "label": "Onafhankelijken Oost Gelre (OOG)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ondernemend Berkelland",
+    "label": "Ondernemend Berkelland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ondernemend Platteland",
+    "label": "Ondernemend Platteland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ons Belang",
+    "label": "Ons Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ons Diemen",
+    "label": "Ons Diemen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ons Etten-Leur",
+    "label": "Ons Etten-Leur",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ons Kerkrade (OK)",
+    "label": "Ons Kerkrade (OK)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ons Roerdalen",
+    "label": "Ons Roerdalen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ons Uithoorn",
+    "label": "Ons Uithoorn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "OoststellingwerfsBelang",
+    "label": "OoststellingwerfsBelang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ooststellingwerfsbelang",
+    "label": "Ooststellingwerfsbelang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "OpKoers.nu",
+    "label": "OpKoers.nu",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Opsterlands Belang",
+    "label": "Opsterlands Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ouder-Amstel Anders",
+    "label": "Ouder-Amstel Anders",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ouderen Partij Landgraaf",
+    "label": "Ouderen Partij Landgraaf",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ouderen Partij Zandvoort",
+    "label": "Ouderen Partij Zandvoort",
+    "group": "Lokaal"
+  },
+  {
+    "value": "OuderenAppèl",
+    "label": "OuderenAppèl",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ouderenpartij",
+    "label": "Ouderenpartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ouderenpartij Diemen",
+    "label": "Ouderenpartij Diemen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ouderenpartij N-H",
+    "label": "Ouderenpartij N-H",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ouderenpartij voor Dongen",
+    "label": "Ouderenpartij voor Dongen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "P21",
+    "label": "P21",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PAB",
+    "label": "PAB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PAB (Papendrechts Algemeen Belang)",
+    "label": "PAB (Papendrechts Algemeen Belang)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PAC",
+    "label": "PAC",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PAK",
+    "label": "PAK",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PAL/GroenLinks",
+    "label": "PAL/GroenLinks",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PARTIJ 18PLUS",
+    "label": "PARTIJ 18PLUS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PCG",
+    "label": "PCG",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PCW",
+    "label": "PCW",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PDL",
+    "label": "PDL",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PGA",
+    "label": "PGA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PGP",
+    "label": "PGP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PK",
+    "label": "PK",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PK (Progressieve Kombinatie)",
+    "label": "PK (Progressieve Kombinatie)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PNL",
+    "label": "PNL",
+    "group": "Lokaal"
+  },
+  {
+    "value": "POV",
+    "label": "POV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PPA",
+    "label": "PPA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PPW - Platform Progressief Wierden",
+    "label": "PPW - Platform Progressief Wierden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PRO Gulpen-Wittem",
+    "label": "PRO Gulpen-Wittem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PRO Kaag en Braassem",
+    "label": "PRO Kaag en Braassem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PRO Scherpenzeel",
+    "label": "PRO Scherpenzeel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PRO Sliedrecht",
+    "label": "PRO Sliedrecht",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PRO sliedrecht",
+    "label": "PRO sliedrecht",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PRO'98 (Pro Barneveld/PvdA/D66)",
+    "label": "PRO'98 (Pro Barneveld/PvdA/D66)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PRO21",
+    "label": "PRO21",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PUUR NOORDWIJK",
+    "label": "PUUR NOORDWIJK",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PVDA",
+    "label": "PVDA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PWF",
+    "label": "PWF",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Parij voor de Dieren",
+    "label": "Parij voor de Dieren",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Parij voor het Noorden",
+    "label": "Parij voor het Noorden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij 18PLUS",
+    "label": "Partij 18PLUS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij 18Plus",
+    "label": "Partij 18Plus",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Democratie voor Zoetermeer",
+    "label": "Partij Democratie voor Zoetermeer",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Gemeente Belangen",
+    "label": "Partij Gemeente Belangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Hoensbroeks Belang",
+    "label": "Partij Hoensbroeks Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Nieuw Echt-Susteren",
+    "label": "Partij Nieuw Echt-Susteren",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Onafhankelijk",
+    "label": "Partij Onafhankelijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Ons SOESTerberg",
+    "label": "Partij Ons SOESTerberg",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Renkumse Dorpen",
+    "label": "Partij Renkumse Dorpen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Sleutelstad",
+    "label": "Partij Sleutelstad",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Souburg Ritthem",
+    "label": "Partij Souburg Ritthem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Souburg-Ritthem",
+    "label": "Partij Souburg-Ritthem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Veilig Maastricht",
+    "label": "Partij Veilig Maastricht",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Vrij Almelo",
+    "label": "Partij Vrij Almelo",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Welzijn Maasgouw",
+    "label": "Partij Welzijn Maasgouw",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij Westvoorne",
+    "label": "Partij Westvoorne",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij onafhankelijk",
+    "label": "Partij onafhankelijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij van de Burgers",
+    "label": "Partij van de Burgers",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij van de Eenheid",
+    "label": "Partij van de Eenheid",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij van de Ouderen",
+    "label": "Partij van de Ouderen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij voor Goes",
+    "label": "Partij voor Goes",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij voor Lokaal Maatwerk",
+    "label": "Partij voor Lokaal Maatwerk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij voor de Burgers",
+    "label": "Partij voor de Burgers",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij voor de Dieren",
+    "label": "Partij voor de Dieren",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij voor de Vrijheid",
+    "label": "Partij voor de Vrijheid",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij voor het Noorden",
+    "label": "Partij voor het Noorden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partij18PLUS",
+    "label": "Partij18PLUS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Partijloos",
+    "label": "Partijloos",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Plaatselijk Belang Terschelling",
+    "label": "Plaatselijk Belang Terschelling",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Plaatselijke Partij",
+    "label": "Plaatselijke Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Polderbreed",
+    "label": "Polderbreed",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Politieke Partij Blanco",
+    "label": "Politieke Partij Blanco",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Politieke Partij Coevorden",
+    "label": "Politieke Partij Coevorden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Politieke Unie",
+    "label": "Politieke Unie",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Positief Landsmeer",
+    "label": "Positief Landsmeer",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PrO",
+    "label": "PrO",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Pro Duiven",
+    "label": "Pro Duiven",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Pro Gulpen-Wittem",
+    "label": "Pro Gulpen-Wittem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Pro Hengelo",
+    "label": "Pro Hengelo",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Pro Krimpenerwaard",
+    "label": "Pro Krimpenerwaard",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Pro'98",
+    "label": "Pro'98",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Pro-Actief Goirle",
+    "label": "Pro-Actief Goirle",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Pro3",
+    "label": "Pro3",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Pro5",
+    "label": "Pro5",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Pro6",
+    "label": "Pro6",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ProTiel",
+    "label": "ProTiel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ProVeenendaal",
+    "label": "ProVeenendaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ProVenray",
+    "label": "ProVenray",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief  Wervershoof",
+    "label": "Progressief  Wervershoof",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief '96",
+    "label": "Progressief '96",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief 96",
+    "label": "Progressief 96",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Akkoord",
+    "label": "Progressief Akkoord",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Akkoord Groen Links",
+    "label": "Progressief Akkoord Groen Links",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Akkoord Leudal",
+    "label": "Progressief Akkoord Leudal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Altena",
+    "label": "Progressief Altena",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Beek",
+    "label": "Progressief Beek",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Bernheze",
+    "label": "Progressief Bernheze",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Drechterland",
+    "label": "Progressief Drechterland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Ermelo",
+    "label": "Progressief Ermelo",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Halderberge",
+    "label": "Progressief Halderberge",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Hollands Kroon",
+    "label": "Progressief Hollands Kroon",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Landerd",
+    "label": "Progressief Landerd",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Oegstgeest",
+    "label": "Progressief Oegstgeest",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Oldambt",
+    "label": "Progressief Oldambt",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Onderbanken",
+    "label": "Progressief Onderbanken",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Pijnacker-Nootdorp",
+    "label": "Progressief Pijnacker-Nootdorp",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Schiedam",
+    "label": "Progressief Schiedam",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Stein",
+    "label": "Progressief Stein",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Uitgeest",
+    "label": "Progressief Uitgeest",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Westerveld",
+    "label": "Progressief Westerveld",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Woerden",
+    "label": "Progressief Woerden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief Zoeterwoude",
+    "label": "Progressief Zoeterwoude",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressief96",
+    "label": "Progressief96",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressieve Combinatie Rhenen",
+    "label": "Progressieve Combinatie Rhenen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressieve Kombinatie (PvdA/D66)",
+    "label": "Progressieve Kombinatie (PvdA/D66)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Progressieve Partij",
+    "label": "Progressieve Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Protestants Christelijke Groepering (PCG)",
+    "label": "Protestants Christelijke Groepering (PCG)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Puur Noordwijk",
+    "label": "Puur Noordwijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvdA / GroenLinks",
+    "label": "PvdA / GroenLinks",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvdA pro Texel",
+    "label": "PvdA pro Texel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvdA-GL",
+    "label": "PvdA-GL",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvdA-GroenLinks",
+    "label": "PvdA-GroenLinks",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvdA/ GroenLinks",
+    "label": "PvdA/ GroenLinks",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvdA/D66/GroenLinks/Samenverder",
+    "label": "PvdA/D66/GroenLinks/Samenverder",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvdA/GL",
+    "label": "PvdA/GL",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvdA/Groen Links",
+    "label": "PvdA/Groen Links",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvdA/GroenLinks",
+    "label": "PvdA/GroenLinks",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvdA/Groenlinks",
+    "label": "PvdA/Groenlinks",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Pvda/GroenLinks",
+    "label": "Pvda/GroenLinks",
+    "group": "Lokaal"
+  },
+  {
+    "value": "PvhN",
+    "label": "PvhN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "RPP",
+    "label": "RPP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Reekse Politieke Partij",
+    "label": "Reekse Politieke Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Respect Almere",
+    "label": "Respect Almere",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Rhenens Belang",
+    "label": "Rhenens Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "RijnGouweLokaal",
+    "label": "RijnGouweLokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Rijswijks Belang",
+    "label": "Rijswijks Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Roerstreek Lokaal!",
+    "label": "Roerstreek Lokaal!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ronde Venen Belang",
+    "label": "Ronde Venen Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Ronduit Open",
+    "label": "Ronduit Open",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Rooie Saen (ROSA)",
+    "label": "Rooie Saen (ROSA)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Roosendaalse Lijst",
+    "label": "Roosendaalse Lijst",
+    "group": "Lokaal"
+  },
+  {
+    "value": "RoosendaalseLijst",
+    "label": "RoosendaalseLijst",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Rosendael'74",
+    "label": "Rosendael'74",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Rosmalens Belang",
+    "label": "Rosmalens Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Rucphense Volkspartij",
+    "label": "Rucphense Volkspartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SAM",
+    "label": "SAM",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SAMEN",
+    "label": "SAMEN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SAMEN 1",
+    "label": "SAMEN 1",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SAN (  Sint Anthonis Nu )",
+    "label": "SAN (  Sint Anthonis Nu )",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SAN ( Sint Anthonis Nu )",
+    "label": "SAN ( Sint Anthonis Nu )",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SBV",
+    "label": "SBV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SENIOREN VELDHOVEN",
+    "label": "SENIOREN VELDHOVEN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SGP-CU",
+    "label": "SGP-CU",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SGP-Christenunie",
+    "label": "SGP-Christenunie",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SGP/ChristenUnie",
+    "label": "SGP/ChristenUnie",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SLV",
+    "label": "SLV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SPA",
+    "label": "SPA",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SSM",
+    "label": "SSM",
+    "group": "Lokaal"
+  },
+  {
+    "value": "STERK Woerden",
+    "label": "STERK Woerden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "STIP",
+    "label": "STIP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samen Beter Nieuwkoop",
+    "label": "Samen Beter Nieuwkoop",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samen Sterk Maasdriel",
+    "label": "Samen Sterk Maasdriel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samen Verder",
+    "label": "Samen Verder",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samen Voor Pekela",
+    "label": "Samen Voor Pekela",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samen terschelling",
+    "label": "Samen terschelling",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samen voor Kaag en Braassem",
+    "label": "Samen voor Kaag en Braassem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samen voor Schiermonnikoog",
+    "label": "Samen voor Schiermonnikoog",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samen voor Valkenswaard",
+    "label": "Samen voor Valkenswaard",
+    "group": "Lokaal"
+  },
+  {
+    "value": "SamenBeverwijk",
+    "label": "SamenBeverwijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samenwerking",
+    "label": "Samenwerking",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samenwerking '95",
+    "label": "Samenwerking '95",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Samenwerking Venray",
+    "label": "Samenwerking Venray",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Schiermonnikoogs Belang",
+    "label": "Schiermonnikoogs Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Senioren Belang Beek",
+    "label": "Senioren Belang Beek",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Senioren Belangen Zoeterwoude",
+    "label": "Senioren Belangen Zoeterwoude",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Senioren Heerhugowaard",
+    "label": "Senioren Heerhugowaard",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Senioren Hollands Kroon",
+    "label": "Senioren Hollands Kroon",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Senioren HollandsKroon",
+    "label": "Senioren HollandsKroon",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Senioren Langedijk",
+    "label": "Senioren Langedijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Senioren Partij",
+    "label": "Senioren Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Senioren Partij Alkmaar",
+    "label": "Senioren Partij Alkmaar",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Senioren Partij Drechterland",
+    "label": "Senioren Partij Drechterland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Senioren Partij Maastricht",
+    "label": "Senioren Partij Maastricht",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Seniorenpartij",
+    "label": "Seniorenpartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Seniorenpartij Delfzijl",
+    "label": "Seniorenpartij Delfzijl",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Seyst.Nu",
+    "label": "Seyst.Nu",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Seyst.nu",
+    "label": "Seyst.nu",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sint Anthonis Nu",
+    "label": "Sint Anthonis Nu",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Slydregt.NU",
+    "label": "Slydregt.NU",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Smallingerlands Belang",
+    "label": "Smallingerlands Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Actieve Burgerpartij",
+    "label": "Sociaal Actieve Burgerpartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Duurzaam Weststellingwerf",
+    "label": "Sociaal Duurzaam Weststellingwerf",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Groesbeek",
+    "label": "Sociaal Groesbeek",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Hoorn",
+    "label": "Sociaal Hoorn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Links",
+    "label": "Sociaal Links",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Maas en Waal",
+    "label": "Sociaal Maas en Waal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Progressief Oirschot",
+    "label": "Sociaal Progressief Oirschot",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Rechts Haarlemmermeer",
+    "label": "Sociaal Rechts Haarlemmermeer",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Terneuzen",
+    "label": "Sociaal Terneuzen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Wijchen",
+    "label": "Sociaal Wijchen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociaal Zevenaar",
+    "label": "Sociaal Zevenaar",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sociale Volkspartij Geertruidenberg",
+    "label": "Sociale Volkspartij Geertruidenberg",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Soest2002",
+    "label": "Soest2002",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stad en Ommeland",
+    "label": "Stad en Ommeland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadsbelang",
+    "label": "Stadsbelang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadsbelang Utrecht",
+    "label": "Stadsbelang Utrecht",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadsbelangen",
+    "label": "Stadsbelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadspartij",
+    "label": "Stadspartij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadspartij DNF",
+    "label": "Stadspartij DNF",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadspartij Den Helder",
+    "label": "Stadspartij Den Helder",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadspartij Doesburg",
+    "label": "Stadspartij Doesburg",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadspartij Harderwijk Anders",
+    "label": "Stadspartij Harderwijk Anders",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadspartij Nuwegein",
+    "label": "Stadspartij Nuwegein",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadspartij PLOP",
+    "label": "Stadspartij PLOP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stadspartij Roermond",
+    "label": "Stadspartij Roermond",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Steins Belang",
+    "label": "Steins Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "StellingwerfPLUS",
+    "label": "StellingwerfPLUS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stem Lokaal",
+    "label": "Stem Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Stem van Krimpen",
+    "label": "Stem van Krimpen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Sterk Meppel",
+    "label": "Sterk Meppel",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Steunpunt Bergen op Zoom",
+    "label": "Steunpunt Bergen op Zoom",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Streekbelangen",
+    "label": "Streekbelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Strijens Belang",
+    "label": "Strijens Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Student en Stad",
+    "label": "Student en Stad",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Student&Starter",
+    "label": "Student&Starter",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Swollwacht",
+    "label": "Swollwacht",
+    "group": "Lokaal"
+  },
+  {
+    "value": "T@B",
+    "label": "T@B",
+    "group": "Lokaal"
+  },
+  {
+    "value": "TOP/Gemeentebelangen",
+    "label": "TOP/Gemeentebelangen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Team Meierijstad",
+    "label": "Team Meierijstad",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Texel 2010",
+    "label": "Texel 2010",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Texels Belang",
+    "label": "Texels Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Toekomst voor Marum",
+    "label": "Toekomst voor Marum",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Transparant Deurne",
+    "label": "Transparant Deurne",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Trilokaal",
+    "label": "Trilokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Trost Nuth",
+    "label": "Trost Nuth",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Trots",
+    "label": "Trots",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Trots Haarlem",
+    "label": "Trots Haarlem",
+    "group": "Lokaal"
+  },
+  {
+    "value": "TrotsPN",
+    "label": "TrotsPN",
+    "group": "Lokaal"
+  },
+  {
+    "value": "UdenPlus",
+    "label": "UdenPlus",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Uitgeester Vrije Partij",
+    "label": "Uitgeester Vrije Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "V&O",
+    "label": "V&O",
+    "group": "Lokaal"
+  },
+  {
+    "value": "V.O.L.G.",
+    "label": "V.O.L.G.",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VA (Voerendaal Actief)",
+    "label": "VA (Voerendaal Actief)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VCP",
+    "label": "VCP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VDB",
+    "label": "VDB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VDB/LO Vijf Dorpen Belang/Lijst Overloon",
+    "label": "VDB/LO Vijf Dorpen Belang/Lijst Overloon",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VDG",
+    "label": "VDG",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VENRAYLokaal",
+    "label": "VENRAYLokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VGBK",
+    "label": "VGBK",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VHL Lokaal Leerdam",
+    "label": "VHL Lokaal Leerdam",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VKG",
+    "label": "VKG",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VLP",
+    "label": "VLP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VOCHoorn",
+    "label": "VOCHoorn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VOV",
+    "label": "VOV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VPB",
+    "label": "VPB",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VSP",
+    "label": "VSP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VV2000/Leefbaar Vlaardingen",
+    "label": "VV2000/Leefbaar Vlaardingen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VVD en D66",
+    "label": "VVD en D66",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VVD-Leefbaar Uden",
+    "label": "VVD-Leefbaar Uden",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VVD-Liberaal 2000",
+    "label": "VVD-Liberaal 2000",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VVD/D66",
+    "label": "VVD/D66",
+    "group": "Lokaal"
+  },
+  {
+    "value": "VZ2000",
+    "label": "VZ2000",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Valkenswaard Lokaal",
+    "label": "Valkenswaard Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Veldhoven Samen Anders",
+    "label": "Veldhoven Samen Anders",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Velsen Lokaal",
+    "label": "Velsen Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Verantwoorde Lokale Politiek (VLP)",
+    "label": "Verantwoorde Lokale Politiek (VLP)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Verenigd Progressief Grave",
+    "label": "Verenigd Progressief Grave",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Verenigde Senioren Partij",
+    "label": "Verenigde Senioren Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Vereniging Seniorenpartij Schagen (VSPS)",
+    "label": "Vereniging Seniorenpartij Schagen (VSPS)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Vernieuwingsgroep",
+    "label": "Vernieuwingsgroep",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Veuruutkiek",
+    "label": "Veuruutkiek",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Vier Kernen Partij",
+    "label": "Vier Kernen Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Vitaal Valkenswaard",
+    "label": "Vitaal Valkenswaard",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Vitale Kernen Goeree-Overflakkee",
+    "label": "Vitale Kernen Goeree-Overflakkee",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Volendam|80",
+    "label": "Volendam|80",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Volkspartij Dongen",
+    "label": "Volkspartij Dongen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Voor Baarn",
+    "label": "Voor Baarn",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Voor Berg en Dal",
+    "label": "Voor Berg en Dal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Voor De Gemeenschap",
+    "label": "Voor De Gemeenschap",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Voor De Gemeenschap (VDG)",
+    "label": "Voor De Gemeenschap (VDG)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Voor Neerijnen",
+    "label": "Voor Neerijnen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Voor Nijmegen.NU",
+    "label": "Voor Nijmegen.NU",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Vrij!",
+    "label": "Vrij!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Vrije Hapertse Partij (VHP)",
+    "label": "Vrije Hapertse Partij (VHP)",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Vrije Liberale Partij",
+    "label": "Vrije Liberale Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "W70",
+    "label": "W70",
+    "group": "Lokaal"
+  },
+  {
+    "value": "WIJ Lansingerland",
+    "label": "WIJ Lansingerland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "WOS",
+    "label": "WOS",
+    "group": "Lokaal"
+  },
+  {
+    "value": "WSP",
+    "label": "WSP",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Wad'n partij",
+    "label": "Wad'n partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Wakker Emmen",
+    "label": "Wakker Emmen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Waterland Natuurlijk!",
+    "label": "Waterland Natuurlijk!",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Weerbaar Waddinxveen",
+    "label": "Weerbaar Waddinxveen",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Weert Lokaal",
+    "label": "Weert Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Welzijn Druten",
+    "label": "Welzijn Druten",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Welzijn Koggenland",
+    "label": "Welzijn Koggenland",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Wens4u",
+    "label": "Wens4u",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Werkgroep Laarbeek",
+    "label": "Werkgroep Laarbeek",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Werknemers Groepering",
+    "label": "Werknemers Groepering",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Westland Verstandig",
+    "label": "Westland Verstandig",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Weststellingwerfs Belang",
+    "label": "Weststellingwerfs Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Wij Putten",
+    "label": "Wij Putten",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Wij zijn Someren/VVD",
+    "label": "Wij zijn Someren/VVD",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Wij. Rijswijk",
+    "label": "Wij. Rijswijk",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Wijchen Lokaal",
+    "label": "Wijchen Lokaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "WijkNU",
+    "label": "WijkNU",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Winterswijks Belang",
+    "label": "Winterswijks Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ZVV",
+    "label": "ZVV",
+    "group": "Lokaal"
+  },
+  {
+    "value": "ZW 2014",
+    "label": "ZW 2014",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Zeevangs Belang",
+    "label": "Zeevangs Belang",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Zeewolde Liberaal",
+    "label": "Zeewolde Liberaal",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Zoetermeer Vooruit",
+    "label": "Zoetermeer Vooruit",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Zwijndrechtse Plus Partij",
+    "label": "Zwijndrechtse Plus Partij",
+    "group": "Lokaal"
+  },
+  {
+    "value": "Zó! Zoetermeer",
+    "label": "Zó! Zoetermeer",
+    "group": "Lokaal"
+  },
+  {
+    "value": "lingewaard.NU",
+    "label": "lingewaard.NU",
+    "group": "Lokaal"
+  },
+  {
+    "value": "plan!",
+    "label": "plan!",
+    "group": "Lokaal"
+  }
+]

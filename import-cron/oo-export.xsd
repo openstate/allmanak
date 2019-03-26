@@ -1,0 +1,1029 @@
+<?xml version="1.0"?>
+<!--
+
+  schema oo-export-2.0.xsd
+  http://almanak.overheid.nl/schema/export/2.0/oo-export-2.0.xsd
+
+  2.0.3 9 oktober 2007
+  aanpassingen:
+  1/ plaats binnen adres is optioneel.
+
+  2.1 26-5-2009
+  aanpassingen:
+  toevoeging contactpagina
+
+  2.2 4-12-2009
+  algehele validatie-fixes +  verhoging lengte plaatsType naar 1024
+  
+  2.3 29-11-2010
+  resourceIdentifier toegevoegd
+
+  2.3.1 31-03-2011
+  Het veld 'zetel' in 'zetels' is optioneel gemaakt zodat wanneer 'zetel' leeg is de xml toch valideert
+  
+  2.3.2 28-09-2017
+  Het veld 'categorie' is toegevoegd aan 'gemeente' en 'organisatie' 
+  
+  2.3.3 20-10-2017
+  verhoging lengte 'naam' van 'organisatie' naar 1024
+  
+  2.4.0 21-11-2017
+  toevoegen gemeenschappelijke regelingen, zie oo-export-regeling-2.4.0.xsd 
+  
+  2.4.1 21-02-2018
+  bevoegdheidsattributie is aangepast naar bevoegdheidsverkrijging en is nu multivalue
+  
+  2.4.2 05-04-2018
+  telefoon, emailadres, webadres kunnen een label hebben
+  
+  2.4.3 31-05-2018
+  ministeries, zelfstandigeBestuursorganen toevoegen, splitsen op basis van organisatieTypen
+  
+  2.4.4 01-08-2018
+  classificatie toevoegen
+  
+  2.4.5 01-09-2018
+  organisatietype afleidbaar gemaakt uit type
+  SiSacode vervangen met organisatiecode
+  
+  2.4.6 01-10-2018
+  classificatie grondslag
+  
+  2.4.7 10-01-2019
+  bevoegdheden kan meer tekens bevatten
+  
+  2.4.8 01-02-2019
+  meerdere resourceIdentifiers mogelijk, plus versienummer toegevoegd
+
+  -->
+<xs:schema xmlns="https://almanak.overheid.nl/static/schema/oo/export/2.4.8" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://almanak.overheid.nl/static/schema/oo/export/2.4.8" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="systemId">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="systemId" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="timestamp" type="xs:string"/>
+	<xs:element name="overheidsorganisaties">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="organisaties" minOccurs="0"/>
+				<xs:element ref="gemeenten" minOccurs="0"/>
+				<xs:element ref="gemeenschappelijkeRegelingen" minOccurs="0"/>
+				<xs:element ref="zelfstandigeBestuursorganen" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute ref="timestamp"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="organisaties">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="organisatie"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="gemeenschappelijkeRegelingen">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="gemeenschappelijkeRegeling"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="gemeenten">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="gemeente"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="zelfstandigeBestuursorganen">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="zelfstandigBestuursorgaan"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="zetel">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="partij"/>
+				<xs:element ref="aantal"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="catnr" type="xs:nonNegativeInteger"/>
+	<xs:attribute name="naam">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>	
+	<xs:element name="categorie">
+		<xs:complexType>
+			<xs:attribute ref="catnr" use="required"/>							
+			<xs:attribute ref="naam" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="internetTypeContent">
+		<xs:restriction base="xs:anyURI">
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="internetType">
+		<xs:simpleContent>
+			<xs:extension base="internetTypeContent">
+				<xs:attribute ref="label" use="optional"/>
+			</xs:extension>	
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="internet" type="internetType"/>
+	<xs:element name="postAdres">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="adres"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="bezoekAdres">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="adres"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="adres">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="straat" minOccurs="0"/>
+				<xs:element ref="huisnummer" minOccurs="0"/>
+				<xs:element name="toevoeging" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="250"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element ref="huisletter" minOccurs="0"/>
+				<xs:element ref="postbus" minOccurs="0"/>
+				<xs:element ref="postcode" minOccurs="0"/>
+				<xs:element ref="plaats" minOccurs="0"/>
+				<xs:element ref="regio" minOccurs="0"/>
+				<xs:element ref="land" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="postcode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="postbus">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="huisnummer">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="straat">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="plaats">
+		<xs:simpleType>
+			<xs:restriction base="plaatsType">
+				<xs:minLength value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:simpleType name="emailadresTypeContent">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="emailadresType">
+		<xs:simpleContent>
+			<xs:extension base="emailadresTypeContent">
+				<xs:attribute ref="label" use="optional"/>
+			</xs:extension>	
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="emailadres" type="emailadresType"/>
+	<xs:element name="naam">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="1024"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="subnaam">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:attribute name="version" type="versionType"/>
+	<xs:simpleType name="versionType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="25"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="resourceIdentifierTypeContent">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="250"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="resourceIdentifierType">
+		<xs:simpleContent>
+			<xs:extension base="resourceIdentifierTypeContent">
+				<xs:attribute ref="version" use="required"/>
+			</xs:extension>	
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="resourceIdentifier" type="resourceIdentifierType"/>
+	<xs:element name="ictuCode">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ictuCode" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="afkorting">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:attribute name="label" type="labelType"/>
+	<xs:simpleType name="labelType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="25"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="telefoonTypeContent">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="telefoonType">
+		<xs:simpleContent>
+			<xs:extension base="telefoonTypeContent">
+				<xs:attribute ref="label" use="optional"/>
+			</xs:extension>	
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="telefoon" type="telefoonType"/>
+	<xs:element name="startDatum" type="xs:date"/>
+	<xs:element name="eindDatum" type="xs:date"/>
+	<xs:element name="datumInwerkingtreding" type="xs:date"/>
+	<xs:element name="datumOpheffing" type="xs:date"/>
+	<xs:element name="toetredingsDatum" type="xs:date"/>
+	<xs:element name="subtype">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="internAdres">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="locatie"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="locatie">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="telex">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="fax">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="installatie" type="xs:string"/>
+	<xs:element name="afbeelding">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="bron" minOccurs="0"/>
+				<xs:element ref="bronvermelding" minOccurs="0"/>
+				<xs:element ref="beschrijving" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="beschrijving" type="xs:string"/>
+	<xs:element name="doel" type="xs:string"/>
+	<xs:element name="vergoeding" type="xs:nonNegativeInteger"/>
+	<xs:element name="standplaats">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="partijFunctie">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="wateroppervlakte">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="oppervlakte">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="partij">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="aantal" type="xs:nonNegativeInteger"/>
+	<xs:element name="p" type="xs:string"/>
+	<xs:element name="adresString" type="xs:string"/>
+	<xs:element name="contact">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="telefoon" minOccurs="0" maxOccurs="3"/>
+				<xs:element ref="emailadres" minOccurs="0" maxOccurs="3"/>
+				<xs:element ref="fax" minOccurs="0"/>
+				<xs:element ref="telex" minOccurs="0"/>
+				<xs:element ref="bezoekAdres" minOccurs="0"/>
+				<xs:element ref="postAdres" minOccurs="0"/>
+				<xs:element ref="internet" minOccurs="0" maxOccurs="3"/>
+				<xs:element name="contactpaginas" type="contactpaginasType" minOccurs="0"/>
+				<xs:element ref="beschrijving" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="functie">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="systemId"/>
+				<xs:element ref="naam"/>
+				<xs:element ref="type" minOccurs="0"/>
+				<xs:element ref="subtype" minOccurs="0"/>
+				<xs:element name="medewerkers" type="medewerkersType"/>
+				<xs:element ref="ictuCode" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="medewerker">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="systemId"/>
+				<xs:element ref="naam"/>
+				<xs:element ref="afbeelding" minOccurs="0"/>
+				<xs:element ref="partij" minOccurs="0"/>
+				<xs:element ref="partijFunctie" minOccurs="0"/>
+				<xs:element ref="standplaats" minOccurs="0"/>
+				<xs:element ref="installatie" minOccurs="0"/>
+				<xs:element ref="contact"/>
+				<xs:element ref="startDatum" minOccurs="0"/>
+				<xs:element ref="eindDatum" minOccurs="0"/>
+				<xs:element ref="vergoeding" minOccurs="0"/>
+				<xs:element ref="ictuCode" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="provincieAfkorting">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="aantalInwoners" type="xs:nonNegativeInteger"/>
+	<xs:element name="inwonersPerKm2" type="xs:nonNegativeInteger"/>
+	<xs:element name="totaalZetels" type="xs:nonNegativeInteger"/>
+	<xs:element name="organisatie" type="organisatieType"/>
+	<xs:element name="gemeente" type="gemeenteType"/>
+	<xs:element name="gemeenschappelijkeRegeling" type="gemeenschappelijkeRegelingType"/>
+	<xs:element name="zelfstandigBestuursorgaan" type="zelfstandigBestuursorgaanType"/>
+	<xs:element name="clusterOnderdeel" type="zelfstandigBestuursorgaanType"/>
+	<xs:element name="bronvermelding" type="xs:string"/>
+	<xs:element name="bron" type="xs:anyURI"/>
+	<xs:simpleType name="plaatsType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1024"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="omvatPlaats" type="plaatsType"/>
+	<xs:complexType name="gemeenteType">
+		<xs:sequence>
+			<xs:element ref="systemId"/>
+			<xs:element ref="categorie" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="naam"/>
+			<xs:element ref="subnaam" minOccurs="0"/>
+			<xs:element ref="afkorting" minOccurs="0"/>
+			<xs:element ref="type" minOccurs="0"/>
+			<xs:element ref="subtype" minOccurs="0"/>
+			<xs:element ref="provincieAfkorting" minOccurs="0"/>
+			<xs:element name="classificaties">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="classificatie" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="afbeelding" minOccurs="0"/>
+			<xs:element ref="contact"/>
+			<xs:element ref="contactEmail"/>
+			<xs:element ref="beschrijving" minOccurs="0"/>
+			<xs:element ref="startDatum" minOccurs="0"/>
+			<xs:element ref="eindDatum" minOccurs="0"/>
+			<xs:element ref="oppervlakte" minOccurs="0"/>
+			<xs:element ref="wateroppervlakte" minOccurs="0"/>
+			<xs:element ref="aantalInwoners" minOccurs="0"/>
+			<xs:element ref="omvatPlaats" minOccurs="0"/>
+			<xs:element ref="inwonersPerKm2" minOccurs="0"/>
+			<xs:element ref="totaalZetels" minOccurs="0"/>
+			<xs:element ref="ictuCode" minOccurs="0"/>
+			<xs:element name="resourceIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="resourceIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="zetels">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="zetel" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="functies" type="functiesType"/>
+			<xs:element name="organisaties" type="organisatiesType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="organisatieType">
+		<xs:sequence>
+			<xs:element ref="systemId"/>
+			<xs:element ref="categorie" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="naam"/>
+			<xs:element ref="subnaam" minOccurs="0"/>
+			<xs:element ref="afkorting" minOccurs="0"/>
+			<xs:element ref="type" minOccurs="0"/>
+			<xs:element ref="subtype" minOccurs="0"/>			
+			<xs:element ref="provincieAfkorting" minOccurs="0"/>
+			<xs:element name="classificaties">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="classificatie" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="afbeelding" minOccurs="0"/>
+			<xs:element ref="contact"/>
+			<xs:element ref="contactEmail"/>
+			<xs:element ref="beschrijving" minOccurs="0"/>
+			<xs:element ref="startDatum" minOccurs="0"/>
+			<xs:element ref="eindDatum" minOccurs="0"/>
+			<xs:element name="organogram" type="xs:anyURI" minOccurs="0"/>
+			<xs:element name="functies" type="functiesType"/>
+			<xs:element name="organisaties" type="organisatiesType"/>
+			<xs:element ref="ictuCode" minOccurs="0"/>
+			<xs:element name="resourceIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="resourceIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="contactEmail" type="xs:string"/>
+	<xs:element name="regio">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="land">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="huisletter">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:complexType name="medewerkersType">
+		<xs:sequence>
+			<xs:element ref="medewerker" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="functiesType">
+		<xs:sequence>
+			<xs:element ref="functie" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="organisatiesType">
+		<xs:sequence>
+			<xs:element ref="organisatie" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="contactpaginasType">
+		<xs:sequence>
+			<xs:element name="contactpagina" type="contactpaginaType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="contactpaginaType">
+		<xs:sequence>
+			<xs:element name="contactpaginaUrl" type="xs:string"/>
+			<xs:element name="lang" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="titel">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="1024"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="citeertitel">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="organisatiecode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:simpleType name="samenwerkingsvormNaamType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Bedrijfsvoeringsorganisatie"/>
+	        <xs:enumeration value="Bestuursovereenkomst"/>
+	        <xs:enumeration value="Centrumconstructie"/>
+	        <xs:enumeration value="Gemeenschappelijk orgaan"/>
+	        <xs:enumeration value="Openbaar lichaam"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="samenwerkingsvormAfkortingType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BVO"/>
+	        <xs:enumeration value="BO"/>
+	        <xs:enumeration value="CC"/>
+	        <xs:enumeration value="GO"/>
+	        <xs:enumeration value="OL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="samenwerkingsvormNaam" type="samenwerkingsvormNaamType"/>
+	<xs:attribute name="samenwerkingsvormAfkorting" type="samenwerkingsvormAfkortingType"/>
+	<xs:element name="samenwerkingsvorm">
+		<xs:complexType>
+			<xs:attribute ref="samenwerkingsvormNaam" use="required"/>
+			<xs:attribute ref="samenwerkingsvormAfkorting" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="verkrijging">
+		<xs:simpleType>
+		    <xs:restriction base="xs:string">
+		        <xs:enumeration value="Attributie"/>
+		        <xs:enumeration value="Delegatie"/>
+		        <xs:enumeration value="Mandaat"/>
+		    </xs:restriction>
+	    </xs:simpleType>
+	</xs:attribute>
+	<xs:simpleType name="taalcodeType" final="restriction" >
+	    <xs:restriction base="xs:string">
+	        <xs:enumeration value="nl-NL"/>
+	    </xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="registratiehouderType" final="restriction" >
+	    <xs:restriction base="xs:string">
+	        <xs:enumeration value="Ministerie van Binnenlandse Zaken en Koninkrijksrelaties"/>
+	    </xs:restriction>
+	</xs:simpleType>
+	<xs:element name="bevoegdheden">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3024"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:attribute name="resourceIdentifier">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="beleidsterrein">
+		<xs:complexType>
+			<xs:attribute ref="naam" use="required"/>
+			<xs:attribute ref="resourceIdentifier"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="bevoegdheidsverkrijging">
+		<xs:complexType>
+			<xs:attribute ref="verkrijging" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="opschrift">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="url">
+		<xs:simpleType>
+			<xs:restriction base="xs:anyURI">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>	
+	<xs:element name="instellingsbesluit">
+		<xs:complexType>
+			<xs:attribute ref="url" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="wettelijkeVoorschrift">
+		<xs:complexType>
+			<xs:attribute ref="opschrift"/>
+			<xs:attribute ref="url" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="systemId" type="xs:nonNegativeInteger"/>
+	<xs:element name="archiefzorgdrager">
+		<xs:complexType>
+			<xs:attribute ref="systemId" use="required"/>							
+			<xs:attribute ref="naam" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="bbvFunctie">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>	
+	<xs:element name="bbvFunctie">
+		<xs:complexType>
+			<xs:attribute ref="bbvFunctie" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="verdeelsleutel" type="xs:double"/>
+	<xs:element name="organisatieId" type="xs:nonNegativeInteger"/>
+	<xs:element name="bronhouder" type="xs:boolean"/>
+	<xs:element name="deelnemendeOrganisatie">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="organisatieId"/>
+				<xs:element ref="naam"/>
+				<xs:element ref="toetredingsDatum"/>
+				<xs:element ref="verdeelsleutel" minOccurs="0"/>
+				<xs:element ref="bronhouder"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="kvkNummer">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="8"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:complexType name="gemeenschappelijkeRegelingType">
+		<xs:sequence>
+			<xs:element ref="systemId"/>
+			<xs:element ref="categorie" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="titel"/>
+			<xs:element ref="citeertitel" minOccurs="0"/>
+			<xs:element ref="type" minOccurs="0"/>
+			<xs:element ref="organisatiecode" minOccurs="0"/>
+			<xs:element ref="samenwerkingsvorm"/>
+			<xs:element name="bevoegdheidsverkrijgingen">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="bevoegdheidsverkrijging" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="bevoegdheden" minOccurs="0"/>
+			<xs:element name="beleidsterreinen">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="beleidsterrein" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="classificaties">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="classificatie" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="instellingsbesluiten">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="instellingsbesluit" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="wettelijkeVoorschriften">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="wettelijkeVoorschrift" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="archiefzorgdrager" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="taalcode" type="taalcodeType"/>
+			<xs:element name="registratiehouder" type="registratiehouderType"/>
+			<xs:element ref="contact"/>
+			<xs:element ref="contactEmail"/>
+			<xs:element ref="doel" minOccurs="0"/>
+			<xs:element ref="datumInwerkingtreding"/>
+			<xs:element ref="datumOpheffing" minOccurs="0"/>
+			<xs:element name="deelnemendeOrganisaties">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="deelnemendeOrganisatie" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="functies" type="functiesType"/>
+			<xs:element name="organisaties" type="organisatiesType"/>
+			<xs:element name="bbvFuncties">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="bbvFunctie" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="kvkNummer" minOccurs="0"/>
+			<xs:element ref="ictuCode" minOccurs="0"/>
+			<xs:element name="resourceIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="resourceIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="rechtsvorm">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="relatieMetMinisterie">
+		<xs:complexType>
+			<xs:attribute ref="systemId" use="required"/>							
+			<xs:attribute ref="naam" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="instellingsMotief">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="255"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="takenEnBevoegdheden">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="12048"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="kaderwetZboVanToepassing">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:attribute name="artikel">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>	
+	<xs:attribute name="toelichting">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="2048"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>	
+	<xs:element name="afwijkendeBepaling">
+		<xs:complexType>
+			<xs:attribute ref="artikel" use="required"/>							
+			<xs:attribute ref="toelichting"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="aantalFTE">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal"/>
+		</xs:simpleType>
+	</xs:attribute>	
+	<xs:attribute name="peildatum">
+		<xs:simpleType>
+			<xs:restriction base="xs:date"/>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="personeelsomvang">
+		<xs:complexType>
+			<xs:attribute ref="aantalFTE" use="required"/>
+			<xs:attribute ref="peildatum"/>					
+			<xs:attribute ref="toelichting"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="aantekening">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="12048"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="geldendeCAO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="aangeslotenBijPensioenfonds">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:attribute name="datumEvaluatie">
+		<xs:simpleType>
+			<xs:restriction base="xs:date"/>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="kamerstuknummerEvaluatie">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="urlRapportEvaluatie">
+		<xs:simpleType>
+			<xs:restriction base="xs:anyURI">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="laatsteEvaluatie">
+		<xs:complexType>
+			<xs:attribute ref="datumEvaluatie"/>							
+			<xs:attribute ref="kamerstuknummerEvaluatie"/>
+			<xs:attribute ref="urlRapportEvaluatie"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="clusterOnderdelenType">
+		<xs:sequence>
+			<xs:element ref="clusterOnderdeel" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="zelfstandigBestuursorgaanType">
+		<xs:sequence>
+			<xs:element ref="systemId"/>
+			<xs:element ref="categorie" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="naam"/>
+			<xs:element ref="afkorting" minOccurs="0"/>
+			<xs:element ref="type" minOccurs="0"/>
+			<xs:element ref="subtype" minOccurs="0"/>
+			<xs:element ref="aantekening" minOccurs="0"/>
+			<xs:element name="classificaties">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="classificatie" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+						
+			<xs:element name="wettelijkeVoorschriften">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="wettelijkeVoorschrift" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="rechtsvorm" minOccurs="0"/>
+			<xs:element ref="relatieMetMinisterie" minOccurs="0"/>
+			<xs:element ref="instellingsMotief" minOccurs="0"/>
+			<xs:element ref="takenEnBevoegdheden" minOccurs="0"/>
+			<xs:element ref="kaderwetZboVanToepassing" minOccurs="0"/>
+			<xs:element ref="afwijkendeBepaling" minOccurs="0"/>
+			<xs:element ref="personeelsomvang" minOccurs="0"/>
+			<xs:element ref="geldendeCAO" minOccurs="0"/>
+			<xs:element ref="aangeslotenBijPensioenfonds" minOccurs="0"/>
+			<xs:element ref="laatsteEvaluatie" minOccurs="0"/>
+			<xs:element ref="contact"/>
+			<xs:element ref="contactEmail"/>
+			<xs:element ref="startDatum" minOccurs="0"/>
+			<xs:element ref="eindDatum" minOccurs="0"/>			
+			<xs:element name="functies" type="functiesType"/>
+			<xs:element name="organisaties" type="organisatiesType"/>
+			<xs:element name="clusterOnderdelen" type="clusterOnderdelenType"/>
+			<xs:element ref="ictuCode" minOccurs="0"/>
+			<xs:element name="resourceIdentifiers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="resourceIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:attribute name="type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="250"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="classificatie">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="startDatum" minOccurs="0"/>
+				<xs:element ref="eindDatum" minOccurs="0"/>
+				<xs:element ref="wettelijkeGrondslag" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute ref="type"/>
+			<xs:attribute ref="url"/>
+			<xs:attribute ref="toelichting"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="wettelijkeGrondslag">
+		<xs:complexType>
+			<xs:attribute ref="opschrift"/>
+			<xs:attribute ref="url" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

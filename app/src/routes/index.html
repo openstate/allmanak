@@ -1,0 +1,441 @@
+<svelte:head>
+	<title>Allmanak - Zoeken naar contactgegevens overheden en politici</title>
+</svelte:head>
+
+<div class="searchbar">
+	<div class="container">
+		<div class="searchbox">
+			<h2>Zoeken naar contactgegevens overheden en politici</h2>
+			<input bind:value="q" autocomplete="off" autocorrect="off" ref:search value="" on:keydown="searchKey(event)" on:keyup="presearch(q)" id='query' placeholder='Zoeken naar persoon of organisatie' type='search'>
+			<h3 class="facetstitle">Of zoeken met filters</h3>
+			<div class="facets">
+				<!-- <input placeholder='Plaats'> --><Select bind:selectedValue="filterPlaats" items={cityListFilter} placeholder="Plaats" isMulti={true} isClearable={false} {noOptionsMessage}></Select>
+				<!--input placeholder='Overheidsorganisatie'--><Select bind:selectedValue="filterOrganisatie" items={organisatieFilter} isClearable={false} placeholder="Overheidsorganisatie" isMulti={true} {noOptionsMessage}></Select>
+				<!-- <input placeholder='Politieke Partij'> --><Select bind:selectedValue="filterPartij" items={partyListFilter} placeholder="Politieke Partij" isMulti={true} isClearable={false} {noOptionsMessage} {groupBy}></Select>
+				<button>Zoek</button>
+			</div>
+		</div>
+	</div>
+</div>
+{#if result}
+<div class="resultbar">
+	<div class="facets2">
+		{#if facetList}
+			Filter op type:<br />
+			{#each facetList.categories.slice(0,4) as type}
+				<div class:active='filterType.has(type[0])' on:click='toggleFilterType(type[0])'><div class='name'>{type[0]}</div><div class='count'>{type[1]}</div></div>
+			{/each}
+			<br />
+			Binnen organisatie:
+			{#each facetList.paths.slice(0,4) as path}
+				<div class:active='filterPath.has(path[0])' on:click='toggleFilterPath(path[0])'><div class='name'>{path[0]}</div><div class='count'>{path[1]}</div></div>
+			{/each}
+		{/if}
+	</div>
+	<div class="resultcontainer">
+		{#if result.length == 0}
+			{noOptionsMessage}
+		{:else}
+			{filteredResults.length} resulta{filteredResults.length == 1 ? 'at' : 'ten'}:
+			<div ref:results> <!-- don't ask me why, but without this 'useless' div iOS doesn't always show a scrollbar -->
+			<VirtualList items={filteredResults} component={ResultItem} height="400px" bind:start=resultStart bind:end=resultEnd itemHeight={78} />
+			<!-- another bug, without itemHeight, the whole thing doesn't work -->
+			</div>
+			<div class="shown">Getoond {resultStart + 1}-{resultEnd}</div>
+			<button class="export" on:click="_export(e, filteredResults)"><a href="{ useMsBlob ? '#' : dataUri }" download="{ filename }" on:click="msDownload()">Exporteer</a></button>
+		{/if}
+	</div>
+	<div></div>
+</div>
+{/if}
+<div id="over">
+	<div class="container">
+		<aside>
+			<div class="reporterrorbox">
+				<p>We horen het graag als onze informatie niet correct of onvolledig is.</p>
+				<button>Meld een fout</button>
+			</div>
+		</aside>
+		<article>
+			<h2>Over deze website</h2>
+			<p>Op deze website staan de namen, adressen en andere contactgegevens van de Nederlandse overheidsorganisaties. Ook de persoonsgegevens van (voornamelijk) leidinggevende personen binnen de Nederlandse overheid zijn opgenomen. Publicatie geschiedt in opdracht van het ministerie van Binnenlandse Zaken en Koninkrijksrelaties, op basis van een Koninklijk Besluit van 16 juli 1859.<br><br>
+			De organisaties zijn zelf verantwoordelijk voor de volledigheid, juistheid en actualiteit van de gegevens.</p>
+		</article>
+	</div>
+</div>
+<Bar>
+	<span slot="header">Zoek op categorie in <strong>Overheids&shy;organisaties</strong></span>
+	<div slot="body"><BoxLinks items={categories.map(x=>({link:`cat/${x.catnr}/${urlname(x.naam)}`, name:x.naam}))}/></div>
+</Bar>
+<svelte:window on:keydown="pageShortcuts(event)"/>
+<style>
+	.searchbar {
+		background: url(/denhaag-binnenhof.jpg) no-repeat 40%;
+		background-size: cover;
+		min-height: 400px;
+	}
+	.searchbox {
+		margin-top: 20%;
+		background-color: #f2f2f2;
+		color: #3d4a4c;
+		padding: 2rem;
+	}
+	.facetstitle {
+		margin-top: 0.5rem;
+	}
+	.facets {
+		/*display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;*/
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+        grid-gap: 1rem;
+	}
+	.facets2 > div {
+	    background: #EBEDEF;
+	    cursor: pointer;
+	    margin-right: 5px;
+	    border-radius: 16px;
+	    line-height: 32px;
+	    display: flex;
+	    cursor: default;
+	    height: 32px;
+	    margin-top: 5px;
+	    padding: 0 10px 0 15px;
+	}
+	.facets2 > div.active, .facets2 > div:hover  {
+	    background-color: #006FFF;
+	    color: #fff;
+	    cursor: pointer;
+	}
+	.facets2 > div > .name {
+		margin-right: 5px;
+	}
+	.facets2 > div > .count {
+	    border-radius: 16px;
+	    background: #52616F;
+	    min-width: 16px;
+	    height: 16px;
+	    position: relative;
+	    top: 8px;
+	    text-align: center;
+	    padding: 1px 2px;
+	    line-height: 16px;
+	    font-size: 0.5em;
+	    color: white;
+	    font-weight: bold;
+	    right: 0px;
+	}
+	.facets2 > div.active > .count, .facets2 > div:hover > .count  {
+		background-color: #fff;
+		color: #52616F;
+	}
+	.facets > :global(div), .facets button /*.facets > input*/ {
+		/*display: block;*/
+		align-self: start;
+		/*width: 24%;*/
+		/*box-sizing: border-box;*/
+	}
+	.shown {
+		color: #666;
+	}
+	/*.facets * {
+		width: 22%;
+		box-sizing: border-box;
+		margin-left: 2%;
+	}
+	.singleline:first-child {
+		margin-left: 0;
+	}*/
+	#query {
+		width: 100%;
+	}
+	.searchbox input {
+		background-color: #fff;
+		border-radius: 0.5rem;
+		border: none;
+		padding: 0.5rem;
+	}
+	:global(div.selectContainer.multiSelect) {
+		background-color: #fff;
+		border-radius: 0.5rem;
+		border: none;
+	}
+	.searchbox button {
+		background-color: #00938f;
+		color: #FFF;
+		font-weight: bold;
+		border: none;
+		border-radius: 0.5rem;
+		padding: 0.5rem;
+		display: block;
+	}
+	.reporterrorbox {
+		border: 1px #f2f2f2 solid;
+		float: right;
+		padding: 0.5rem 1rem;
+		width: 20%;
+		text-align: left;
+		margin-left: 1rem;
+		font-weight: 600;
+	}
+	.reporterrorbox button {
+		width: 100%;
+		color: #FFF;
+		background-color: #c2178a;
+		border: none;
+		border-radius: 0.5rem;
+		padding: 0.5rem;
+		font-weight: 600;
+	}
+	:global(body.fontloaded-montserratsemibold) .reporterrorbox, :global(body.fontloaded-montserratsemibold) .reporterrorbox button {
+		font-family: 'montserratsemibold';
+	}
+	/*.categories,*/ .resultbar {
+		background-color: #f2f2f2;
+	}
+	.resultbar {
+		display: grid;
+	    grid-template-columns: 1fr minmax(10rem,70rem) 1fr;
+	}
+	button.export {
+		float: right;
+		background-color: #00938f;
+		color: #FFF;
+		font-weight: bold;
+		border: none;
+		border-radius: 0.5rem;
+		padding: 0.5rem;
+		font-weight: 600;
+		cursor: pointer;
+	}
+	ref:results {
+		/*border: 1px solid #CCC;*/
+		/*border: 1px solid red;*/
+	}
+	/*
+	ol.searchresult {
+		list-style-type: none;
+	}
+	ol.searchresult > li {
+		margin: 0;
+		margin-bottom: 1rem;
+		padding: 0;
+	}
+	ol.searchresult > li > a {
+		display: block;
+		text-decoration: none;
+	}
+	ol.searchresult > li > a > h6 {
+		font-size: 1rem;
+		font-weight: bold;
+	}*/
+
+</style>
+
+<script>
+	import { urlname } from '../utils.js';
+	import VirtualList from '@sveltejs/svelte-virtual-list';
+	import Select from 'svelte-select';
+	import ResultItem from '../components/ResultItem.html';
+	import partyListFilter from './_parties.json';
+	import cityListFilter from './_cities.json';
+	import categories from './_categories.json';
+
+	const csvEscape = str => str ? '"' + str.replace(/"/g, '""') + '"' : '';
+	const sparseCsvEscape = (str, separator) => typeof str !== "string" || str.indexOf('"') == -1 && str.indexOf(separator) == -1 && str.indexOf("\n") == -1 && str.indexOf("\r") == -1 ? str : csvEscape(str);
+	const toDataUri = csv => 'data:text/csv;charset=utf-8,%EF%BB%BF' + encodeURIComponent(csv);
+
+	const twoDigits = d => d < 10 ? '0' + d : d;
+	const dateTimeFormat = (o, d, dt, t) => o.getFullYear() + d + twoDigits(o.getMonth() + 1) + d + twoDigits(o.getDate()) + dt + twoDigits(o.getHours()) + t + twoDigits(o.getMinutes());
+	const nowStr = () => dateTimeFormat(new Date(), '-', '_', '.');
+
+	const csv = (result, separator) => {
+      let str = [
+        'ID',
+        'Partij',
+        'Afkorting',
+        'Naam',
+        'Functie',
+        'Type',
+        'Plaats',
+      ].join(separator) + '\r\n';
+      for (const row of result) {
+          str += [
+            sparseCsvEscape(row.item.id),
+            sparseCsvEscape(row.item.partij),
+            sparseCsvEscape(row.item.afkorting),
+            sparseCsvEscape(row.item.naam),
+            sparseCsvEscape(row.item.functie),
+            sparseCsvEscape(row.item.type),
+            sparseCsvEscape(row.item.plaats),
+            //sparseCsvEscape('\u00A0' + (phone.number || '')), // '\u00A0' is an Excel only fix, probably better to make 'uniform' add dash function
+          ].join(separator) + '\r\n';
+      }
+      return str;
+    };
+
+	// function intersect(a, b) {
+	//       var setB = new Set(b);
+	//       return [...new Set(a)].filter(x => setB.has(x));
+	// }
+
+	export default {
+		data() {
+			return {
+				q: "",
+				result: false,
+				//searchcache: new Map(),
+			    separator: ';',
+			    // since this navigator stuff is also parsed by the server side, check if we have a navigator object! also just typing ' navigator ? ' will get a ReferenceError
+			    isWindowsMobile: typeof navigator == "object" ? navigator.userAgent.indexOf('IEMobile') !== -1 : false,
+			    useMsBlob: typeof navigator == "object" ? typeof navigator.msSaveOrOpenBlob !== 'undefined' : false,
+			    dataUri: '',
+			    filename: '',
+			    ResultItem,
+			    resultStart: 0,
+			    resultEnd: 0,
+			    filterType: new Set(),
+			    filterPath: new Set(),
+			    noOptionsMessage: 'Geen resultaten gevonden',
+			    groupBy: (item) => item.group,
+			     organisatieFilter: categories.map(x=>({value:x.catnr,label:x.naam})),//[
+		     //      {value: 'functie', label: 'Functie'},
+		     //      {value: 'gemeente', label: 'Gemeente'},
+		     //      {value: 'medewerker', label: 'Medewerker'},
+		     //      {value: 'ministerie', label: 'Ministerie'},
+		     //      {value: 'organisatie', label: 'Organisatie'},
+		     //      {value: 'regeling', label: 'Gemeenschappelijke regeling'},
+		     //      {value: 'zbo', label: 'Zelfstandig bestuursorgaan'},
+		     //    ],
+		        partyListFilter,
+		        cityListFilter: cityListFilter.map(x=>({value:x,label:x})),
+			};
+		},
+		helpers: {
+			urlname,
+		},
+		oncreate() {
+			const worker = new Worker('webworker.js');
+			this.set({worker});
+			const updateFunc = (result) => this.set({result:result});
+			worker.onmessage = function(e) {
+				updateFunc(e.data);
+			};
+		},
+		computed: {
+			facetList: ({result}) => {
+				if (!result)
+					return {};
+				const types = new Map();
+				const paths = new Map();
+				for (const part of result) {
+					const type = part.item.type||'Medewerker';
+					const path = (part.item.path||[null])[0];
+					types.set(type, (types.get(type) || 0) + 1);
+					paths.set(path, (paths.get(path) || 0) + 1);
+				}
+				window.debug = {
+					categories: [...types.entries()].sort((a,b)=>b[1]-a[1]),
+					paths: [...paths.entries()].sort((a,b)=>b[1]-a[1]),
+				};
+				return {
+					categories: [...types.entries()].sort((a,b)=>b[1]-a[1]),
+					paths: [...paths.entries()].filter(x=>x[0]!=null).sort((a,b)=>b[1]-a[1]),
+				};
+			},
+			filteredResults: ({result, filterType, filterPath, filterPlaats, filterOrganisatie, filterPartij}) => {
+				if (result == false || filterType.size == 0 && filterPath.size == 0 && 
+						(!filterPlaats || filterPlaats.length == 0) &&
+						(!filterOrganisatie || filterOrganisatie.length == 0) &&
+						(!filterPartij || filterPartij.length == 0)) {
+					return result;
+				}
+				const filterCity = new Set((filterPlaats||[]).map(x => x.value))
+				const filterOrg = new Set((filterOrganisatie||[]).map(x => x.value))
+				const filterParty = new Set((filterPartij||[]).map(x => x.value))
+
+				return result.filter(x => (filterType.size == 0 || filterType.has(x.item.type||'Medewerker')) && (filterPath.size == 0 || filterPath.has((x.item.path||[null])[0]))
+					 && (filterCity.size == 0 || filterCity.has((x.item.plaats||'').toUpperCase()))
+					 && (filterParty.size == 0 || filterParty.has(x.item.partij)));
+				//
+			}
+		},
+		methods: {
+			presearch(query) {
+				if (query.length == 1)
+					return;
+				const {worker} = this.get();
+				this.set({filterType:new Set(),filterPath:new Set()});
+				worker.postMessage(query);
+			},
+			_export(e, result) {//since export is a reserved word!
+				const {q} = this.get();
+				this.set({
+					filename: 'export-' + q.replace(/[^a-zA-Z0-9-]+/g, '-') + nowStr() + '.csv',
+					dataUri: toDataUri(csv(result, ';')),
+				});
+			},
+			msDownload() {
+				if (navigator.msSaveOrOpenBlob) {
+					navigator.msSaveOrOpenBlob(new Blob([(BOM ? '\uFEFF' : '') + this.get('csv')], { type: 'text/csv' /*, endings: 'transparent'*/}), this.get('filename'));
+				}
+			},
+		    pageShortcuts(event) {
+				if (event.ctrlKey && event.key === 'f' || event.key === '/') {
+					this.refs.search.focus();
+					event.preventDefault(); // prevent the default Ctrl+F behavior: native search on the page
+					event.stopPropagation(); // prevent other/more event handlers from being triggered
+					return;
+				}
+		    },
+		    searchKey(event) {
+				if (event.key === 'Escape') {
+					event.target.blur();
+					event.preventDefault();// prevent Chrome behavior of also clearing the input, or should be cancel/clear the input too?
+					event.stopPropagation(); // prevent other/more event handlers from being triggered
+					return;
+				}
+				if (event.ctrlKey && event.key === 'f') {
+					event.preventDefault(); // prevent the default Ctrl+F behavior: native search on the page
+					event.stopPropagation(); // prevent other/more event handlers from being triggered
+					return;
+				}
+				event.stopPropagation(); // prevent other/more event handlers from being triggered
+		    },
+		    toggleFilterType(value) {
+		    	console.log('toggleType',value);
+		    	const {filterType} = this.get();
+		    	if (filterType.has(value)) {
+		    		filterType.delete(value);
+		    	} else {
+		    		filterType.add(value);
+		    	}
+		    	this.set({filterType});
+		    },
+		    toggleFilterPath(value) {
+		    	console.log('togglePath',value);
+		    	const {filterPath} = this.get();
+		    	if (filterPath.has(value)) {
+		    		filterPath.delete(value);
+		    	} else {
+		    		filterPath.add(value);
+		    	}
+		    	this.set({filterPath});
+		    },
+		},
+		/*preload({ params, query }) {
+			return this.fetch(`blog.json`).then(r => r.json()).then(posts => {
+				return { posts };
+			});
+		}*/
+		components: {
+			VirtualList,
+			Select,
+			//Category: '../components/Category.html',
+			Bar: '../components/Bar.html',
+			BoxLinks: '../components/BoxLinks.html',
+		}
+	};
+</script>

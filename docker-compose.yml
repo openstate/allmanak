@@ -1,0 +1,73 @@
+networks:
+  default: null
+  nginx-load-balancer:
+    external:
+      name: docker_nginx-load-balancer
+services:
+  api-rest-v0:
+    depends_on: [db]
+    environment:
+      PGRST_DB_ANON_ROLE: anonymous
+      PGRST_DB_MAX_ROWS: 100
+      PGRST_DB_SCHEMA: api
+      PGRST_DB_URI: postgres://pgrst:anonymous@db:5432/allmanak
+      PGRST_SERVER_PROXY_URI: https://rest-api.allmanak.nl/v0/
+    image: postgrest/postgrest
+    restart: always
+  app:
+    command: sh -c "yarn install && yarn build && node __sapper__/build"
+    depends_on: [api-rest-v0]
+    expose: ['3000']
+    image: mhart/alpine-node:11
+    restart: always
+    volumes:
+      - './app:/app'
+      - 'app-sapper:/app/__sapper__/'
+      - 'node-modules:/app/node_modules/'
+      - 'yarn-cache:/usr/local/share/.cache/yarn/'
+    working_dir: /app
+  build-static:
+    command: sh -c 'touch /web/build_static && /sbin/inotifyd - /web/build_static:e | xargs -I% sh -c "yarn install && yarn export && ./postexport.sh"'
+    depends_on: [api-rest-v0, web]
+    image: mhart/alpine-node:11
+    restart: always
+    volumes:
+      - './app:/app'
+      - './staticapp:/web'
+      - 'build-static-sapper:/app/__sapper__/'
+      - 'node-modules:/app/node_modules/'
+      - 'yarn-cache:/usr/local/share/.cache/yarn/'
+    working_dir: /app
+  db:
+    environment:
+      POSTGRES_DB: allmanak
+      POSTGRES_INITDB_ARGS: --data-checksums
+    image: postgres:11-alpine
+    restart: always
+    volumes:
+      - './initdb:/docker-entrypoint-initdb.d'
+      - './pgdata:/var/lib/postgresql/data'
+  import-cron:
+    build: ./import-cron
+    depends_on: [db, build-static]
+    restart: always
+    volumes:
+      - './staticapp:/web'
+  web:
+    command: sh -c 'nginx -g "daemon off;" & (touch /web/nginx_reload && /sbin/inotifyd - /web/nginx_reload:e | xargs -I% sh -c "nginx -t && nginx -s reload")'
+    depends_on: [app, api-rest-v0, fakemail]
+    image: nginx:mainline-alpine
+    networks: [nginx-load-balancer, default]
+    ports: ['80:80', '10000:10000']
+    restart: always
+    volumes:
+      - './app/static:/app/static:ro'
+      - './nginx/conf.d:/etc/nginx/conf.d:ro'
+      - './nginx/shared:/etc/nginx/shared:ro'
+      - './staticapp:/web'
+version: '3.1'
+volumes:
+  app-sapper: null
+  build-static-sapper: null
+  node-modules: null
+  yarn-cache: null

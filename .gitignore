@@ -1,0 +1,6 @@
+.DS_Store
+__sapper__
+node_modules
+pgdata
+staticapp
+yarn-error.log
