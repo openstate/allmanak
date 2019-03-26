@@ -178,7 +178,13 @@ echo "Postgres result: $E";
 
 rm import.pg.sql;
 
-#Call webhook app:9000/export to generate export (that copies artifacts to $TS/ and changes `ln latest $TS/`)
+# Set nginx to use node (since there is new data)
+ln -nsf /etc/nginx/shared/node.conf /etc/nginx/conf.d/static-or-node;
+
+# Update metadata so alpine inotifyd can catch it
+touch /web/nginx_reload;
+
+# Update metadata so alpine inotifyd can catch it & start a new sapper export
 touch /web/build_static;
 
 cleanup;

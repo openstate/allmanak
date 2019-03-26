@@ -33,6 +33,7 @@ services:
     restart: always
     volumes:
       - './app:/app'
+      - './nginx/conf.d-dev:/etc/nginx/conf.d'
       - './staticapp:/web'
       - 'build-static-sapper:/app/__sapper__/'
       - 'node-modules:/app/node_modules/'
@@ -52,6 +53,7 @@ services:
     depends_on: [db, build-static]
     restart: always
     volumes:
+      - './nginx/conf.d-dev:/etc/nginx/conf.d'
       - './staticapp:/web'
   fakemail:
     image: mailhog/mailhog

@@ -19,5 +19,8 @@ mv /app/__sapper__/export/ /web/$TS;
 # Switch latest symbolic link
 ln -nsf /web/$TS /web/latest;
 
+# Set nginx to use static again
+ln -nsf /etc/nginx/shared/static.conf /etc/nginx/conf.d/static-or-node;
+
 # Update metadata so alpine inotifyd can catch it
 touch /web/nginx_reload;
