@@ -89,6 +89,9 @@
                     </xsl:otherwise>
                   </xsl:choose><xsl:if test="position() != last()">,</xsl:if>
               </xsl:for-each>
+              <xsl:if test="./*">
+                ,<xsl:apply-templates select="*"/>
+              </xsl:if>
               <xsl:if test="text()">
                 ,"value": "<xsl:value-of select="text()"/>"
               </xsl:if>

@@ -68,7 +68,7 @@
 				{"catnr":26140391,"naam":"Zelfstandige bestuursorganen","type":'Zelfstandig bestuursorgaan'}
 			];
 			const ootype = categorie2type.filter(x => x.catnr == params.catnr)[0].type;
-			const res = await this.fetch(`${apiBaseUri}/overheidsorganisatie?type=eq.${encodeURIComponent(ootype)}&select=naam,titel,systemid,parents(count)&einddatum=is.null&order=naam,titel`);
+			const res = await this.fetch(`${apiBaseUri}/overheidsorganisatie?type=eq.${encodeURIComponent(ootype)}&select=systemid,naam,citeertitel,titel,parents(count)&einddatum=is.null&order=naam,citeertitel,titel`);
 			const data = await res.json();
 
 			if (res.status === 200) {

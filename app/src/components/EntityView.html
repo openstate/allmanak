@@ -1,3 +1,6 @@
+<svelte:head>
+	<title>{name(entity)} - Allmanak</title>
+</svelte:head>
 <div class="imagebar" alt="" style="background-image: url({entity.image || (entity.type == 'Gemeente' ? 'landschap.jpg' : 'gebouw.jpg')})"></div>
 <div class="headerbar">
 	<div class="breadcrumb">

@@ -1,5 +1,7 @@
 {
-  "name": "TODO",
+  "name": "Allmanak",
+  "author": "Benjamin W. Broersma <bw@broersma.com>",
+  "license": "CC0-1.0",
   "description": "TODO",
   "version": "0.0.1",
   "scripts": {
@@ -16,8 +18,10 @@
     "@sveltejs/svelte-virtual-list": "^2.2.1",
     "compression": "^1.7.3",
     "fontfaceobserver": "^2.1.0",
+    "node-fetch": "^2.3.0",
     "polka": "^0.5.1",
     "sirv": "^0.2.2",
+    "svelte-transitions": "^1.2.0",
     "svelte-transitions-slide": "^1.0.0"
   },
   "devDependencies": {

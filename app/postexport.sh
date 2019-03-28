@@ -1,4 +1,6 @@
 #!/bin/sh
+set -eu pipefail;
+
 # Create a directory based on the TimeStamp
 TS=$(date +%FT%H.%M.%S);
 
@@ -9,7 +11,17 @@ mkdir -p 0 1 2 3 4 5 6 7 8 9;
 # append line to systemid_urls.nginx with 'ID URL'
 # remove old directories (except for the ones that are single digits)
 find -name 'index.html' -path './[1-9]*' -type f -exec sh -c 'P=${0:2:-11};ID=${P%/*};URL=${P##*/};mv "$0" "./${ID:(-1)}/$ID.html";echo "$ID $URL;">>systemid_urls.nginx;rmdir "./$ID/$URL";if [ ${#ID} -gt 1 ]; then rmdir "$ID";fi;' {} \;
-sort -n systemid_urls.nginx -o systemid_urls.nginx
+sort -n systemid_urls.nginx -o systemid_urls.nginx;
+
+# Check for double systemId mappings, this will error nginx, so abort early
+awk '$1==l{print "duplicate id:\n" $0 "\n" ll;e=1}{l=$1;ll=$0}END{exit(e)}' systemid_urls.nginx;
+
+if [ ! $? ]; then
+	echo "No duplicate IDs found in Nginx mapping";
+else
+	echo "Nginx mapping validation failed (found duplicate IDs)";
+	exit;
+fi;
 
 cd /app;
 
