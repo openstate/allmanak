@@ -67,6 +67,7 @@ services:
     restart: always
     volumes:
       - './app/static:/app/static:ro'
+      - './image:/image:ro'
       - './nginx/conf.d-dev:/etc/nginx/conf.d:ro'
       - './nginx/shared:/etc/nginx/shared:ro'
       - './staticapp:/web'

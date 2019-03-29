@@ -33,6 +33,7 @@ services:
     restart: always
     volumes:
       - './app:/app'
+      - './nginx/conf.d:/etc/nginx/conf.d'
       - './staticapp:/web'
       - 'build-static-sapper:/app/__sapper__/'
       - 'node-modules:/app/node_modules/'
@@ -52,16 +53,18 @@ services:
     depends_on: [db, build-static]
     restart: always
     volumes:
+      - './nginx/conf.d:/etc/nginx/conf.d'
       - './staticapp:/web'
   web:
     command: sh -c 'nginx -g "daemon off;" & (touch /web/nginx_reload && /sbin/inotifyd - /web/nginx_reload:e | xargs -I% sh -c "nginx -t && nginx -s reload")'
-    depends_on: [app, api-rest-v0, fakemail]
+    depends_on: [app, api-rest-v0]
     image: nginx:mainline-alpine
     networks: [nginx-load-balancer, default]
     ports: ['80:80', '10000:10000']
     restart: always
     volumes:
       - './app/static:/app/static:ro'
+      - './image:/image:ro'
       - './nginx/conf.d:/etc/nginx/conf.d:ro'
       - './nginx/shared:/etc/nginx/shared:ro'
       - './staticapp:/web'

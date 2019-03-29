@@ -1,5 +1,6 @@
 html, #sapper, body, main {
 	min-height: 100%;
+	min-width: 320px;
 }
 .container {
 	position: relative;

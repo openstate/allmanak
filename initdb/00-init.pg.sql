@@ -9,6 +9,7 @@ GRANT anonymous TO pgrst;
 \c allmanak;
 ---
 CREATE SCHEMA almanak;
+CREATE SCHEMA enrich;
 ---
 
 -- CREATE SCHEMA allmanak;
@@ -158,6 +159,27 @@ CREATE TABLE almanak.parents (
 	PRIMARY KEY(systemId, parentId),
 	CONSTRAINT no_loops CHECK (systemId != parentId)
 );
+
+CREATE TABLE enrich.logo (
+  systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+  url VARCHAR(4095) NOT NULL,
+  license VARCHAR(255) NOT NULL,
+  attributiontext VARCHAR(255),
+  attributionurl VARCHAR(4095),
+  source VARCHAR(4095) NOT NULL,
+  backgroundcolor VARCHAR(255),
+  PRIMARY KEY(systemId)
+);
+
+CREATE TABLE enrich.photo (
+  systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+  url VARCHAR(4096) NOT NULL,
+  license VARCHAR(255) NOT NULL,
+  attributiontext VARCHAR(255),
+  attributionurl VARCHAR(4095),
+  source VARCHAR(4095) NOT NULL,
+  PRIMARY KEY(systemId)
+);
 ---
 -- DROP TABLE almanak.dummy;
 -- CREATE TABLE almanak.dummy (o int);
@@ -198,7 +220,10 @@ CREATE VIEW api.deelnemendeOrganisaties AS
 CREATE VIEW api.parents AS
     SELECT almanak.parents.* FROM almanak.parents;
 
-
+CREATE VIEW api.logo AS
+    SELECT enrich.logo.* FROM enrich.logo;
+CREATE VIEW api.photo AS
+    SELECT enrich.photo.* FROM enrich.photo;
 
 --SELECT jsonb_object_agg(key, value) FROM JSON_EACH((SELECT row_to_json(o) FROM api.overheidsorganisatie o)) WHERE NOT value::jsonb <@ 'null'::jsonb
 
@@ -221,6 +246,23 @@ DO $$
 DECLARE
   tbl RECORD;
   schemaName VARCHAR := 'almanak';
+BEGIN
+  FOR tbl IN (SELECT t.relname::varchar AS name
+                FROM pg_class t
+                JOIN pg_namespace n ON n.oid = t.relnamespace
+                WHERE t.relkind = 'r' and n.nspname::varchar = schemaName
+                ORDER BY 1)
+  LOOP
+    RAISE NOTICE 'ANALYZE %.%', schemaName, tbl.name;
+    EXECUTE 'ANALYZE ' || schemaName || '.' || tbl.name;
+  END LOOP;
+END
+$$;
+
+DO $$
+DECLARE
+  tbl RECORD;
+  schemaName VARCHAR := 'enrich';
 BEGIN
   FOR tbl IN (SELECT t.relname::varchar AS name
                 FROM pg_class t

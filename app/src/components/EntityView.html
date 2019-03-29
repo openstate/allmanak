@@ -1,22 +1,19 @@
 <svelte:head>
 	<title>{name(entity)} - Allmanak</title>
 </svelte:head>
-<div class="imagebar" alt="" style="background-image: url({entity.image || (entity.type == 'Gemeente' ? 'landschap.jpg' : 'gebouw.jpg')})"></div>
+<div class="imagebar" alt="" style="background-image: url({url(entity.photo) || (entity.type == 'Gemeente' ? 'landschap.jpg' : 'gebouw.jpg')})"></div>
 <div class="headerbar">
 	<div class="breadcrumb">
 		<div class="container">
-			<img alt="" src="{entity.logo || entity.parents && entity.parents[entity.parents.length -1] && entity.parents[entity.parents.length -1].parent.medewerkers[0].count > 0 ? 'noprofile.svg' : 'missinglogo.svg'}">
+			<img alt="" src="{url(entity.logo) || (entity.parents && entity.parents[entity.parents.length -1] && entity.parents[entity.parents.length -1].parent.medewerkers[0].count > 0 ? 'noprofile.svg' : 'missinglogo.svg')}">
 			<div class="path">
 				{#if entity.parents}
 					{#each entity.parents as node}
 						{#if node.parent.medewerkers[0].count == 0}
 						<a href="{makeurl(node.parent)}">{name(node.parent)}</a>
-						&nbsp;&gt; 
-						{/if}
-					{/each}
-					{#if entity.parents[entity.parents.length -1] && entity.parents[entity.parents.length -1].parent.medewerkers[0].count > 0}
-						{entity.parents[entity.parents.length -1].parent.naam}
-					{/if}
+						<span>&nbsp;&gt;&nbsp;</span>{/if
+					}{/each
+					}{#if entity.parents[entity.parents.length -1] && entity.parents[entity.parents.length -1].parent.medewerkers[0].count > 0}{entity.parents[entity.parents.length -1].parent.naam}{/if}
 					{name(entity)}
 				{:else}
 					{name(entity)}
@@ -25,13 +22,7 @@
 		</div>
 	</div>
 </div>
-<div class="container">
-	<aside>
-		<div class="reporterrorbox">
-			<p>We horen het graag als onze informatie niet correct of onvolledig is.</p>
-			<button>Meld een fout</button>
-		</div>
-	</aside>
+<div class="container main">
 	<div class="content">
 		<h1>{name(entity)}</h1>
 		<p>
@@ -85,8 +76,17 @@
 					{/if}
 				{/each}
 			{/if}
+			{#if entity.beschrijving}
+				<h2>Beschrijving</h2>
+				{#each entity.beschrijving.split('$') as text}
+					{text}<br>
+				{/each}
+			{/if}
 		</p>
 	</div>
+	<aside>
+		<Report on:report='fire("report")' />
+	</aside>
 </div>
 	{#if entity.medewerkers.length > 0}
 <Bar>
@@ -103,7 +103,7 @@
 	{#if entity.functies.length > 0}
 <Bar>
 	<span slot="header">Functies</span>
-	<div slot="body"><BoxLinks items={entity.functies.map(x=>({link:makeurl(x.functie), name:name(x.functie)})).sort(azn)}/></div>
+	<div slot="body"><BoxLinks items={entity.functies.map(x=>x.functie.medewerkers.length == 1 ? {link:makeurl(x.functie.medewerkers[0].persoon), name:name(x.functie) + " " + name(x.functie.medewerkers[0].persoon)} : {link:makeurl(x.functie), name:name(x.functie) + ` (${x.functie.medewerkers.length})`}).sort(azn)}/></div>
 </Bar>
 	<!--div class="content">
 		<h2>Functies</h2>
@@ -129,18 +129,19 @@
 	.imagebar {
 		background: no-repeat 40%;
 		background-size: cover;
-		min-height: 400px;
+		min-height: 200px;
 	}
 	.headerbar {
 		color: #076776;
 		background-color: #f2f2f2;
 		position: relative;
-		height: 14rem;
+		height: 6rem;
 	}
 	.breadcrumb {
 		background-color: #076776;
 		color: #FFF;
-		height: 20%;
+		min-height: 3rem;
+		overflow: visible;
 	}
 	.breadcrumb > .container {
 		padding-top: 0;
@@ -154,41 +155,46 @@
 	}
 	.breadcrumb > .container > img {
 		float: left;
-		height: 14rem;
-		max-width: 30rem;
+		max-height: 14rem;
+		max-width: 40vw;
+		padding: 1rem;
 		background-color: #FFF;
 	}
 	.keyvalue {
 		margin-bottom: 1rem;
-		display: flex;
-		flex-wrap: wrap;
 	}
 	.key {
 		min-width: 15rem;
 		/*display: inline-block;*/
 		font-weight: bold;
 	}
+	.main {
+		clear: both;
+	}
 /*	.values {
 		width: 20rem;
 		display: inline-block;
 	}*/
-	.reporterrorbox {
-		border: 1px #f2f2f2 solid;
-		float: right;
-		padding: 0.5rem 1rem;
-		width: 20%;
-		text-align: left;
-		margin-left: 1rem;
-		font-weight: 600;
-	}
-	.reporterrorbox button {
-		width: 100%;
-		color: #FFF;
-		background-color: #c2178a;
-		border: none;
-		border-radius: 0.5rem;
-		padding: 0.5rem;
-		font-weight: 600;
+	@media (min-width: 768px) {
+		.keyvalue {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		.imagebar {
+			min-height: 400px;
+		}
+		.headerbar {
+			height: 14rem;
+		}
+		.breadcrumb > .container > img {
+			max-width: 20vw;
+			max-height: 14rem;
+		}
+		.main {
+			display: grid;
+			grid-template-columns: 1fr 20%;
+			grid-gap: 0.5rem;
+		}
 	}
 </style>
 
@@ -211,12 +217,19 @@
 			showname: (key) => {
 				return title.get(key) || key;
 			},
+			url(obj) {
+				if (!obj || obj.length == 0) {
+					return false;
+				}
+				return obj[0].url;
+			},
 	        makeurl,
 	        name,
 	        azn: (a,b) => a.name.localeCompare(b.name),
 	    },
 		components: {
 			Bar: './Bar.html',
+			Report: './Report.html',
 			BoxLinks: './BoxLinks.html',
 		}
 	};

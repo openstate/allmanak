@@ -1,4 +1,4 @@
-<EntityView entity={entity}/>
+<EntityView entity={entity} on:report='fire("report")'/>
 <script>
 	import {apiBaseUri} from '../../apibase.js';
 	import { urlname, name } from '../../utils.js';
@@ -12,8 +12,7 @@
 			//const res = await this.fetch(`api.json?systemId=${params.systemId}`);
 			//const res = await this.fetch(`${params.systemId}.json`);
 
-			const res = await this.fetch(`${apiBaseUri}/overheidsorganisatie?systemid=eq.${params.systemId}&select=*,parents(parent:parentid(systemid,naam,citeertitel,titel,medewerkers(count))),functies(functie:functieid(systemid,naam)),medewerkers(persoon:persoonid(systemid,naam)),organisaties(organisatie:organisatieid(systemid,naam))`);
-			// if we add ,medewerkers(persoon:persoonid(systemid,naam)) to functieid(,..) we DoS the postgrest! (not any longer! since we removed DISTINCT from the VIEW!)
+			const res = await this.fetch(`${apiBaseUri}/overheidsorganisatie?systemid=eq.${params.systemId}&select=*,parents(parent:parentid(systemid,naam,citeertitel,titel,medewerkers(count))),functies(functie:functieid(systemid,naam,medewerkers(persoon:persoonid(systemid,naam)))),medewerkers(persoon:persoonid(systemid,naam)),organisaties(organisatie:organisatieid(systemid,naam)),photo(*),logo(*)`);
 
 			const data = await res.json();
 

@@ -18,9 +18,38 @@
 </div>
 <style>
 	.searchbar {
-		background: url(/denhaag-binnenhof.jpg) no-repeat 40%;
-		background-size: cover;
+		background: url(/denhaag-binnenhof.jpg) no-repeat;
+		background-size: 225%;
+		background-position: center 25%;
 		min-height: 400px;
+	}
+	@media (min-width: 400px) {
+		.searchbar {
+			background-size: 200%;
+		}
+	}
+	@media (min-width: 500px) {
+		.searchbar {
+			background-position: center 40%;
+			background-size: 175%;
+		}
+	}
+	@media (min-width: 768px) {
+		.searchbar {
+			background-size: 150%;
+		}
+	}
+	@media (min-width: 1024px) {
+		.searchbar {
+			background-size: 125%;
+		}
+	}
+	@media (min-width: 1280px) {
+		.searchbar {
+			background-position: center 42%;
+			background-size: cover;
+			min-height: 440px;
+		}
 	}
 
     :global(body.fontloaded-montserratsemibold) .categorybar, :global(body.fontloaded-montserratsemibold) h2 strong {

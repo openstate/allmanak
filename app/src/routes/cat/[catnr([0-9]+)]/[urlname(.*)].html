@@ -43,7 +43,13 @@
 <script>
 	import {apiBaseUri} from '../../../apibase.js';
 	import {makeurl, name} from '../../../utils.js';
+	import categories from '../../_categories.json';
 	export default {
+		data() {
+			return {
+				categories,
+			}
+		},
 		computed: {
 			catnaam: ({ categories, catnr }) => categories.filter(x => x.catnr == catnr)[0].naam,
 		},

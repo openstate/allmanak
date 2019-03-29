@@ -20,8 +20,8 @@
     }*/
     .item {
         box-sizing: border-box;
-        padding: 3rem;
-        min-height: 14rem;
+        padding: 2rem;
+        min-height: 5rem;
         display: block;
         background-color: #fff;
         text-decoration: none;
@@ -35,6 +35,12 @@
         /*height: 14rem;
         width: 14rem;
         margin-bottom: 1rem;*/
+    }
+    @media (min-width: 768px) {
+        .item {
+            padding: 3rem;
+            min-height: 14rem;
+        }
     }
     .item:hover {
         background-color: #076776;

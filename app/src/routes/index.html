@@ -7,12 +7,12 @@
 		<div class="searchbox">
 			<h2>Zoeken naar contactgegevens overheden en politici</h2>
 			<input bind:value="q" autocomplete="off" autocorrect="off" ref:search value="" on:keydown="searchKey(event)" on:keyup="presearch(q)" id='query' placeholder='Zoeken naar persoon of organisatie' type='search'>
-			<h3 class="facetstitle">Of zoeken met filters</h3>
+			<h3 on:click|stopPropagation="set({facetShow:!facetShow})" class="facetstitle">Of zoeken met filters <span class="facetToggle" >{facetShow ? '\u00D7' : '\u22C1'}</span></h3>
 			<div class="facets">
-				<!-- <input placeholder='Plaats'> --><Select bind:selectedValue="filterPlaats" items={cityListFilter} placeholder="Plaats" isMulti={true} isClearable={false} {noOptionsMessage}></Select>
-				<!--input placeholder='Overheidsorganisatie'--><Select bind:selectedValue="filterOrganisatie" items={organisatieFilter} isClearable={false} placeholder="Overheidsorganisatie" isMulti={true} {noOptionsMessage}></Select>
-				<!-- <input placeholder='Politieke Partij'> --><Select bind:selectedValue="filterPartij" items={partyListFilter} placeholder="Politieke Partij" isMulti={true} isClearable={false} {noOptionsMessage} {groupBy}></Select>
-				<button>Zoek</button>
+				<!-- <input placeholder='Plaats'> --><div class:show='facetShow'><Select bind:selectedValue="filterPlaats" items={cityListFilter} placeholder="Plaats" isMulti={true} isClearable={false} {noOptionsMessage}></Select></div>
+				<!--input placeholder='Overheidsorganisatie'--><div class:show='facetShow'><Select bind:selectedValue="filterOrganisatie" items={organisatieFilter} isClearable={false} placeholder="Overheidsorganisatie" isMulti={true} {noOptionsMessage}></Select></div>
+				<!-- <input placeholder='Politieke Partij'> --><div class:show='facetShow'><Select bind:selectedValue="filterPartij" items={partyListFilter} placeholder="Politieke Partij" isMulti={true} isClearable={false} {noOptionsMessage} {groupBy}></Select></div>
+				<button ref:searchbutton>Zoek</button>
 			</div>
 		</div>
 	</div>
@@ -21,15 +21,18 @@
 <div class="resultbar">
 	<div class="facets2">
 		{#if facetList}
-			Filter op type:<br />
+			Filter op type:
+			<div class="facetgroup">
 			{#each facetList.categories.slice(0,4) as type}
-				<div class:active='filterType.has(type[0])' on:click='toggleFilterType(type[0])'><div class='name'>{type[0]}</div><div class='count'>{type[1]}</div></div>
+				<div class="facetbutton"><div class:active='filterType.has(type[0])' on:click='toggleFilterType(type[0])'><div class='name'>{type[0]}</div><div class='count'>{type[1]}</div></div></div>
 			{/each}
-			<br />
+			</div>
 			Binnen organisatie:
+			<div class="facetgroup">
 			{#each facetList.paths.slice(0,4) as path}
-				<div class:active='filterPath.has(path[0])' on:click='toggleFilterPath(path[0])'><div class='name'>{path[0]}</div><div class='count'>{path[1]}</div></div>
+				<div class="facetbutton"><div class:active='filterPath.has(path[0])' on:click='toggleFilterPath(path[0])'><div class='name'>{path[0]}</div><div class='count'>{path[1]}</div></div></div>
 			{/each}
+			</div>
 		{/if}
 	</div>
 	<div class="resultcontainer">
@@ -49,18 +52,15 @@
 </div>
 {/if}
 <div id="over">
-	<div class="container">
-		<aside>
-			<div class="reporterrorbox">
-				<p>We horen het graag als onze informatie niet correct of onvolledig is.</p>
-				<button>Meld een fout</button>
-			</div>
-		</aside>
+	<div class="container main">
 		<article>
 			<h2>Over deze website</h2>
 			<p>Op deze website staan de namen, adressen en andere contactgegevens van de Nederlandse overheidsorganisaties. Ook de persoonsgegevens van (voornamelijk) leidinggevende personen binnen de Nederlandse overheid zijn opgenomen. Publicatie geschiedt in opdracht van het ministerie van Binnenlandse Zaken en Koninkrijksrelaties, op basis van een Koninklijk Besluit van 16 juli 1859.<br><br>
 			De organisaties zijn zelf verantwoordelijk voor de volledigheid, juistheid en actualiteit van de gegevens.</p>
 		</article>
+		<aside>
+			<Report />
+		</aside>
 	</div>
 </div>
 <Bar>
@@ -82,6 +82,7 @@
 	}
 	.facetstitle {
 		margin-top: 0.5rem;
+		display: inline-block;
 	}
 	.facets {
 		/*display: flex;
@@ -92,27 +93,41 @@
         grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
         grid-gap: 1rem;
 	}
-	.facets2 > div {
+	.facets > div {
+		display: none;
+	}
+	.facets > div.show {
+		display: block;
+	}
+	.facetgroup {
+		height: 40px;
+		overflow: scroll;
+		white-space: nowrap;
+	}
+	.facetbutton {
+		display: inline-block;
+	}
+	.facetbutton > div {
 	    background: #EBEDEF;
 	    cursor: pointer;
 	    margin-right: 5px;
 	    border-radius: 16px;
 	    line-height: 32px;
-	    display: flex;
+	    display: inline-flex;
 	    cursor: default;
 	    height: 32px;
 	    margin-top: 5px;
 	    padding: 0 10px 0 15px;
 	}
-	.facets2 > div.active, .facets2 > div:hover  {
-	    background-color: #006FFF;
+	.facetbutton > div.active, .facetbutton > div:hover  {
+	    background-color: #00938f;
 	    color: #fff;
 	    cursor: pointer;
 	}
-	.facets2 > div > .name {
+	.facetbutton > div > .name {
 		margin-right: 5px;
 	}
-	.facets2 > div > .count {
+	.facetbutton > div > .count {
 	    border-radius: 16px;
 	    background: #52616F;
 	    min-width: 16px;
@@ -127,7 +142,7 @@
 	    font-weight: bold;
 	    right: 0px;
 	}
-	.facets2 > div.active > .count, .facets2 > div:hover > .count  {
+	.facetbutton > div.active > .count, .facetbutton > div:hover > .count  {
 		background-color: #fff;
 		color: #52616F;
 	}
@@ -156,6 +171,7 @@
 		border-radius: 0.5rem;
 		border: none;
 		padding: 0.5rem;
+		appearance: none;
 	}
 	:global(div.selectContainer.multiSelect) {
 		background-color: #fff;
@@ -171,23 +187,12 @@
 		padding: 0.5rem;
 		display: block;
 	}
-	.reporterrorbox {
-		border: 1px #f2f2f2 solid;
-		float: right;
-		padding: 0.5rem 1rem;
-		width: 20%;
-		text-align: left;
-		margin-left: 1rem;
-		font-weight: 600;
-	}
-	.reporterrorbox button {
-		width: 100%;
-		color: #FFF;
-		background-color: #c2178a;
-		border: none;
-		border-radius: 0.5rem;
-		padding: 0.5rem;
-		font-weight: 600;
+	@media (min-width: 768px) {
+		.main {
+			display: grid;
+			grid-template-columns: 1fr 20%;
+			grid-gap: 0.5rem;
+		}
 	}
 	:global(body.fontloaded-montserratsemibold) .reporterrorbox, :global(body.fontloaded-montserratsemibold) .reporterrorbox button {
 		font-family: 'montserratsemibold';
@@ -196,8 +201,26 @@
 		background-color: #f2f2f2;
 	}
 	.resultbar {
-		display: grid;
-	    grid-template-columns: 1fr minmax(10rem,70rem) 1fr;
+		padding: 1rem;
+	}
+
+	@media (min-width: 768px) {
+		.facetbutton {
+			display: block;
+		}
+		.facetgroup {
+			height: auto;
+			overflow: visible;
+			white-space: normal;
+		}
+		.facetgroup {
+			white-space: wrap;
+		}
+		.resultbar {
+			padding: 0;
+			display: grid;
+		    grid-template-columns: 1fr minmax(10rem,70rem) 1fr;
+		}
 	}
 	button.export {
 		float: right;
@@ -231,6 +254,28 @@
 		font-size: 1rem;
 		font-weight: bold;
 	}*/
+	.facetToggle {
+		display: inline-block;
+		float: right;
+		margin-left: 0.5rem;
+		font-size: 0.75rem;
+		font-weight: bold;
+		line-height: 1.5rem;
+	}
+	.facetstitle {
+		cursor: pointer;
+	}
+	@media (min-width: 768px) {
+		.facets > div {
+			display: block;
+		}
+		.facetstitle {
+			cursor: default;
+		}
+		.facetToggle {
+			display: none;
+		}
+	}
 
 </style>
 
@@ -240,8 +285,11 @@
 	import Select from 'svelte-select';
 	import ResultItem from '../components/ResultItem.html';
 	import partyListFilter from './_parties.json';
-	import cityListFilter from './_cities.json';
+	//import fetch from 'node-fetch';
+	//import {categoriesApi} from './_categories.json.js';
+	//import {citiesApi} from './_cities.json.js';
 	import categories from './_categories.json';
+	import cities from './_cities.json';
 
 	const csvEscape = str => str ? '"' + str.replace(/"/g, '""') + '"' : '';
 	const sparseCsvEscape = (str, separator) => typeof str !== "string" || str.indexOf('"') == -1 && str.indexOf(separator) == -1 && str.indexOf("\n") == -1 && str.indexOf("\r") == -1 ? str : csvEscape(str);
@@ -275,22 +323,14 @@
       }
       return str;
     };
-
-	// function intersect(a, b) {
-	//       var setB = new Set(b);
-	//       return [...new Set(a)].filter(x => setB.has(x));
-	// }
-
 	export default {
 		data() {
 			return {
 				q: "",
 				result: false,
-				//searchcache: new Map(),
 			    separator: ';',
-			    // since this navigator stuff is also parsed by the server side, check if we have a navigator object! also just typing ' navigator ? ' will get a ReferenceError
-			    isWindowsMobile: typeof navigator == "object" ? navigator.userAgent.indexOf('IEMobile') !== -1 : false,
-			    useMsBlob: typeof navigator == "object" ? typeof navigator.msSaveOrOpenBlob !== 'undefined' : false,
+			    isWindowsMobile: process.browser ? navigator.userAgent.indexOf('IEMobile') !== -1 : false,
+			    useMsBlob: process.browser ? typeof navigator.msSaveOrOpenBlob !== 'undefined' : false,
 			    dataUri: '',
 			    filename: '',
 			    ResultItem,
@@ -300,17 +340,9 @@
 			    filterPath: new Set(),
 			    noOptionsMessage: 'Geen resultaten gevonden',
 			    groupBy: (item) => item.group,
-			     organisatieFilter: categories.map(x=>({value:x.catnr,label:x.naam})),//[
-		     //      {value: 'functie', label: 'Functie'},
-		     //      {value: 'gemeente', label: 'Gemeente'},
-		     //      {value: 'medewerker', label: 'Medewerker'},
-		     //      {value: 'ministerie', label: 'Ministerie'},
-		     //      {value: 'organisatie', label: 'Organisatie'},
-		     //      {value: 'regeling', label: 'Gemeenschappelijke regeling'},
-		     //      {value: 'zbo', label: 'Zelfstandig bestuursorgaan'},
-		     //    ],
 		        partyListFilter,
-		        cityListFilter: cityListFilter.map(x=>({value:x,label:x})),
+		        categories,
+		        cities,
 			};
 		},
 		helpers: {
@@ -360,7 +392,9 @@
 					 && (filterCity.size == 0 || filterCity.has((x.item.plaats||'').toUpperCase()))
 					 && (filterParty.size == 0 || filterParty.has(x.item.partij)));
 				//
-			}
+			},
+			organisatieFilter: ({categories}) => categories.map(x=>({value:x.catnr,label:x.naam})),
+		    cityListFilter: ({cities}) => cities.map(x=>({value:x,label:x})),
 		},
 		methods: {
 			presearch(query) {
@@ -425,16 +459,22 @@
 		    	this.set({filterPath});
 		    },
 		},
-		/*preload({ params, query }) {
-			return this.fetch(`blog.json`).then(r => r.json()).then(posts => {
-				return { posts };
-			});
-		}*/
+		async preload({ params, query }) {
+			//const categories = await categoriesApi();
+			const res1 = await this.fetch('categories.json');
+			//const res2 = await this.fetch('cities.json');
+			const categories = await res1.json();
+			//const cities = await res2.json();
+			//const cities = await citiesApi();
+			//console.log("here", cities);
+			return {categories};//, cities: cities};//cities};
+		},
 		components: {
 			VirtualList,
 			Select,
 			//Category: '../components/Category.html',
 			Bar: '../components/Bar.html',
+			Report: '../components/Report.html',
 			BoxLinks: '../components/BoxLinks.html',
 		}
 	};

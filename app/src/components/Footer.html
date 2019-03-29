@@ -11,7 +11,7 @@
                     <li><a href='waarom'>Waarom deze Allmamak</a></li>
                     <li><a href='api'>API</a></li>
                     <li><a href='https://openstate.eu/nl/contact' target='_blank' rel='noopener'>Contact</a></li>
-                    <li><a class='report-error' href='fout-melden'>Meld een fout</a></li>
+                    <li><a class='report-error' href='#' on:click|stopPropagation|preventDefault='fire("report")'>Meld een fout</a></li>
                     {#each categories as category}
                       <li><a href='cat/{category.catnr}/{urlname(category.naam)}'>{category.naam}</a></li>
                     {/each}
@@ -90,12 +90,10 @@
         flex-direction: column;
         flex-wrap: wrap;
         justify-content: space-between;
-        max-height: 19rem;
     }
     li {
-        width: 24%;
-        height: 4rem;
-        padding: 0.5rem 1rem;
+        height: 3rem;
+        line-height: 1rem;
         box-sizing: border-box;
         display: block;
         /*background-color: #fff;
@@ -105,7 +103,16 @@
         display: block;
         cursor: pointer;
     }
-
+    @media (min-width: 768px) {
+        .navbar ul {
+            max-height: 19rem;
+        }
+        li {
+            padding: 0.5rem 1rem;
+            width: 24%;
+            height: 4rem;
+        }
+    }
     nav a {
         text-decoration: none;
         padding: 1em 1em;

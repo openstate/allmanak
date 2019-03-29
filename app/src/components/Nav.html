@@ -1,50 +1,108 @@
-<header>
-    <div class='navbar'>
+<header ref:header>
+    <div class='navbar' ref:navbar>
         <div class='container'>
+            <div class="header">
+                <span class='menu' on:click|stopPropagation="set({menuOpen:!menuOpen,submenu:false})">{ menuOpen ? 'Close \u00D7' : 'Menu \u2630' }</span>
+                <h1 class='brand-header' class:show='showLogo'><a href='.'><img class='logo' src='allmanak-logo.svg' alt='Allmanak'></a></h1>
+            </div>
             <nav>
-                <ul>
-                    <li><a class:selected='segment === "waarom"' href='waarom' on:click='set({submenu:false})'>Waarom deze Allmamak</a></li>
-                    <li><span class:active='submenu' on:click='set({submenu:!submenu})'>Gegevens overheden</span></li>
-                    <li><a class:selected='segment === "api"' href='api' on:click='set({submenu:false})'>API</a></li>
+                <ul class:opened='menuOpen' transition:slide>
+                    <li><a class:selected='segment === "waarom"' href='waarom'>Waarom deze Allmamak</a></li>
+                    <li><a href='#' class:active='submenu' on:click|stopPropagation|preventDefault='set({submenu:!submenu})'>Gegevens overheden</a>
+                        {#if submenu}
+                        <div class='subnavbar' on:click|stopPropagation='set({menuOpen:false,submenu:false})'>
+                          <div class='container'>
+                            <ul class='submenu' transition:slide>
+                            {#each categories as category}
+                              <li><a href='cat/{category.catnr}/{urlname(category.naam)}'>{category.naam}</a></li>
+                            {/each}
+                            </ul>
+                          </div>
+                        </div>
+                        {/if}
+                    </li>
+                    <li><a class:selected='segment === "api"' href='api'>API</a></li>
                     <li><a  href='https://openstate.eu/nl/contact' target='_blank' rel='noopener'>Contact</a></li>
-                    <li><a class="report-error" class:selected='segment === "fout-melden"' href='fout-melden' on:click='set({submenu:false})'>Meld een fout</a></li>
-                    <!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-                         the blog data when we hover over the link or tap it on a touchscreen -->
-                    <!--li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a></li-->
+                    <li><a href='#' on:click|preventDefault='fire("report")' class="report-error" >Meld een fout</a></li>
                 </ul>
             </nav>
         </div>
     </div>
-    {#if submenu}
-    <div class='subnavbar'>
-      <div class='container'>
-          <nav>
-            <ul class='submenu' transition:slide>
-            {#each categories as category}
-              <li><a href='cat/{category.catnr}/{urlname(category.naam)}' on:click='set({submenu:!submenu})'>{category.naam}</a></li>
-            {/each}
-            </ul>
-          </nav>
-      </div>
-    </div>
-    {/if}
     <div class='lead'>
         <div class='container'>
             <h1 class='brand-header'><a href='.'><img class='logo' src='allmanak-logo.svg' alt='Allmanak'></a></h1><p class='lead-text'>Zoeken naar contactgegevens overheden en politici</p>
         </div>
     </div>
 </header>
+<svelte:document on:scroll='logoLogic(event.pageY)' on:click|stopPropagation='set({menuOpen:false,submenu:false})' />
 <style>
     .navbar {
         background-color: #FFF;
         font-weight: 600;
+        min-height: 3rem;
+        /*overflow: hidden;*/
+        position: fixed;
+        z-index: 1;
+        border-bottom: 1px solid #ccc;
+        left: 0;
+        top: 0;
+        width: 100%;
+        overflow: auto;
+        min-width: 320px;
+        max-height: 100vh;
+    }
+    .header {
+        position: fixed;
+        background: #FFF;
+        border-bottom: 1px solid #ccc;
+        min-height: 3rem;
+        left: 0;
+        top: 0;
+        width: 100%;
+        min-width: 320px;
+        z-index: 2;
+    }
+    .navbar > .container > nav {
+        margin-top: 3rem;
+    }
+    .lead {
+        margin-top: 3rem;
     }
     :global(body.fontloaded-montserratsemibold) .navbar, :global(body.fontloaded-montserratsemibold) .subnavbar {
         font-family: 'montserratsemibold';
     }
+    .navbar .menu {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        float: right;
+        height: 3rem;
+        width: 5rem;
+        background: #FFF;
+        text-align: center;
+        line-height: 3rem;
+        user-select: none;
+    }
+    .navbar .menu:hover {
+        background: #EFEFEF;
+    }
+    .navbar > .container > .header > .brand-header {
+        margin: 0.5rem 0.5rem 0 0.5rem;
+        display: inline-block;
+        text-decoration: none;
+    }
+    .lead > .container > .brand-header {
+        margin: 0.5rem;
+    }
+    .opened .container {
+        padding: 0 0 0 1rem;
+    }
+    .navbar .brand-header .logo {
+        height: 2rem;
+    }
     .navbar > .container {
-        padding-bottom: 0;
-        padding-top: 0.5rem;
+        padding: 0;
     }
     .lead {
         background-color: #f2f2f2;
@@ -57,36 +115,101 @@
         padding-bottom: 1rem;
         padding-top: 1rem;
     }
-    .brand-header {
-        display: inline-block;
+    .lead .brand-header {
+        display: none;
         text-decoration: none;
-    }
-    .brand-header .logo {
-        height: 50px;
     }
     .lead-text {
         display: inline-block;
-        font-size: 1.5rem;
-        margin-left: 2rem;
+        font-size: 1.1rem;
         vertical-align: bottom;
+        margin: 0;
+    }
+    .lead .brand-header .logo {
+        height: 50px;
     }
     .report-error {
         color: #c2178a;
     }
+    .report-error:hover {
+        background-color: #c2178a;
+        color: #FFF;
+    }
     nav {
         /*border-bottom: 1px solid rgba(170,30,30,0.1);*/
         font-weight: 300;
-        padding: 0 1em;
+        padding: 0;/* 1em;*/
     }
-
-    .navbar ul {
+    .navbar > .container > nav >  ul {
         margin: 0;
         padding: 0;
-        float: right;
+        display: none;
+    }
+    .navbar > .container > nav > ul.opened {
+        display: block;
     }
     .subnavbar ul {
         margin: 0;
         padding: 0;
+    }
+    .navbar li {
+        display: block;
+    }
+    @media (min-width: 980px) {
+        .navbar {
+            overflow: visible;
+        }
+        .header {
+            position: relative;
+            display: inline-block;
+            min-width: auto;
+            width: auto;
+            height: auto;
+            border: none;
+        }
+        .subnavbar {
+            position: fixed;
+            top: 3rem;
+            left: 0;
+            width: 100%;
+        }
+        .navbar > .container > nav {
+            margin-top: 0rem;
+            float: right;
+        }
+        .navbar > .container >  nav > ul {
+            float: right;
+            display: block;
+        }
+        .navbar > .container >  nav > ul > li {
+            float: left;
+        }
+        .navbar .brand-header {
+            opacity: 0;
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            transition: opacity 0.33s ease-in-out;
+        }
+        .navbar .menu {
+            display: none;
+        }
+        .navbar .show.brand-header {
+            height: auto;
+            width: auto;
+            opacity: 1;
+        }
+        .navbar > .container {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        .lead .brand-header {
+            display: inline-block;
+        }
+        .lead-text {
+            font-size: 1.5rem;
+            margin: 1rem 0 1rem 2rem;
+        }
     }
 
     /* clearfix */
@@ -101,11 +224,6 @@
         content: '';
         display: block;
         clear: both;
-    }
-
-    .navbar li {
-        display: block;
-        float: left;
     }
 
     .selected {
@@ -129,7 +247,7 @@
         display: block;
         cursor: pointer;
     }
-    nav span.active, .subnavbar {
+    nav .active, .subnavbar {
       background-color: #f2f2f2;
     }
     .submenu li {
@@ -148,8 +266,18 @@
   import {urlname} from '../utils.js';
 
   export default {
+    data() {
+        return {
+            menuOpen: false,
+        };
+    },
     helpers: {
         urlname,
+    },
+    methods: {
+        logoLogic(y) {
+            this.set({showLogo: y > this.refs.header.offsetHeight + this.refs.header.offsetTop -  this.refs.navbar.offsetHeight});
+        },
     },
     transitions: { slide }
   };
