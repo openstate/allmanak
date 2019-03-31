@@ -459,16 +459,16 @@
 		    	this.set({filterPath});
 		    },
 		},
-		async preload({ params, query }) {
-			//const categories = await categoriesApi();
-			const res1 = await this.fetch('categories.json');
-			//const res2 = await this.fetch('cities.json');
-			const categories = await res1.json();
-			//const cities = await res2.json();
-			//const cities = await citiesApi();
-			//console.log("here", cities);
-			return {categories};//, cities: cities};//cities};
-		},
+		// async preload({ params, query }) {
+		// 	//const categories = await categoriesApi();
+		// 	const res1 = await this.fetch('categories.json');
+		// 	//const res2 = await this.fetch('cities.json');
+		// 	const categories = await res1.json();
+		// 	//const cities = await res2.json();
+		// 	//const cities = await citiesApi();
+		// 	//console.log("here", cities);
+		// 	return {categories};//, cities: cities};//cities};
+		// },
 		components: {
 			VirtualList,
 			Select,

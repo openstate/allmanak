@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:11 AS importcron
+FROM mhart/alpine-node:11
 LABEL maintainer="Open State Foundation <developers@openstate.eu>" \
 	  version="0.2.0" \
       description="Docker that fetches https://almanak.overheid.nl/archive/exportOO.xml converts it to JSON, does some processing and imports it to PostgreSQL."
