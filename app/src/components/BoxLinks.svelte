@@ -1,3 +1,7 @@
+<script>
+  export let items;
+</script>
+
 <div class='boxes'>
 {#each items as item}
     <a class='item' href='{item.link}'>{item.name}</a>
@@ -50,7 +54,3 @@
         flex-grow: 1;
     }*/
 </style>
-<script>
-  export default {
-  };
-</script>

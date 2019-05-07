@@ -1,3 +1,9 @@
+<script>
+    import BoxLinks from './BoxLinks.svelte';
+
+    export let categories;
+</script>
+
 <div class='categorybar'>
     <div class='container'>
         <h3>&gt; Zoek op categorie in <strong>Overheidsorganisaties</strong></h3>
@@ -24,10 +30,3 @@
         font-weight: 600;
     }
 </style>
-<script>
-    export default {
-        components: {
-            BoxLinks: './BoxLinks.html'
-        },
-    };
-</script>

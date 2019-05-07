@@ -1,3 +1,42 @@
+<script>
+	import { createEventDispatcher } from 'svelte';
+	import Bar from './Bar.svelte';
+	import Report from './Report.svelte';
+	import BoxLinks from './BoxLinks.svelte';
+
+	const dispatch = createEventDispatcher();
+
+	import {makeurl, name} from '../utils.js';
+	const title = new Map([
+		["telefoon",		"Telefoon"],
+		["fax",				"Fax"],
+		["emailadres",		"Email"],
+		["bezoekAdres",		"Bezoek adres"],
+		["postAdres",		"Postadres"],
+		["internet",		"Website"],
+		["contactpaginas",	"Contactformulier"],
+	]);
+	export let entity;
+
+	const show = (key) => {
+		return ['systemId', 'categorie', 'naam', 'afkorting', 'type'].indexOf(key) == -1;
+	};
+
+	const showname = (key) => {
+		return title.get(key) || key;
+	};
+
+	function url(obj) {
+		if (!obj || obj.length == 0) {
+			return false;
+		}
+		return obj[0].url;
+	}
+
+	const azn = (a,b) => a.name.localeCompare(b.name);
+
+</script>
+
 <svelte:head>
 	<title>{name(entity)} - Allmanak</title>
 </svelte:head>
@@ -44,22 +83,22 @@
 								{#if typeof item == "string" }
 									{#if key == "internet" || key == "contactpaginas"}
 										<a href="{item}">{item}</a>
-									{:elseif key == "emailadres" || key == "contactEmail"}
+									{:else if key == "emailadres" || key == "contactEmail"}
 										<a href="mailto:{item}">{item}</a>
 									{:else}
 										{item}
 									{/if}
-								{:elseif typeof item.value == "string" }
+								{:else if typeof item.value == "string" }
 									{#if key == "internet" || key == "contactpaginas"}
 										<a href="{item.value}">{item.value}</a> {#if item.label}({item.label}){/if}
-									{:elseif key == "emailadres" || key == "contactEmail"}
+									{:else if key == "emailadres" || key == "contactEmail"}
 										<a href="mailto:{item.value}">{item.value}</a> {#if item.label}({item.label}){/if}
 									{:else}
 										{item.value} {#if item.label}({item.label}){/if}
 									{/if}
-								{:elseif typeof item.contactpaginaUrl== "string" }
+								{:else if typeof item.contactpaginaUrl== "string" }
 									<a href="{item.contactpaginaUrl}" target='_blank' rel='noopener'>{item.contactpaginaUrl}</a>
-								{:elseif key == "postAdres" || key == "bezoekAdres" }
+								{:else if key == "postAdres" || key == "bezoekAdres" }
 									{#if item.straat}
 										{item.straat || ''} {item.huisnummer || ''}<br>
 										{item.postcode || ''} {item.plaats || ''}
@@ -85,7 +124,7 @@
 		</p>
 	</div>
 	<aside>
-		<Report on:report='fire("report")' />
+		<Report on:report='{() => dispatch("report")}' />
 	</aside>
 </div>
 	{#if entity.medewerkers.length > 0}
@@ -197,40 +236,3 @@
 		}
 	}
 </style>
-
-<script>
-    import {makeurl, name} from '../utils.js';
-	const title = new Map([
-		["telefoon",		"Telefoon"],
-		["fax",				"Fax"],
-		["emailadres",		"Email"],
-		["bezoekAdres",		"Bezoek adres"],
-		["postAdres",		"Postadres"],
-		["internet",		"Website"],
-		["contactpaginas",	"Contactformulier"],
-	]);
-	export default {
-		helpers: {
-			show: (key) => {
-				return ['systemId', 'categorie', 'naam', 'afkorting', 'type'].indexOf(key) == -1;
-			},
-			showname: (key) => {
-				return title.get(key) || key;
-			},
-			url(obj) {
-				if (!obj || obj.length == 0) {
-					return false;
-				}
-				return obj[0].url;
-			},
-	        makeurl,
-	        name,
-	        azn: (a,b) => a.name.localeCompare(b.name),
-	    },
-		components: {
-			Bar: './Bar.html',
-			Report: './Report.html',
-			BoxLinks: './BoxLinks.html',
-		}
-	};
-</script>

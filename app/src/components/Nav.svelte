@@ -1,16 +1,38 @@
-<header ref:header>
-    <div class='navbar' ref:navbar>
+<script>
+  import { createEventDispatcher } from 'svelte';
+  import {slide} from 'svelte/transition';
+  import {urlname} from '../utils.js';
+
+  export let categories;
+  export let segment;
+
+  const dispatch = createEventDispatcher();
+
+  let headerOffsetHeight;
+  let navbarOffsetHeight;
+  let header;
+  let menuOpen = false;
+  let scrollY;
+  let submenu;
+
+  $: show = header && scrollY > headerOffsetHeight + header.offsetTop - navbarOffsetHeight;
+</script>
+
+<svelte:window bind:scrollY on:click|stopPropagation={() => menuOpen = false, submenu = false} />
+
+<header bind:offsetHeight={headerOffsetHeight} bind:this={header}>
+    <div class='navbar' bind:offsetHeight={navbarOffsetHeight}>
         <div class='container'>
             <div class="header">
-                <span class='menu' on:click|stopPropagation="set({menuOpen:!menuOpen,submenu:false})">{ menuOpen ? 'Close \u00D7' : 'Menu \u2630' }</span>
-                <h1 class='brand-header' class:show='showLogo'><a href='.'><img class='logo' src='allmanak-logo.svg' alt='Allmanak'></a></h1>
+                <span class='menu' on:click|stopPropagation="{() => menuOpen = !menuOpen, submenu = false}">{ menuOpen ? 'Close \u00D7' : 'Menu \u2630' }</span>
+                <h1 class='brand-header' class:show><a href='.'><img class='logo' src='allmanak-logo.svg' alt='Allmanak'></a></h1>
             </div>
             <nav>
-                <ul class:opened='menuOpen' transition:slide>
-                    <li><a class:selected='segment === "waarom"' href='waarom'>Waarom deze Allmamak</a></li>
-                    <li><a href='#' class:active='submenu' on:click|stopPropagation|preventDefault='set({submenu:!submenu})'>Gegevens overheden</a>
+                <ul class:opened='{menuOpen}' transition:slide>
+                    <li><a class:selected='{segment === "waarom"}' href='waarom'>Waarom deze Allmamak</a></li>
+                    <li><a href='#' class:active='{submenu}' on:click|stopPropagation|preventDefault='{() => submenu = !submenu}'>Gegevens overheden</a>
                         {#if submenu}
-                        <div class='subnavbar' on:click|stopPropagation='set({menuOpen:false,submenu:false})'>
+                        <div class='subnavbar' on:click|stopPropagation='{() => menuOpen = false, submenu = false}'>
                           <div class='container'>
                             <ul class='submenu' transition:slide>
                             {#each categories as category}
@@ -21,9 +43,9 @@
                         </div>
                         {/if}
                     </li>
-                    <li><a class:selected='segment === "api"' href='api'>API</a></li>
+                    <li><a class:selected='{segment === "api"}' href='api'>API</a></li>
                     <li><a  href='https://openstate.eu/nl/contact' target='_blank' rel='noopener'>Contact</a></li>
-                    <li><a href='#' on:click|preventDefault='fire("report")' class="report-error" >Meld een fout</a></li>
+                    <li><a href='#' on:click|preventDefault='{() => dispatch("report")}' class="report-error" >Meld een fout</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,7 +56,7 @@
         </div>
     </div>
 </header>
-<svelte:document on:scroll='logoLogic(event.pageY)' on:click|stopPropagation='set({menuOpen:false,submenu:false})' />
+
 <style>
     .navbar {
         background-color: #FFF;
@@ -261,24 +283,3 @@
       color: #00938f;
     }
 </style>
-<script>
-  import {slide} from 'svelte-transitions';
-  import {urlname} from '../utils.js';
-
-  export default {
-    data() {
-        return {
-            menuOpen: false,
-        };
-    },
-    helpers: {
-        urlname,
-    },
-    methods: {
-        logoLogic(y) {
-            this.set({showLogo: y > this.refs.header.offsetHeight + this.refs.header.offsetTop -  this.refs.navbar.offsetHeight});
-        },
-    },
-    transitions: { slide }
-  };
-</script>

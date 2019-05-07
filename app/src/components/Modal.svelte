@@ -1,8 +1,35 @@
-<div class="backdrop" on:click|stopPropagation="fire(backdropClose ? 'close' : '')">
-  {#if showBackdropClose}<button class="backdropClose" on:click|stopPropagation="fire('close')">Sluiten</button>{/if}
+<script>
+  import { createEventDispatcher, onDestroy, onMount } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+  const mainDom = process.browser ? document.querySelector('#sapper') : false;
+  export let backdropClose = false;
+  export let showBackdropClose = false;
+  export let noModal = false;
+  export let hideClose = false;
+  export let previousOverflowY;
+
+  onMount(() => {
+  previousOverflowY = document.body.style.overflowY || '';
+    const x = document.body.offsetWidth;
+    document.body.style.overflowY = 'hidden';
+    mainDom.style.marginRight = (document.body.offsetWidth - x) + 'px';
+  });
+
+  onDestroy(() => {
+    document.body.style.overflowY = previousOverflowY;
+    if (previousOverflowY === '') {
+      mainDom.style.marginRight = 0;
+    }
+  });
+</script>
+
+<div class="backdrop" on:click|stopPropagation="{() => dispatch(backdropClose ? 'close' : '')}">
+  {#if showBackdropClose}<button class="backdropClose" on:click|stopPropagation="{() => dispatch('close')}">Sluiten</button>{/if}
   <div class="padding">
-    <div class:modal='!noModal' on:click|stopPropagation="console.log()">
-      {#if !noModal && !hideClose}<button class="close" on:click|stopPropagation="fire('close')">Sluiten</button>{/if}
+    <div class:modal='{!noModal}' on:click|stopPropagation="{() => console.log()}">
+      {#if !noModal && !hideClose}<button class="close" on:click|stopPropagation="{() => dispatch('close')}">Sluiten</button>{/if}
       <slot></slot>
     </div>
   </div>
@@ -72,38 +99,3 @@
   min-width: 8rem;
 }
 </style>
-<script>
-//TODO use <dialog>.showModal() Chrome only, but solves the interacting with items below the backdrop (e.g. with tab)
-const mainDom = process.browser ? document.querySelector('#sapper') : false;
-export default {
-  data: () => ({
-    showBackdropClose: false,
-    backdropClose: false,
-    noModal: false,
-    hideClose: false,
-  }),
-  oncreate() {
-    this.set({previousOverflowY: document.body.style.overflowY || ''});
-    const x = document.body.offsetWidth;
-    document.body.style.overflowY = 'hidden';
-    mainDom.style.marginRight = (document.body.offsetWidth - x) + 'px';
-  },
-  ondestroy() {
-    const {previousOverflowY} = this.get()
-    document.body.style.overflowY = previousOverflowY;
-    if (previousOverflowY === '') {
-      mainDom.style.marginRight = 0;
-    }
-  },
-  // methods: {
-  //   pageShortcuts(event) {
-  //     if (event.key === 'Escape') {
-  //       this.fire('close');
-  //       event.preventDefault();// prevent Chrome behavior of also clearing the input, or should be cancel/clear the input too?
-  //       event.stopPropagation(); // prevent other/more event handlers from being triggered
-  //       return;
-  //     }
-  //   },
-  // },
-}
-</script>

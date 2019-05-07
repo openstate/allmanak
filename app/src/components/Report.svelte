@@ -1,6 +1,12 @@
+<script>
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+</script>
+
 <div class="reporterrorbox">
 	<p>We horen het graag als onze informatie niet correct of onvolledig is.</p>
-	<button on:click='fire("report")'>Meld een fout</button>
+	<button on:click='{() => dispatch("report")}'>Meld een fout</button>
 </div>
 
 <style>

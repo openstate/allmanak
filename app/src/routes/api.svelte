@@ -1,8 +1,32 @@
+<script>
+	import {apiBaseUri} from '../apibase.js';
+
+	let swaggerNode, swaggerDep1Loaded, swaggerDep2Loaded;
+	$: {
+		if (swaggerDep1Loaded && swaggerDep2Loaded) {
+			SwaggerUIBundle({
+				domNode: swaggerNode,
+				// deepLinking: true,
+				presets: [
+				  SwaggerUIBundle.presets.apis,
+				  SwaggerUIStandalonePreset
+				],
+				plugins: [
+				  SwaggerUIBundle.plugins.DownloadUrl
+				],
+				layout: "BaseLayout",
+				url: `${apiBaseUri}/`,
+				validatorUrl: null,
+			});
+		}
+	}
+</script>
+
 <svelte:head>
 	<title>API</title>
 	<link rel="stylesheet" type="text/css" href="/swagger-ui.css" >
-	<script src="/swagger-ui-bundle.js" on:load='set({swaggerDep1:true})'></script>
-	<script src="/swagger-ui-standalone-preset.js" on:load='set({swaggerDep2:true})'></script>
+	<script src="/swagger-ui-bundle.js" on:load={() => swaggerDep1Loaded = true}></script>
+	<script src="/swagger-ui-standalone-preset.js" on:load={() => swaggerDep2Loaded = true}></script>
 </svelte:head>
 <div class="searchbar">
 </div>
@@ -12,7 +36,7 @@
 			<h2>API</h2>
 			<p>De databron wie wij gebruiken is <a rel="noopener" target="_blank" href="http://almanak.overheid.nl/archive/">Overheidsorganisaties XML</a>, deze XML converteren en importeren wij in een database die we met een REST API (PostREST) toegankelijk stellen. De API kan zowel JSON als CSV terug sturen. Let op, met PostgREST zijn database intensieve queries te maken, daarom hebben we de query limiet op tien seconden gezet.</p>
 			<p>De API heeft vele endpoints maar de overheidsorganisatie is de interessante, gezien alle objecten een overheidsorganisatie-object zijn, de andere endpoints zijn voor de onderlinge relaties, maar deze kunnen ook via PostgREST <a target="_blank" rel="noopener" href="https://postgrest.org/en/v5.2/api.html#resource-embedding">resource embedding</a> tot op zekere hoogte worden meegenomen in de overheidsorganisatie-call.
-			<div ref:swagger></div>
+			<div bind:this={swaggerNode}></div>
 		</article>
 	</div>
 </div>
@@ -67,28 +91,3 @@
         margin-bottom: 2rem;
     }
 </style>
-<script>
-	//import SwaggerUI from 'swagger-ui'
-	import {apiBaseUri} from '../apibase.js';
-
-	export default {
-		onstate({ changed, current, previous }) {
-			if ((changed.swaggerDep1 || changed.swaggerDep2) && current.swaggerDep1 && current.swaggerDep2) {
-				SwaggerUIBundle({
-					domNode: this.refs.swagger,
-					// deepLinking: true,
-					presets: [
-					  SwaggerUIBundle.presets.apis,
-					  SwaggerUIStandalonePreset
-					],
-					plugins: [
-					  SwaggerUIBundle.plugins.DownloadUrl
-					],
-					layout: "BaseLayout",
-					url: `${apiBaseUri}/`,
-					validatorUrl: null,
-				});
-			}
-		},
-};
-</script>
