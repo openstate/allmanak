@@ -2,7 +2,7 @@
 	import Select from 'svelte-select';
 	import { createEventDispatcher } from 'svelte';
 
-	const dispatch = createEventDispatcher();
+	export let close;
 
 	let errortype = 'content';
 	let contenterrortype = [];
@@ -12,7 +12,7 @@
 	let comment = '';
 
 	function check() {
-		dispatch('close');
+		close();
 	}
 </script>
 

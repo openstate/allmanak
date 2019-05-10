@@ -1,13 +1,12 @@
 <script>
     import BoxLinks from './BoxLinks.svelte';
-
-    export let categories;
+    import { categories } from '../stores.js';
 </script>
 
 <div class='categorybar'>
     <div class='container'>
         <h3>&gt; Zoek op categorie in <strong>Overheidsorganisaties</strong></h3>
-        <BoxLinks items={categories.map(x=>({link:`cat/${x.catnr}`, name:x.naam}))}/>
+        <BoxLinks items={[$categories].map(x=>({link:`cat/${x.catnr}`, name:x.naam}))}/>
     </div>
 </div>
 <style>

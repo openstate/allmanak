@@ -1,10 +1,6 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
-
-  const dispatch = createEventDispatcher();
-
   import {urlname} from '../utils.js';
-  export let categories;
+  import { categories, showReportModal } from '../stores.js';
 </script>
 
 <footer>
@@ -20,8 +16,8 @@
                     <li><a href='waarom'>Waarom deze Allmamak</a></li>
                     <li><a href='api'>API</a></li>
                     <li><a href='https://openstate.eu/nl/contact' target='_blank' rel='noopener'>Contact</a></li>
-                    <li><a class='report-error' href='#' on:click|stopPropagation|preventDefault='{() => dispatch("report")}'>Meld een fout</a></li>
-                    {#each categories as category}
+                    <li><a class='report-error' href='#' on:click|preventDefault='{() => $showReportModal=true}'>Meld een fout</a></li>
+                    {#each $categories as category}
                       <li><a href='cat/{category.catnr}/{urlname(category.naam)}'>{category.naam}</a></li>
                     {/each}
                 </ul>

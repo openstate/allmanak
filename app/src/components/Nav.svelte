@@ -1,12 +1,10 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
   import {slide} from 'svelte/transition';
   import {urlname} from '../utils.js';
+  import { categories, showReportModal } from '../stores.js';
 
-  export let categories;
   export let segment;
 
-  const dispatch = createEventDispatcher();
 
   let headerOffsetHeight;
   let navbarOffsetHeight;
@@ -35,7 +33,7 @@
                         <div class='subnavbar' on:click|stopPropagation='{() => menuOpen = false, submenu = false}'>
                           <div class='container'>
                             <ul class='submenu' transition:slide>
-                            {#each categories as category}
+                            {#each $categories as category}
                               <li><a href='cat/{category.catnr}/{urlname(category.naam)}'>{category.naam}</a></li>
                             {/each}
                             </ul>
@@ -45,7 +43,7 @@
                     </li>
                     <li><a class:selected='{segment === "api"}' href='api'>API</a></li>
                     <li><a  href='https://openstate.eu/nl/contact' target='_blank' rel='noopener'>Contact</a></li>
-                    <li><a href='#' on:click|preventDefault='{() => dispatch("report")}' class="report-error" >Meld een fout</a></li>
+                    <li><a href='#' on:click|preventDefault='{() => $showReportModal=true}' class="report-error" >Meld een fout</a></li>
                 </ul>
             </nav>
         </div>

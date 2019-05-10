@@ -5,12 +5,10 @@
 	import ReportForm from '../components/ReportForm.svelte';
 
 	import FontFaceObserver from 'fontfaceobserver';
-	//import {categoriesApi} from './_categories.json.js';
-	import categories from './_categories.json';
 	import {apiBaseUri} from '../apibase.js';
+	import { showReportModal } from '../stores.js';
 
 	export let segment;
-	let showModal = false;
 
 	if (process.browser) {
 		['montserratsemibold', 'montserratregular', 'open_sansbold', 'open_sansregular'].forEach(
@@ -27,16 +25,15 @@
 
 </script>
 
-{#if showModal}
-<Modal on:close="{() => showModal = false}" showBackdropClose>
-  <ReportForm on:close="{() => showModal = false}" />
+{#if $showReportModal}
+<Modal on:close="{() => $showReportModal = false}" let:close showBackdropClose>
+  <ReportForm {close} />
 </Modal>
 {/if}
-<Nav {segment} {categories} on:report='{() => showModal = true}'/>
+<Nav {segment}/>
 
 <main>
 	<slot></slot>
-<!-- 	<svelte:component this={child.component} {...child.props} on:report='{() => showModal = true}'/> -->
 </main>
 
 <style>
@@ -50,4 +47,4 @@
 	}
 </style>
 
-<Footer {categories} on:report='{() => showModal = true}'/>
+<Footer />

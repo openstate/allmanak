@@ -1,5 +1,4 @@
 <script>
-
 	import { urlname } from '../utils.js';
 	import VirtualList from '@sveltejs/svelte-virtual-list';
 	import Select from 'svelte-select';
@@ -8,7 +7,7 @@
 	//import fetch from 'node-fetch';
 	//import {categoriesApi} from './_categories.json.js';
 	//import {citiesApi} from './_cities.json.js';
-	import categories from './_categories.json';
+	import { categories } from '../stores.js';
     //export let categories;
 	import cities from './_cities.json';
 
@@ -121,7 +120,7 @@
 		}
 	}
 
-	$: organisatieFilter = categories.map(x=>({value:x.catnr,label:x.naam}));
+	$: organisatieFilter = $categories.map(x=>({value:x.catnr,label:x.naam}));
 	$: cityListFilter = cities.map(x=>({value:x,label:x}));
 
 	function presearch(query) {
@@ -256,7 +255,7 @@
 </div>
 <Bar>
 	<span slot="header">Zoek op categorie in <strong>Overheids&shy;organisaties</strong></span>
-	<div slot="body"><BoxLinks items={categories.map(x=>({link:`cat/${x.catnr}/${urlname(x.naam)}`, name:x.naam}))}/></div>
+	<div slot="body"><BoxLinks items={$categories.map(x=>({link:`cat/${x.catnr}/${urlname(x.naam)}`, name:x.naam}))}/></div>
 </Bar>
 
 <style>

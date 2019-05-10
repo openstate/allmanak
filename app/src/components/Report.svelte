@@ -1,12 +1,10 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
+	import { showReportModal } from '../stores.js';
 </script>
 
 <div class="reporterrorbox">
 	<p>We horen het graag als onze informatie niet correct of onvolledig is.</p>
-	<button on:click='{() => dispatch("report")}'>Meld een fout</button>
+	<button on:click='{() => $showReportModal=true}'>Meld een fout</button>
 </div>
 
 <style>
