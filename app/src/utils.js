@@ -5,6 +5,11 @@ export function makeurl(obj) {
 }
 
 export function name(obj) {
+	// Overload name
+	if (obj.persoon && obj.persoon.length > 0) {
+		const p = obj.persoon[0];
+		return (p.voornaam || p.initialen) + ' ' + (p.tussenvoegsel ? p.tussenvoegsel + ' ' : '') + p.achternaam;
+	}
     return obj.naam || obj.citeertitel || obj.titel || '-';
 }
 

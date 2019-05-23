@@ -24,7 +24,7 @@
 		}
 	});
 	function close(event) {
-		dispatch('close')
+		dispatch('close');
 	}
 </script>
 

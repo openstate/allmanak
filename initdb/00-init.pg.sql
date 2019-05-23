@@ -5,19 +5,16 @@ CREATE ROLE anonymous;
 -- ALTER ROLE anonymous SET statement_timeout = 10000; -- prevent weird queries to DoS the DB ^^^ doesn't work since we don't use it to login!
 ALTER ROLE pgrst SET statement_timeout = 10000; -- prevent weird queries to DoS the DB, can be set higher after login?
 GRANT anonymous TO pgrst;
---CREATE DATABASE allmanak;
 \c allmanak;
 ---
-CREATE SCHEMA almanak;
-CREATE SCHEMA enrich;
+CREATE SCHEMA almanak; -- data from almanak.overheid.nl
+CREATE SCHEMA enrich; -- enrichment through scraping and linking
+CREATE SCHEMA kiesraad; -- all EML data from kiesraad
 ---
 
--- CREATE SCHEMA allmanak;
--- systemId, gender, titel, initialen, voornamen, tussenvoegsel, achternaam[combi?], [meisjesnaam?]
-
 CREATE TABLE almanak.categorie (
-  catnr int PRIMARY KEY,
-  naam varchar(255) NOT NULL
+  catnr INTEGER PRIMARY KEY,
+  naam VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE almanak.samenwerkingsvorm (
@@ -44,12 +41,15 @@ CREATE TYPE almanak.bevoegdheidsverkrijging AS ENUM (
   'Mandaat'
 );
 
+--xmlstarlet sel -t -m '//p:type' -v 'text()' -n exportOO.xml | sort | uniq
 CREATE TYPE almanak.ootype AS ENUM (
   'Adviescollege',
   'Caribisch Nederland',
   'Gemeenschappelijke regeling',
   'Gemeente',
   'Hoge Colleges van Staat',
+  'Kabinet van de Koning',
+  'Koepelorganisatie',
   'Ministerie',
   'Organisatie',
   'Politie en brandweer',
@@ -61,8 +61,8 @@ CREATE TYPE almanak.ootype AS ENUM (
 );
 
 CREATE TABLE almanak.overheidsorganisatie (
-  systemId int PRIMARY KEY,
-  naam varchar(1024),
+  systemId INTEGER PRIMARY KEY,
+  naam VARCHAR(1024),
   partij VARCHAR(255),
   "type" almanak.ootype,
   categorie INTEGER REFERENCES almanak.categorie(catnr),
@@ -77,20 +77,21 @@ CREATE TABLE almanak.overheidsorganisatie (
   beschrijving TEXT,
   bevoegdheden TEXT,
   bevoegdheidsverkrijgingen almanak.bevoegdheidsverkrijging[],
+  bronhouder INTEGER REFERENCES almanak.overheidsorganisatie(systemId),
   classificaties JSONB,
   contact JSONB,
-  contactEmail VARCHAR(255),
+--  contactEmail VARCHAR(255), -- Removed in oo-export 2.4.9
   datumInwerkingtreding DATE,
   datumOpheffing DATE,
   doel TEXT,
   eindDatum DATE,
   geldendeCAO VARCHAR(255),
-  ictuCode CHAR(5),
+  ictuCode VARCHAR(5),
   installatie VARCHAR(255),
   instellingsbesluiten VARCHAR(1024)[],
   inwonersPerKm2 INTEGER,
   kaderwetZboVanToepassing BOOLEAN,
-  kvkNummer CHAR(8),
+  kvkNummer VARCHAR(8),
   laatsteEvaluatie JSONB,
   omvatPlaats VARCHAR(1024),
   oppervlakte NUMERIC(5,2),
@@ -110,7 +111,7 @@ CREATE TABLE almanak.overheidsorganisatie (
   taalcode almanak.taalcode,
   takenEnBevoegdheden TEXT,
   titel VARCHAR(255),
-  totaalZetels smallint,
+  totaalZetels SMALLINT,
   wettelijkeVoorschriften JSONB,
   zetels JSONB
 );
@@ -147,7 +148,9 @@ CREATE TABLE almanak.deelnemendeOrganisaties (
 	systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
 	organisatieId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
 	toetredingsDatum DATE NOT NULL,
-	bronhouder BOOLEAN,
+--  bronhouder BOOLEAN, -- Removed in oo-export 2.4.9
+  verdeelsleutel NUMERIC(6,6),
+  bestuursorganen JSONB,
 	PRIMARY KEY(systemId, organisatieId),
 	CONSTRAINT no_loops CHECK (systemId != organisatieId)
 );
@@ -180,6 +183,112 @@ CREATE TABLE enrich.photo (
   source VARCHAR(4095) NOT NULL,
   PRIMARY KEY(systemId)
 );
+
+CREATE TYPE enrich.geslacht AS ENUM (
+  'man',
+  'vrouw',
+  'X'
+);
+
+CREATE TYPE enrich.matchtype AS ENUM (
+  'almanak-kiesraad-matcher',
+  'manual'
+);
+
+CREATE TABLE enrich.persoon (
+  systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+  geslacht enrich.geslacht,
+  aanheftitel VARCHAR(255),
+  initialen VARCHAR(255),
+  voornaam VARCHAR(255),
+  tussenvoegsel VARCHAR(255),
+  achternaam VARCHAR(255),
+  source VARCHAR(4095) NOT NULL,
+  PRIMARY KEY(systemId)
+);
+
+CREATE TABLE enrich.contact (
+  systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+  contact JSONB,
+  source VARCHAR(4095) NOT NULL,
+  PRIMARY KEY(systemId)
+);
+
+CREATE TABLE enrich.sociallink (
+  systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+  "type" VARCHAR(255),
+  source VARCHAR(4095) NOT NULL,
+  url VARCHAR(4095)
+);
+
+CREATE TABLE enrich.commissie (
+  systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+  commissie VARCHAR,
+  url VARCHAR(4095),
+  source VARCHAR(4095) NOT NULL
+);
+
+CREATE TABLE kiesraad.verkiezing (
+  id INTEGER GENERATED ALWAYS AS IDENTITY,
+  code VARCHAR(255) NOT NULL, -- GR2018_Delft
+  ictuCode INTEGER, -- 0503
+  verkiezingsdatum DATE NOT NULL, -- 2018-03-22
+  naam VARCHAR(255) NOT NULL,
+  zetels SMALLINT NOT NULL,
+  PRIMARY KEY(code),
+  UNIQUE(id)
+);
+
+CREATE TABLE kiesraad.kieslijst (
+  id INTEGER GENERATED ALWAYS AS IDENTITY,
+  verkiezing INTEGER REFERENCES kiesraad.verkiezing(id) NOT NULL,
+  lijstnummer SMALLINT NOT NULL,
+  kieskring VARCHAR(255) NOT NULL,
+  naam VARCHAR(255) NOT NULL,
+  verkozenzetels SMALLINT,
+  PRIMARY KEY(verkiezing, lijstnummer, kieskring),
+  UNIQUE(id)
+);
+
+CREATE TABLE kiesraad.kandidaat (
+  id INTEGER GENERATED ALWAYS AS IDENTITY,
+  kieslijst INTEGER REFERENCES kiesraad.kieslijst(id) NOT NULL,
+  kandidaatnummer SMALLINT NOT NULL,
+  initialen VARCHAR(255),
+  voornaam VARCHAR(255),
+  tussenvoegsel VARCHAR(255),
+  achternaam VARCHAR(255),
+  woonplaats VARCHAR(255),
+  geslacht enrich.geslacht,
+  voorkeurstemmen INT,
+  PRIMARY KEY(kieslijst, kandidaatnummer),
+  UNIQUE(id)
+);
+
+CREATE TABLE enrich.partij (
+  id INTEGER GENERATED ALWAYS AS IDENTITY,
+  ictuCode INTEGER,
+  kiesraadnaam VARCHAR(255) NOT NULL,
+  logourl VARCHAR(4095),
+  PRIMARY KEY(ictuCode, kiesraadnaam),
+  UNIQUE(id)
+);
+
+CREATE TABLE enrich.partijmatch (
+  id INTEGER REFERENCES enrich.partij(id) NOT NULL,
+  ictuCode VARCHAR(5) NOT NULL,-- REFERENCES almanak.overheidsorganisatie(ictuCode) NOT NULL,
+  almanaknaam VARCHAR(255),
+  PRIMARY KEY(ictuCode, almanaknaam)
+);
+
+CREATE TABLE enrich.kandidaatmatch (
+  systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+  kandidaat INTEGER REFERENCES kiesraad.kandidaat(id) NOT NULL,
+  matchtype enrich.matchtype NOT NULL,
+  matchscore REAL,
+  PRIMARY KEY(systemId, kandidaat, matchtype)
+);
+
 ---
 -- DROP TABLE almanak.dummy;
 -- CREATE TABLE almanak.dummy (o int);
@@ -225,6 +334,29 @@ CREATE VIEW api.logo AS
 CREATE VIEW api.photo AS
     SELECT enrich.photo.* FROM enrich.photo;
 
+CREATE VIEW api.persoon AS
+    SELECT enrich.persoon.* FROM enrich.persoon;
+CREATE VIEW api.contact AS
+    SELECT enrich.contact.* FROM enrich.contact;
+CREATE VIEW api.sociallink AS
+    SELECT enrich.sociallink.* FROM enrich.sociallink;
+CREATE VIEW api.commissie AS
+    SELECT enrich.commissie.* FROM enrich.commissie;
+
+CREATE VIEW api.verkiezing AS
+    SELECT kiesraad.verkiezing.* FROM kiesraad.verkiezing;
+CREATE VIEW api.kieslijst AS
+    SELECT kiesraad.kieslijst.* FROM kiesraad.kieslijst;
+CREATE VIEW api.kandidaat AS
+    SELECT kiesraad.kandidaat.* FROM kiesraad.kandidaat;
+
+CREATE VIEW api.partij AS
+    SELECT enrich.partij.* FROM enrich.partij;
+CREATE VIEW api.partijmatch AS
+    SELECT enrich.partijmatch.* FROM enrich.partijmatch;
+CREATE VIEW api.kandidaatmatch AS
+    SELECT enrich.kandidaatmatch.* FROM enrich.kandidaatmatch;
+
 --SELECT jsonb_object_agg(key, value) FROM JSON_EACH((SELECT row_to_json(o) FROM api.overheidsorganisatie o)) WHERE NOT value::jsonb <@ 'null'::jsonb
 
 
@@ -263,6 +395,23 @@ DO $$
 DECLARE
   tbl RECORD;
   schemaName VARCHAR := 'enrich';
+BEGIN
+  FOR tbl IN (SELECT t.relname::varchar AS name
+                FROM pg_class t
+                JOIN pg_namespace n ON n.oid = t.relnamespace
+                WHERE t.relkind = 'r' and n.nspname::varchar = schemaName
+                ORDER BY 1)
+  LOOP
+    RAISE NOTICE 'ANALYZE %.%', schemaName, tbl.name;
+    EXECUTE 'ANALYZE ' || schemaName || '.' || tbl.name;
+  END LOOP;
+END
+$$;
+
+DO $$
+DECLARE
+  tbl RECORD;
+  schemaName VARCHAR := 'kiesraad';
 BEGIN
   FOR tbl IN (SELECT t.relname::varchar AS name
                 FROM pg_class t

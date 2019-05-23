@@ -18,7 +18,7 @@ services:
     command: sh -c "yarn install && yarn dev"
     depends_on: [api-rest-v0]
     expose: ['3000', '10000']
-    image: mhart/alpine-node:11
+    image: node:12-alpine
     restart: always
     volumes:
       - './app:/app'
@@ -29,7 +29,7 @@ services:
   build-static:
     command: sh -c 'touch /web/build_static && /sbin/inotifyd - /web/build_static:e | xargs -I% sh -c "yarn install && yarn export && ./postexport.sh"'
     depends_on: [api-rest-v0, web]
-    image: mhart/alpine-node:11
+    image: node:12-alpine
     restart: always
     volumes:
       - './app:/app'
@@ -47,7 +47,7 @@ services:
     restart: always
     volumes:
       - './initdb:/docker-entrypoint-initdb.d'
-      - './pgdata:/var/lib/postgresql/data'
+      - './pgdata-dev:/var/lib/postgresql/data'
   import-cron:
     build: ./import-cron
     depends_on: [db, build-static]

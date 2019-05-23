@@ -7,9 +7,16 @@
 		//const res = await this.fetch(`api.json?systemId=${params.systemId}`);
 		//const res = await this.fetch(`${params.systemId}.json`);
 
-		const res = await this.fetch(`${apiBaseUri}/overheidsorganisatie?systemid=eq.${params.systemId}&select=*,parents(parent:parentid(systemid,naam,citeertitel,titel,medewerkers(count))),functies(functie:functieid(systemid,naam,medewerkers(persoon:persoonid(systemid,naam)))),medewerkers(persoon:persoonid(systemid,naam)),organisaties(organisatie:organisatieid(systemid,naam)),photo(*),logo(*)`);
+		const res = await this.fetch(`${apiBaseUri}/overheidsorganisatie?systemid=eq.${params.systemId}&select=*,parents(parent:parentid(systemid,naam,citeertitel,titel,medewerkers(count))),functies(functie:functieid(systemid,naam,medewerkers(persoon:persoonid(systemid,naam,persoon(initialen,voornaam,tussenvoegsel,achternaam))))),medewerkers(persoon:persoonid(systemid,naam,persoon(initialen,voornaam,tussenvoegsel,achternaam))),organisaties(organisatie:organisatieid(systemid,naam)),photo(*),logo(*),persoon(initialen,voornaam,tussenvoegsel,achternaam),extracontact:contact(*),commissies:commissie(commissie,url)&parents.order=ordering.desc&commissies.order=commissie.asc`);
 
 		const data = await res.json();
+		// Overload emailadres etc.
+		if (data[0].extracontact.length > 0) {
+			const c = data[0].extracontact[0].contact;
+			for (let k in c) {
+				data[0].contact[k] = c[k];
+			}
+		}
 
 		if (res.status === 200) {
 			const ret = { entity: data[0] };
@@ -27,10 +34,6 @@
 </script>
 
 <script>
-	import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher();
-
 	import {apiBaseUri} from '../../apibase.js';
 	import { urlname, name } from '../../utils.js';
 
@@ -39,4 +42,4 @@
 	import EntityView from '../../components/EntityView.svelte';
 </script>
 
-<EntityView entity={entity} on:report='{() => dispatch("report")}'/>
+<EntityView entity={entity}/>

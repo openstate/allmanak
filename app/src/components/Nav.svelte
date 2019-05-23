@@ -43,7 +43,7 @@
                     </li>
                     <li><a class:selected='{segment === "api"}' href='api'>API</a></li>
                     <li><a  href='https://openstate.eu/nl/contact' target='_blank' rel='noopener'>Contact</a></li>
-                    <li><a href='#' on:click|preventDefault='{() => $showReportModal=true}' class="report-error" >Meld een fout</a></li>
+                    <li><a href='#' on:click|stopPropagation|preventDefault='{() => $showReportModal=true}' class="report-error" >Meld een fout</a></li>
                 </ul>
             </nav>
         </div>

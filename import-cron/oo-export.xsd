@@ -55,8 +55,12 @@
   2.4.8 01-02-2019
   meerdere resourceIdentifiers mogelijk, plus versienummer toegevoegd
 
+  2.4.9 01-04-2019
+  contactEmail is verwijderd
+  bestuursorganen toegevoegd
+  bronhouder aangepast
   -->
-<xs:schema xmlns="https://almanak.overheid.nl/static/schema/oo/export/2.4.8" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://almanak.overheid.nl/static/schema/oo/export/2.4.8" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="https://almanak.overheid.nl/static/schema/oo/export/2.4.9" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://almanak.overheid.nl/static/schema/oo/export/2.4.9" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:element name="systemId">
 		<xs:complexType>
 			<xs:sequence>
@@ -476,7 +480,6 @@
 			</xs:element>
 			<xs:element ref="afbeelding" minOccurs="0"/>
 			<xs:element ref="contact"/>
-			<xs:element ref="contactEmail"/>
 			<xs:element ref="beschrijving" minOccurs="0"/>
 			<xs:element ref="startDatum" minOccurs="0"/>
 			<xs:element ref="eindDatum" minOccurs="0"/>
@@ -524,7 +527,6 @@
 			</xs:element>
 			<xs:element ref="afbeelding" minOccurs="0"/>
 			<xs:element ref="contact"/>
-			<xs:element ref="contactEmail"/>
 			<xs:element ref="beschrijving" minOccurs="0"/>
 			<xs:element ref="startDatum" minOccurs="0"/>
 			<xs:element ref="eindDatum" minOccurs="0"/>
@@ -541,7 +543,6 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="contactEmail" type="xs:string"/>
 	<xs:element name="regio">
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
@@ -615,7 +616,7 @@
 	<xs:simpleType name="samenwerkingsvormNaamType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Bedrijfsvoeringsorganisatie"/>
-	        <xs:enumeration value="Bestuursovereenkomst"/>
+	        <xs:enumeration value="'Regeling zonder meer'"/>
 	        <xs:enumeration value="Centrumconstructie"/>
 	        <xs:enumeration value="Gemeenschappelijk orgaan"/>
 	        <xs:enumeration value="Openbaar lichaam"/>
@@ -624,7 +625,7 @@
 	<xs:simpleType name="samenwerkingsvormAfkortingType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="BVO"/>
-	        <xs:enumeration value="BO"/>
+	        <xs:enumeration value="RZM"/>
 	        <xs:enumeration value="CC"/>
 	        <xs:enumeration value="GO"/>
 	        <xs:enumeration value="OL"/>
@@ -708,6 +709,12 @@
 		</xs:complexType>
 	</xs:element>
 	<xs:attribute name="systemId" type="xs:nonNegativeInteger"/>
+	<xs:element name="bronhouder">
+		<xs:complexType>
+			<xs:attribute ref="systemId" use="required"/>							
+			<xs:attribute ref="naam" use="required"/>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="archiefzorgdrager">
 		<xs:complexType>
 			<xs:attribute ref="systemId" use="required"/>							
@@ -728,7 +735,6 @@
 	</xs:element>
 	<xs:element name="verdeelsleutel" type="xs:double"/>
 	<xs:element name="organisatieId" type="xs:nonNegativeInteger"/>
-	<xs:element name="bronhouder" type="xs:boolean"/>
 	<xs:element name="deelnemendeOrganisatie">
 		<xs:complexType>
 			<xs:sequence>
@@ -736,8 +742,21 @@
 				<xs:element ref="naam"/>
 				<xs:element ref="toetredingsDatum"/>
 				<xs:element ref="verdeelsleutel" minOccurs="0"/>
-				<xs:element ref="bronhouder"/>
+				<xs:element ref="bestuursorganen"/>
 			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="bestuursorganen">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="bestuursorgaan" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="bestuursorgaan">
+		<xs:complexType>
+			<xs:attribute ref="naam" use="required"/>
+			<xs:attribute ref="resourceIdentifier"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="kvkNummer">
@@ -792,18 +811,18 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element ref="bronhouder" maxOccurs="1"/>
 			<xs:element ref="archiefzorgdrager" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="taalcode" type="taalcodeType"/>
 			<xs:element name="registratiehouder" type="registratiehouderType"/>
 			<xs:element ref="contact"/>
-			<xs:element ref="contactEmail"/>
 			<xs:element ref="doel" minOccurs="0"/>
 			<xs:element ref="datumInwerkingtreding"/>
 			<xs:element ref="datumOpheffing" minOccurs="0"/>
 			<xs:element name="deelnemendeOrganisaties">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element ref="deelnemendeOrganisatie" minOccurs="1" maxOccurs="unbounded"/>
+						<xs:element ref="deelnemendeOrganisatie" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -985,7 +1004,6 @@
 			<xs:element ref="aangeslotenBijPensioenfonds" minOccurs="0"/>
 			<xs:element ref="laatsteEvaluatie" minOccurs="0"/>
 			<xs:element ref="contact"/>
-			<xs:element ref="contactEmail"/>
 			<xs:element ref="startDatum" minOccurs="0"/>
 			<xs:element ref="eindDatum" minOccurs="0"/>			
 			<xs:element name="functies" type="functiesType"/>

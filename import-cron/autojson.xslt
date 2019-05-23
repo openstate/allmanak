@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Author: Benjamin W. Broersma <bw@broersma.com> -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://almanak.overheid.nl/static/schema/oo/export/2.4.8 https://almanak.overheid.nl/static/schema/oo/export/oo-export-2.4.8.xsd" xmlns:p="https://almanak.overheid.nl/static/schema/oo/export/2.4.8">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://almanak.overheid.nl/static/schema/oo/export/2.4.9 https://almanak.overheid.nl/static/schema/oo/export/oo-export-2.4.9.xsd" xmlns:p="https://almanak.overheid.nl/static/schema/oo/export/2.4.9">
   <xsl:output omit-xml-declaration="yes" encoding="UTF-8"/>
   <!--http://stackoverflow.com/a/7523245-->
   <!--how this works: it checks if the text contains the replace search value, if not return text, else get substring-before+replacement+recursive call self with substring-after as text-->
@@ -41,8 +41,8 @@
   <xsl:template match="p:systemId">
     "systemId": <xsl:value-of select="p:systemId" /><xsl:if test="position() != last()">,</xsl:if>
   </xsl:template>
-  <!--store all nonNegativeInteger and boolean types without quotes -->
-  <xsl:template match="p:vergoeding | p:aantal | p:aantalInwoners | p:inwonersPerKm2 | p:totaalZetels | p:organisatieId | p:bronhouder">
+  <!--store all nonNegativeInteger, boolean and double types without quotes -->
+  <xsl:template match="p:vergoeding | p:aantal | p:aantalInwoners | p:inwonersPerKm2 | p:totaalZetels | p:organisatieId | p:verdeelsleutel">
     "<xsl:value-of select="local-name()" />": <xsl:value-of select="." /><xsl:if test="position() != last()">,</xsl:if>
   </xsl:template>
   <!-- convert ja/nee to true/false -->
@@ -85,7 +85,11 @@
                       <xsl:value-of select="."/>
                     </xsl:when>
                     <xsl:otherwise>
-                      "<xsl:value-of select="." />"
+                      "<xsl:call-template name="replace-string"><!--Yes this is needed!-->
+            <xsl:with-param name="text" select="."/>
+            <xsl:with-param name="replace" select="'&quot;'" />
+            <xsl:with-param name="with" select="'\&quot;'"/>
+          </xsl:call-template>"
                     </xsl:otherwise>
                   </xsl:choose><xsl:if test="position() != last()">,</xsl:if>
               </xsl:for-each>

@@ -1,6 +1,5 @@
 <script>
 	import Select from 'svelte-select';
-	import { createEventDispatcher } from 'svelte';
 
 	export let close;
 

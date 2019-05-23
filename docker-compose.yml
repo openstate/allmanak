@@ -18,7 +18,7 @@ services:
     command: sh -c "yarn install && yarn build && node __sapper__/build"
     depends_on: [api-rest-v0]
     expose: ['3000']
-    image: mhart/alpine-node:11
+    image: node:12-alpine
     restart: always
     volumes:
       - './app:/app'
@@ -29,7 +29,7 @@ services:
   build-static:
     command: sh -c 'touch /web/build_static && /sbin/inotifyd - /web/build_static:e | xargs -I% sh -c "yarn install && yarn export && ./postexport.sh"'
     depends_on: [api-rest-v0, web]
-    image: mhart/alpine-node:11
+    image: node:12-alpine
     restart: always
     volumes:
       - './app:/app'
@@ -60,7 +60,7 @@ services:
     depends_on: [app, api-rest-v0]
     image: nginx:mainline-alpine
     networks: [nginx-load-balancer, default]
-    ports: ['80:80', '10000:10000']
+#    ports: ['80:80']
     restart: always
     volumes:
       - './app/static:/app/static:ro'

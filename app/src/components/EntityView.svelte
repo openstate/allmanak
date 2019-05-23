@@ -1,10 +1,7 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
 	import Bar from './Bar.svelte';
 	import Report from './Report.svelte';
 	import BoxLinks from './BoxLinks.svelte';
-
-	const dispatch = createEventDispatcher();
 
 	import {makeurl, name} from '../utils.js';
 	const title = new Map([
@@ -35,16 +32,33 @@
 
 	const azn = (a,b) => a.name.localeCompare(b.name);
 
+	const sortValues = {
+		"naam": 1,
+		"afkorting": 2,
+		"type": 3,
+		"categorie": 4,
+		"telefoon": 5,
+		"fax": 6,
+		"emailadres": 7,
+		"internet": 8,
+		"bezoekAdres": 9,
+		"postAdres": 10,
+		"contactpaginas": 11,
+	};
+
+	const keysort = list => list.map(x => ({name: x, value: sortValues[x]})).sort((a, b)=>a.value-b.value).map(x=>x.name);
+
+	$: functie = entity.parents && entity.parents[entity.parents.length -1] && entity.parents[entity.parents.length -1].parent.medewerkers[0].count > 0 ? entity.parents[entity.parents.length -1].parent.naam : false;
 </script>
 
 <svelte:head>
 	<title>{name(entity)} - Allmanak</title>
 </svelte:head>
-<div class="imagebar" alt="" style="background-image: url({url(entity.photo) || (entity.type == 'Gemeente' ? 'landschap.jpg' : 'gebouw.jpg')})"></div>
+<div class="imagebar" alt="" style="background-image: url('{url(functie ? 'gebouw.jpg' : entity.photo) || (entity.type == 'Gemeente' ? 'landschap.jpg' : 'gebouw.jpg')}')"></div>
 <div class="headerbar">
 	<div class="breadcrumb">
 		<div class="container">
-			<img alt="" src="{url(entity.logo) || (entity.parents && entity.parents[entity.parents.length -1] && entity.parents[entity.parents.length -1].parent.medewerkers[0].count > 0 ? 'noprofile.svg' : 'missinglogo.svg')}">
+			<img alt="" src="{url(functie ? entity.photo : entity.logo) || (functie ? 'noprofile.svg' : 'missinglogo.svg')}">
 			<div class="path">
 				{#if entity.parents}
 					{#each entity.parents as node}
@@ -71,11 +85,11 @@
 			{#if entity.partij}
 				<div class="keyvalue"><div class="key">Partij</div><div class="values">{entity.partij}</div></div>
 			{/if}
-			{#if entity.parents && entity.parents[entity.parents.length -1] && entity.parents[entity.parents.length -1].parent.medewerkers[0].count > 0}
-				<div class="keyvalue"><div class="key">Functie</div><div class="values">{entity.parents[entity.parents.length -1].parent.naam}</div></div>
+			{#if functie}
+				<div class="keyvalue"><div class="key">Functie</div><div class="values">{functie}</div></div>
 			{/if}
 			{#if entity.contact}
-				{#each Object.keys(entity.contact) as key}
+				{#each keysort(Object.keys(entity.contact)) as key}
 					{#if show(key)}
 						<div class="keyvalue"><div class="key">{showname(key)}</div><div class="values">
 							{#each (Array.isArray(entity.contact[key]) ? entity.contact[key] : [entity.contact[key]]) as item}
@@ -83,20 +97,20 @@
 								{#if typeof item == "string" }
 									{#if key == "internet" || key == "contactpaginas"}
 										<a href="{item}">{item}</a>
-									{:else if key == "emailadres" || key == "contactEmail"}
+									{:else if key == "emailadres"}
 										<a href="mailto:{item}">{item}</a>
 									{:else}
 										{item}
 									{/if}
 								{:else if typeof item.value == "string" }
 									{#if key == "internet" || key == "contactpaginas"}
-										<a href="{item.value}">{item.value}</a> {#if item.label}({item.label}){/if}
+										<a href="{item.value}" target='_blank' rel='noopener'>{item.value}</a> {#if item.label}({item.label}){/if}
 									{:else if key == "emailadres" || key == "contactEmail"}
 										<a href="mailto:{item.value}">{item.value}</a> {#if item.label}({item.label}){/if}
 									{:else}
 										{item.value} {#if item.label}({item.label}){/if}
 									{/if}
-								{:else if typeof item.contactpaginaUrl== "string" }
+								{:else if typeof item.contactpaginaUrl == "string" }
 									<a href="{item.contactpaginaUrl}" target='_blank' rel='noopener'>{item.contactpaginaUrl}</a>
 								{:else if key == "postAdres" || key == "bezoekAdres" }
 									{#if item.straat}
@@ -115,6 +129,12 @@
 					{/if}
 				{/each}
 			{/if}
+			{#if entity.commissies.length > 0}
+				<h2>Commissies</h2>
+				{#each entity.commissies as {commissie, url}}
+					<a href="{url}" target='_blank' rel='noopener'>{commissie}</a><br>
+				{/each}
+			{/if}
 			{#if entity.beschrijving}
 				<h2>Beschrijving</h2>
 				{#each entity.beschrijving.split('$') as text}
@@ -124,7 +144,7 @@
 		</p>
 	</div>
 	<aside>
-		<Report on:report='{() => dispatch("report")}' />
+		<Report />
 	</aside>
 </div>
 	{#if entity.medewerkers.length > 0}

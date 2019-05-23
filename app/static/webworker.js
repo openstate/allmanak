@@ -31,6 +31,10 @@ const options = {
 		    "weight": 0.4
 		},
 		{
+		    "name": "commissie",
+		    "weight": 0.4
+		},
+		{
 		    "name": "partij",
 		    "weight": 0.4
 		},

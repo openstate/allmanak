@@ -33,9 +33,9 @@ INSERT INTO almanak.overheidsorganisatie AS o
 			beschrijving = EXCLUDED.beschrijving,
 			bevoegdheden = EXCLUDED.bevoegdheden,
 			bevoegdheidsverkrijgingen = EXCLUDED.bevoegdheidsverkrijgingen,
+			bronhouder = EXCLUDED.bronhouder,
 			classificaties = EXCLUDED.classificaties,
 			contact = EXCLUDED.contact,
-			contactEmail = EXCLUDED.contactEmail,
 			datumInwerkingtreding = EXCLUDED.datumInwerkingtreding,
 			datumOpheffing = EXCLUDED.datumOpheffing,
 			doel = EXCLUDED.doel,
@@ -69,10 +69,11 @@ INSERT INTO almanak.overheidsorganisatie AS o
 			totaalZetels = EXCLUDED.totaalZetels,
 			wettelijkeVoorschriften = EXCLUDED.wettelijkeVoorschriften,
 			zetels = EXCLUDED.zetels
-		WHERE row_to_json(
-				ROW(o.naam, o.partij, o."type", o.categorie, o.citeertitel, o.aangeslotenBijPensioenfonds, o.aantalInwoners, o.aantekening, o.afkorting, o.afwijkendeBepaling, o.archiefzorgdrager, o.beleidsterreinen, o.beschrijving, o.bevoegdheden, o.bevoegdheidsverkrijgingen, o.classificaties, o.contact, o.contactEmail, o.datumInwerkingtreding, o.datumOpheffing, o.doel, o.eindDatum, o.geldendeCAO, o.ictuCode, o.installatie, o.instellingsbesluiten, o.inwonersPerKm2, o.kaderwetZboVanToepassing, o.kvkNummer, o.laatsteEvaluatie, o.omvatPlaats, o.oppervlakte, o.organisatiecode, o.partijFunctie, o.personeelsomvang, o.provincieAfkorting, o.rechtsvorm, o.registratiehouder, o.relatieMetMinisterie, o.resourceIdentifiers, o.samenwerkingsvorm, o.standplaats, o.startDatum, o.subnaam, o.subtype, o.taalcode, o.takenEnBevoegdheden, o.titel, o.totaalZetels, o.wettelijkeVoorschriften, o.zetels)
+		WHERE -- the row_to_json::text is easier with comparing null values
+			row_to_json(
+				ROW(o.naam, o.partij, o."type", o.categorie, o.citeertitel, o.aangeslotenBijPensioenfonds, o.aantalInwoners, o.aantekening, o.afkorting, o.afwijkendeBepaling, o.archiefzorgdrager, o.beleidsterreinen, o.beschrijving, o.bevoegdheden, o.bevoegdheidsverkrijgingen, o.bronhouder, o.classificaties, o.contact, o.datumInwerkingtreding, o.datumOpheffing, o.doel, o.eindDatum, o.geldendeCAO, o.ictuCode, o.installatie, o.instellingsbesluiten, o.inwonersPerKm2, o.kaderwetZboVanToepassing, o.kvkNummer, o.laatsteEvaluatie, o.omvatPlaats, o.oppervlakte, o.organisatiecode, o.partijFunctie, o.personeelsomvang, o.provincieAfkorting, o.rechtsvorm, o.registratiehouder, o.relatieMetMinisterie, o.resourceIdentifiers, o.samenwerkingsvorm, o.standplaats, o.startDatum, o.subnaam, o.subtype, o.taalcode, o.takenEnBevoegdheden, o.titel, o.totaalZetels, o.wettelijkeVoorschriften, o.zetels)
 			)::text != row_to_json(
-				ROW(EXCLUDED.naam, EXCLUDED.partij, EXCLUDED."type", EXCLUDED.categorie, EXCLUDED.citeertitel, EXCLUDED.aangeslotenBijPensioenfonds, EXCLUDED.aantalInwoners, EXCLUDED.aantekening, EXCLUDED.afkorting, EXCLUDED.afwijkendeBepaling, EXCLUDED.archiefzorgdrager, EXCLUDED.beleidsterreinen, EXCLUDED.beschrijving, EXCLUDED.bevoegdheden, EXCLUDED.bevoegdheidsverkrijgingen, EXCLUDED.classificaties, EXCLUDED.contact, EXCLUDED.contactEmail, EXCLUDED.datumInwerkingtreding, EXCLUDED.datumOpheffing, EXCLUDED.doel, EXCLUDED.eindDatum, EXCLUDED.geldendeCAO, EXCLUDED.ictuCode, EXCLUDED.installatie, EXCLUDED.instellingsbesluiten, EXCLUDED.inwonersPerKm2, EXCLUDED.kaderwetZboVanToepassing, EXCLUDED.kvkNummer, EXCLUDED.laatsteEvaluatie, EXCLUDED.omvatPlaats, EXCLUDED.oppervlakte, EXCLUDED.organisatiecode, EXCLUDED.partijFunctie, EXCLUDED.personeelsomvang, EXCLUDED.provincieAfkorting, EXCLUDED.rechtsvorm, EXCLUDED.registratiehouder, EXCLUDED.relatieMetMinisterie, EXCLUDED.resourceIdentifiers, EXCLUDED.samenwerkingsvorm, EXCLUDED.standplaats, EXCLUDED.startDatum, EXCLUDED.subnaam, EXCLUDED.subtype, EXCLUDED.taalcode, EXCLUDED.takenEnBevoegdheden, EXCLUDED.titel, EXCLUDED.totaalZetels, EXCLUDED.wettelijkeVoorschriften, EXCLUDED.zetels)
+				ROW(EXCLUDED.naam, EXCLUDED.partij, EXCLUDED."type", EXCLUDED.categorie, EXCLUDED.citeertitel, EXCLUDED.aangeslotenBijPensioenfonds, EXCLUDED.aantalInwoners, EXCLUDED.aantekening, EXCLUDED.afkorting, EXCLUDED.afwijkendeBepaling, EXCLUDED.archiefzorgdrager, EXCLUDED.beleidsterreinen, EXCLUDED.beschrijving, EXCLUDED.bevoegdheden, EXCLUDED.bevoegdheidsverkrijgingen, EXCLUDED.bronhouder, EXCLUDED.classificaties, EXCLUDED.contact, EXCLUDED.datumInwerkingtreding, EXCLUDED.datumOpheffing, EXCLUDED.doel, EXCLUDED.eindDatum, EXCLUDED.geldendeCAO, EXCLUDED.ictuCode, EXCLUDED.installatie, EXCLUDED.instellingsbesluiten, EXCLUDED.inwonersPerKm2, EXCLUDED.kaderwetZboVanToepassing, EXCLUDED.kvkNummer, EXCLUDED.laatsteEvaluatie, EXCLUDED.omvatPlaats, EXCLUDED.oppervlakte, EXCLUDED.organisatiecode, EXCLUDED.partijFunctie, EXCLUDED.personeelsomvang, EXCLUDED.provincieAfkorting, EXCLUDED.rechtsvorm, EXCLUDED.registratiehouder, EXCLUDED.relatieMetMinisterie, EXCLUDED.resourceIdentifiers, EXCLUDED.samenwerkingsvorm, EXCLUDED.standplaats, EXCLUDED.startDatum, EXCLUDED.subnaam, EXCLUDED.subtype, EXCLUDED.taalcode, EXCLUDED.takenEnBevoegdheden, EXCLUDED.titel, EXCLUDED.totaalZetels, EXCLUDED.wettelijkeVoorschriften, EXCLUDED.zetels)
 			)::text;
 
 INSERT INTO almanak.medewerkers
@@ -100,8 +101,14 @@ INSERT INTO almanak.deelnemendeOrganisaties AS d
 		ON CONFLICT (systemId, organisatieId)
 		DO UPDATE
 			SET toetredingsDatum = EXCLUDED.toetredingsDatum,
-			bronhouder = EXCLUDED.bronhouder
-		WHERE d.toetredingsDatum != EXCLUDED.toetredingsDatum OR d.bronhouder != EXCLUDED.bronhouder;
+			verdeelsleutel = EXCLUDED.verdeelsleutel,
+  			bestuursorganen = EXCLUDED.bestuursorganen
+		WHERE -- the row_to_json::text is easier with comparing null values
+			row_to_json(
+				ROW(d.toetredingsDatum, d.verdeelsleutel, d.bestuursorganen)
+			)::text != row_to_json(
+				ROW(EXCLUDED.toetredingsDatum, EXCLUDED.verdeelsleutel, EXCLUDED.bestuursorganen)
+			)::text;
 
 INSERT INTO almanak.parents AS p
 	SELECT * FROM tmp_parents
