@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eu pipefail;
+set -u -o pipefail;
 
 # Create a directory based on the TimeStamp
 TS=$(date +%FT%H.%M.%S);
@@ -14,14 +14,13 @@ find -name 'index.html' -path './[1-9]*' -type f -exec sh -c 'P=${0:2:-11};ID=${
 sort -n systemid_urls.nginx -o systemid_urls.nginx;
 
 # Check for double systemId mappings, this will error nginx, so abort early
-awk '$1==l{print "duplicate id:\n" $0 "\n" ll;e=1}{l=$1;ll=$0}END{exit(e)}' systemid_urls.nginx;
+E=$(awk '$1==l{print "duplicate id:\n" $0 "\n" ll;e=1}{l=$1;ll=$0}END{exit(e)}' systemid_urls.nginx 2>&1);
 
-if [ ! $? ]; then
-	echo "No duplicate IDs found in Nginx mapping";
-else
-	echo "Nginx mapping validation failed (found duplicate IDs)";
-	exit;
+if [ $? -ne 0 ]; then
+	>&2 echo -e "Nginx mapping validation failed (found duplicate IDs)\n$E";
+	exit 1;
 fi;
+echo "OK: no duplicate IDs found in Nginx mapping";
 
 cd /app;
 
