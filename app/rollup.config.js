@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
 import commonjs from 'rollup-plugin-commonjs';
+import copy from 'rollup-plugin-copy';
 import json from 'rollup-plugin-json';
 import svelte from 'rollup-plugin-svelte';
 import babel from 'rollup-plugin-babel';
@@ -46,10 +47,13 @@ export default {
 					}],
 				],
 			}),
-
 			!dev && terser({
 				module: true,
-			})
+			}),
+			copy({
+				targets: ['node_modules/swagger-ui-dist/swagger-ui-bundle.js', 'node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js', 'node_modules/swagger-ui-dist/swagger-ui.css'],
+				outputFolder: 'static',
+			}),
 		],
 	},
 
@@ -67,7 +71,7 @@ export default {
 			}),
 			resolve(),
 			json(),
-			commonjs()
+			commonjs(),
 		],
 		external: Object.keys(pkg.dependencies).concat(
 			require('module').builtinModules || Object.keys(process.binding('natives')),
@@ -86,6 +90,6 @@ export default {
 			json(),
 			commonjs(),
 			!dev && terser(),
-		]
+		],
 	}
 };

@@ -5,3 +5,6 @@ pgdata
 staticapp
 yarn-error.log
 image/
+app/static/swagger-ui-bundle.js
+app/static/swagger-ui-standalone-preset.js
+app/static/swagger-ui.css
