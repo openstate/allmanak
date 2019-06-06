@@ -13,7 +13,7 @@
         <div class='container'>
             <nav>
                 <ul>
-                    <li><a href='waarom'>Waarom deze Allmamak</a></li>
+                    <li><a href='waarom'>Waarom deze Allmanak</a></li>
                     <li><a href='api'>API</a></li>
                     <li><a href='https://openstate.eu/nl/contact' target='_blank' rel='noopener'>Contact</a></li>
                     <li><a class='report-error' href='#' on:click|stopPropagation|preventDefault='{() => $showReportModal=true}'>Meld een fout</a></li>

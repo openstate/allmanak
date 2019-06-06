@@ -27,7 +27,7 @@
             </div>
             <nav>
                 <ul class:opened='{menuOpen}' transition:slide>
-                    <li><a class:selected='{segment === "waarom"}' href='waarom'>Waarom deze Allmamak</a></li>
+                    <li><a class:selected='{segment === "waarom"}' href='waarom'>Waarom deze Allmanak</a></li>
                     <li><a href='#' class:active='{submenu}' on:click|stopPropagation|preventDefault='{() => submenu = !submenu}'>Gegevens overheden</a>
                         {#if submenu}
                         <div class='subnavbar' on:click|stopPropagation='{() => menuOpen = false, submenu = false}'>
