@@ -6,14 +6,14 @@
 	export let partij = null;
 	export let afkorting = null;
 	export let functie = null;
-	export let type = null;
+	export let types = null;
 	export let plaats = null;
 	export let path = null;
 </script>
 
 <div><a href="{id}/{urlname(naam)}">
 	<h6>{naam} {#if partij}({partij}){/if}</h6>
-	{afkorting || functie || type}<br>
+	{afkorting || functie || (types || []).join(", ")}<br>
 	<!--{plaats || ''}-->
 	{(path || []).join(" > ")}<br>
 </a></div>

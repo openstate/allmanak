@@ -59,8 +59,11 @@
   contactEmail is verwijderd
   bestuursorganen toegevoegd
   bronhouder aangepast
+  
+  2.4.10 01-06-2019
+  meerdere organisatietypes mogelijk per organisatie
   -->
-<xs:schema xmlns="https://almanak.overheid.nl/static/schema/oo/export/2.4.9" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://almanak.overheid.nl/static/schema/oo/export/2.4.9" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="https://almanak.overheid.nl/static/schema/oo/export/2.4.10" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="https://almanak.overheid.nl/static/schema/oo/export/2.4.10" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:element name="systemId">
 		<xs:complexType>
 			<xs:sequence>
@@ -468,7 +471,13 @@
 			<xs:element ref="naam"/>
 			<xs:element ref="subnaam" minOccurs="0"/>
 			<xs:element ref="afkorting" minOccurs="0"/>
-			<xs:element ref="type" minOccurs="0"/>
+			<xs:element name="types">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="type" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element ref="subtype" minOccurs="0"/>
 			<xs:element ref="provincieAfkorting" minOccurs="0"/>
 			<xs:element name="classificaties">
@@ -515,7 +524,13 @@
 			<xs:element ref="naam"/>
 			<xs:element ref="subnaam" minOccurs="0"/>
 			<xs:element ref="afkorting" minOccurs="0"/>
-			<xs:element ref="type" minOccurs="0"/>
+			<xs:element name="types">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="type" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element ref="subtype" minOccurs="0"/>			
 			<xs:element ref="provincieAfkorting" minOccurs="0"/>
 			<xs:element name="classificaties">
@@ -772,7 +787,13 @@
 			<xs:element ref="categorie" minOccurs="0" maxOccurs="1"/>
 			<xs:element ref="titel"/>
 			<xs:element ref="citeertitel" minOccurs="0"/>
-			<xs:element ref="type" minOccurs="0"/>
+			<xs:element name="types">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="type" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element ref="organisatiecode" minOccurs="0"/>
 			<xs:element ref="samenwerkingsvorm"/>
 			<xs:element name="bevoegdheidsverkrijgingen">
@@ -975,7 +996,13 @@
 			<xs:element ref="categorie" minOccurs="0" maxOccurs="1"/>
 			<xs:element ref="naam"/>
 			<xs:element ref="afkorting" minOccurs="0"/>
-			<xs:element ref="type" minOccurs="0"/>
+			<xs:element name="types">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="type" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element ref="subtype" minOccurs="0"/>
 			<xs:element ref="aantekening" minOccurs="0"/>
 			<xs:element name="classificaties">

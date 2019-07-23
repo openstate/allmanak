@@ -40,7 +40,7 @@
             sparseCsvEscape(row.item.afkorting),
             sparseCsvEscape(row.item.naam),
             sparseCsvEscape(row.item.functie),
-            sparseCsvEscape(row.item.type),
+            sparseCsvEscape((row.item.types || []).join(", ")),
             sparseCsvEscape(row.item.plaats),
             //sparseCsvEscape('\u00A0' + (phone.number || '')), // '\u00A0' is an Excel only fix, probably better to make 'uniform' add dash function
           ].join(separator) + '\r\n';
@@ -86,15 +86,17 @@
 			const types = new Map();
 			const paths = new Map();
 			for (const part of result) {
-				const type = part.item.type||'Medewerker';
+				const typearray = part.item.types||['Medewerker'];
 				const path = (part.item.path||[null])[0];
-				types.set(type, (types.get(type) || 0) + 1);
+				for (const type of typearray) {
+					types.set(type, (types.get(type) || 0) + 1);
+				}
 				paths.set(path, (paths.get(path) || 0) + 1);
 			}
-			window.debug = {
-				categories: [...types.entries()].sort((a,b)=>b[1]-a[1]),
-				paths: [...paths.entries()].sort((a,b)=>b[1]-a[1]),
-			};
+			// window.debug = {
+			// 	categories: [...types.entries()].sort((a,b)=>b[1]-a[1]),
+			// 	paths: [...paths.entries()].sort((a,b)=>b[1]-a[1]),
+			// };
 			facetList = {
 				categories: [...types.entries()].sort((a,b)=>b[1]-a[1]),
 				paths: [...paths.entries()].filter(x=>x[0]!=null).sort((a,b)=>b[1]-a[1]),
@@ -114,7 +116,7 @@
 			const filterOrg = new Set((filterOrganisatie||[]).map(x => x.value))
 			const filterParty = new Set((filterPartij||[]).map(x => x.value))
 
-			filteredResults = result.filter(x => (filterType.size == 0 || filterType.has(x.item.type||'Medewerker')) && (filterPath.size == 0 || filterPath.has((x.item.path||[null])[0]))
+			filteredResults = result.filter(x => (filterType.size == 0 || (x.item.types||['Medewerker']).filter(x=>filterType.has(x)).length > 0) && (filterPath.size == 0 || filterPath.has((x.item.path||[null])[0]))
 				 && (filterCity.size == 0 || filterCity.has((x.item.plaats||'').toUpperCase()))
 				 && (filterParty.size == 0 || filterParty.has(x.item.partij)));
 		}

@@ -1,0 +1,11 @@
+networks:
+  default: null
+  nginx-proxy:
+    external:
+      name: jwilder_nginx-proxy
+services:
+  web:
+    environment:
+      - VIRTUAL_HOST=.allmanak.nl
+    networks: [nginx-proxy, default]
+version: '3.1'

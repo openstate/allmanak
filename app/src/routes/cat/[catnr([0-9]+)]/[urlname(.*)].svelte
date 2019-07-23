@@ -1,13 +1,15 @@
 <script context="module">
+	import {apiBaseUri} from '../../../apibase.js';
+
 	export async function preload({ params, query }) {
-		//http://localhost:80/api/overheidsorganisatie?categorie=eq.1&select=systemid,naam,titel,parents(count)&einddatum=eq.null
+		//http://localhost:80/rest-api/v1/overheidsorganisatie?categorie=cs.{1}&select=systemid,naam,titel,parents(count)&einddatum=eq.null
 		//const res = await this.fetch(`cat/${params.id}.json`);
 		const categorie2type = [
 			{"catnr":53,"naam":"Adviescolleges","type":'Adviescollege'},
 			{"catnr":51123,"naam":"Caribisch Nederland (BES-eilanden)","type":'Caribisch Nederland'},
 			{"catnr":23699905,"naam":"Gemeenschappelijke regelingen","type":'Gemeenschappelijke regeling'},
 			{"catnr":1,"naam":"Gemeenten","type":'Gemeente'},
-			{"catnr":44,"naam":"Hoge Colleges van Staat","type":'Hoge Colleges van Staat'},
+			{"catnr":44,"naam":"Hoge Colleges van Staat","type":'Hoog College van Staat'},
 			{"catnr":45,"naam":"Ministeries","type":'Ministerie'},
 			{"catnr":55,"naam":"Politie en brandweer","type":'Politie en brandweer'},
 			{"catnr":31,"naam":"Provincies","type":'Provincie'},
@@ -17,7 +19,7 @@
 			{"catnr":26140391,"naam":"Zelfstandige bestuursorganen","type":'Zelfstandig bestuursorgaan'}
 		];
 		const ootype = categorie2type.filter(x => x.catnr == params.catnr)[0].type;
-		const res = await this.fetch(`${apiBaseUri}/overheidsorganisatie?type=eq.${encodeURIComponent(ootype)}&select=systemid,naam,citeertitel,titel,parents(count)&einddatum=is.null&order=naam,citeertitel,titel`);
+		const res = await this.fetch(`${apiBaseUri}/overheidsorganisatie?types=cs.{${encodeURIComponent(ootype)}}&select=systemid,naam,citeertitel,titel,parents(count)&einddatum=is.null&order=naam,citeertitel,titel`);
 		const data = await res.json();
 
 		if (res.status === 200) {
@@ -29,7 +31,6 @@
 </script>
 
 <script>
-	import {apiBaseUri} from '../../../apibase.js';
 	import {makeurl, name} from '../../../utils.js';
 	import categories from '../../_categories.json';
 	export let catnr;

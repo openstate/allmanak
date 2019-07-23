@@ -1,79 +1,38 @@
-networks:
-  default: null
-  nginx-load-balancer:
-    external:
-      name: docker_nginx-load-balancer
 services:
+# By default, we don't start v0 in development mode
   api-rest-v0:
-    depends_on: [db]
+# To start it manually, run:
+# $ docker-compose -f docker-compose.yml -f docker-compose-dev.yml run -d --no-deps --use-aliases --name allmanak_api-rest-v0_manual api-rest-v0 /bin/sh -c "exec postgrest /etc/postgrest.conf"
+# To stop it, run:
+# $ docker rm -f allmanak_api-rest-v0_manual
+# Another option is to comment the 'command: /bin/true' line and run:
+# $ docker-compose -f docker-compose.yml -f docker-compose-dev.yml up -d api-rest-v0
+    command: /bin/true
     environment:
-      PGRST_DB_ANON_ROLE: anonymous
-      PGRST_DB_SCHEMA: api
-      PGRST_DB_URI: postgres://pgrst:anonymous@db:5432/allmanak
-      PGRST_MAX_ROWS: 100000
       PGRST_SERVER_PROXY_URI: http://localhost/rest-api/v0/
-    image: postgrest/postgrest
-    restart: always
-  app:
-    command: sh -c "yarn install && yarn dev"
-    depends_on: [api-rest-v0]
-    expose: ['3000', '10000']
-    image: node:12-alpine
-    restart: always
-    volumes:
-      - './app:/app'
-      - 'app-sapper:/app/__sapper__/'
-      - 'node-modules:/app/node_modules/'
-      - 'yarn-cache:/usr/local/share/.cache/yarn/'
-    working_dir: /app
-  build-static:
-    command: sh -c 'touch /web/build_static && /sbin/inotifyd - /web/build_static:e | xargs -I% sh -c "yarn install && yarn export && ./postexport.sh"'
-    depends_on: [api-rest-v0, web]
-    image: node:12-alpine
-    restart: always
-    volumes:
-      - './app:/app'
-      - './nginx/conf.d-dev:/etc/nginx/conf.d'
-      - './staticapp:/web'
-      - 'build-static-sapper:/app/__sapper__/'
-      - 'node-modules:/app/node_modules/'
-      - 'yarn-cache:/usr/local/share/.cache/yarn/'
-    working_dir: /app
-  db:
+    restart: on-failure
+  api-rest-v1:
     environment:
-      POSTGRES_DB: allmanak
-      POSTGRES_INITDB_ARGS: --data-checksums
-    image: postgres:11-alpine
-    restart: always
-    volumes:
-      - './initdb:/docker-entrypoint-initdb.d'
-      - './pgdata-dev:/var/lib/postgresql/data'
-  import-cron:
-    build: ./import-cron
-    depends_on: [db, build-static]
-    restart: always
-    volumes:
-      - './nginx/conf.d-dev:/etc/nginx/conf.d'
-      - './staticapp:/web'
+      PGRST_SERVER_PROXY_URI: http://localhost/rest-api/v1/
+    restart: unless-stopped
+  app:
+    command: sh -c 'yarn && yarn dev'
+    expose: ['10000']
+    restart: unless-stopped
+  build-static:
+    command: /bin/true
+    restart: on-failure
+  db:
+    restart: unless-stopped
   fakemail:
-    image: mailhog/mailhog
-    restart: always
+    image: mailhog/mailhog:v1.0.0 #check-outdated
+    restart: unless-stopped
+  import-cron:
+    command: /bin/true
+    restart: on-failure
   web:
-    command: sh -c 'nginx -g "daemon off;" & (touch /web/nginx_reload && /sbin/inotifyd - /web/nginx_reload:e | xargs -I% sh -c "nginx -t && nginx -s reload")'
-    depends_on: [app, api-rest-v0, fakemail]
-    image: nginx:mainline-alpine
-    networks: [nginx-load-balancer, default]
     ports: ['80:80', '10000:10000']
-    restart: always
+    restart: unless-stopped
     volumes:
-      - './app/static:/app/static:ro'
-      - './image:/image:ro'
-      - './nginx/conf.d-dev:/etc/nginx/conf.d:ro'
-      - './nginx/shared:/etc/nginx/shared:ro'
-      - './staticapp:/web'
+      - './nginx/default-dev.conf:/etc/nginx/conf.d/default.conf:ro'
 version: '3.1'
-volumes:
-  app-sapper: null
-  build-static-sapper: null
-  node-modules: null
-  yarn-cache: null

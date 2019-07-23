@@ -14,13 +14,23 @@ INSERT INTO almanak.samenwerkingsvorm AS s
 			SET naam = EXCLUDED.naam
 		WHERE s.naam != EXCLUDED.naam;
 
+-- Fix foreign key constrains, since KOOP includes bronhouders systemIds that are not included in the exportOO.xml
+INSERT INTO tmp_overheidsorganisatie (systemId, naam)
+	SELECT DISTINCT o1.bronhouder, 'Fix KOOP export deficiency'
+		FROM
+			tmp_overheidsorganisatie o1
+			LEFT JOIN tmp_overheidsorganisatie o2 ON o1.bronhouder = o2.systemId
+		WHERE
+			o1.bronhouder IS NOT NULL AND
+			o2.systemId IS NULL;
+
 INSERT INTO almanak.overheidsorganisatie AS o
 	SELECT * FROM tmp_overheidsorganisatie
 		ON CONFLICT (systemid)
 		DO UPDATE
 			SET naam = EXCLUDED.naam,
 			partij = EXCLUDED.partij,
-			"type" = EXCLUDED."type",
+			types = EXCLUDED.types,
 			categorie = EXCLUDED.categorie,
 			citeertitel = EXCLUDED.citeertitel,
 			aangeslotenBijPensioenfonds = EXCLUDED.aangeslotenBijPensioenfonds,
@@ -71,9 +81,9 @@ INSERT INTO almanak.overheidsorganisatie AS o
 			zetels = EXCLUDED.zetels
 		WHERE -- the row_to_json::text is easier with comparing null values
 			row_to_json(
-				ROW(o.naam, o.partij, o."type", o.categorie, o.citeertitel, o.aangeslotenBijPensioenfonds, o.aantalInwoners, o.aantekening, o.afkorting, o.afwijkendeBepaling, o.archiefzorgdrager, o.beleidsterreinen, o.beschrijving, o.bevoegdheden, o.bevoegdheidsverkrijgingen, o.bronhouder, o.classificaties, o.contact, o.datumInwerkingtreding, o.datumOpheffing, o.doel, o.eindDatum, o.geldendeCAO, o.ictuCode, o.installatie, o.instellingsbesluiten, o.inwonersPerKm2, o.kaderwetZboVanToepassing, o.kvkNummer, o.laatsteEvaluatie, o.omvatPlaats, o.oppervlakte, o.organisatiecode, o.partijFunctie, o.personeelsomvang, o.provincieAfkorting, o.rechtsvorm, o.registratiehouder, o.relatieMetMinisterie, o.resourceIdentifiers, o.samenwerkingsvorm, o.standplaats, o.startDatum, o.subnaam, o.subtype, o.taalcode, o.takenEnBevoegdheden, o.titel, o.totaalZetels, o.wettelijkeVoorschriften, o.zetels)
+				ROW(o.naam, o.partij, o.types, o.categorie, o.citeertitel, o.aangeslotenBijPensioenfonds, o.aantalInwoners, o.aantekening, o.afkorting, o.afwijkendeBepaling, o.archiefzorgdrager, o.beleidsterreinen, o.beschrijving, o.bevoegdheden, o.bevoegdheidsverkrijgingen, o.bronhouder, o.classificaties, o.contact, o.datumInwerkingtreding, o.datumOpheffing, o.doel, o.eindDatum, o.geldendeCAO, o.ictuCode, o.installatie, o.instellingsbesluiten, o.inwonersPerKm2, o.kaderwetZboVanToepassing, o.kvkNummer, o.laatsteEvaluatie, o.omvatPlaats, o.oppervlakte, o.organisatiecode, o.partijFunctie, o.personeelsomvang, o.provincieAfkorting, o.rechtsvorm, o.registratiehouder, o.relatieMetMinisterie, o.resourceIdentifiers, o.samenwerkingsvorm, o.standplaats, o.startDatum, o.subnaam, o.subtype, o.taalcode, o.takenEnBevoegdheden, o.titel, o.totaalZetels, o.wettelijkeVoorschriften, o.zetels)
 			)::text != row_to_json(
-				ROW(EXCLUDED.naam, EXCLUDED.partij, EXCLUDED."type", EXCLUDED.categorie, EXCLUDED.citeertitel, EXCLUDED.aangeslotenBijPensioenfonds, EXCLUDED.aantalInwoners, EXCLUDED.aantekening, EXCLUDED.afkorting, EXCLUDED.afwijkendeBepaling, EXCLUDED.archiefzorgdrager, EXCLUDED.beleidsterreinen, EXCLUDED.beschrijving, EXCLUDED.bevoegdheden, EXCLUDED.bevoegdheidsverkrijgingen, EXCLUDED.bronhouder, EXCLUDED.classificaties, EXCLUDED.contact, EXCLUDED.datumInwerkingtreding, EXCLUDED.datumOpheffing, EXCLUDED.doel, EXCLUDED.eindDatum, EXCLUDED.geldendeCAO, EXCLUDED.ictuCode, EXCLUDED.installatie, EXCLUDED.instellingsbesluiten, EXCLUDED.inwonersPerKm2, EXCLUDED.kaderwetZboVanToepassing, EXCLUDED.kvkNummer, EXCLUDED.laatsteEvaluatie, EXCLUDED.omvatPlaats, EXCLUDED.oppervlakte, EXCLUDED.organisatiecode, EXCLUDED.partijFunctie, EXCLUDED.personeelsomvang, EXCLUDED.provincieAfkorting, EXCLUDED.rechtsvorm, EXCLUDED.registratiehouder, EXCLUDED.relatieMetMinisterie, EXCLUDED.resourceIdentifiers, EXCLUDED.samenwerkingsvorm, EXCLUDED.standplaats, EXCLUDED.startDatum, EXCLUDED.subnaam, EXCLUDED.subtype, EXCLUDED.taalcode, EXCLUDED.takenEnBevoegdheden, EXCLUDED.titel, EXCLUDED.totaalZetels, EXCLUDED.wettelijkeVoorschriften, EXCLUDED.zetels)
+				ROW(EXCLUDED.naam, EXCLUDED.partij, EXCLUDED.types, EXCLUDED.categorie, EXCLUDED.citeertitel, EXCLUDED.aangeslotenBijPensioenfonds, EXCLUDED.aantalInwoners, EXCLUDED.aantekening, EXCLUDED.afkorting, EXCLUDED.afwijkendeBepaling, EXCLUDED.archiefzorgdrager, EXCLUDED.beleidsterreinen, EXCLUDED.beschrijving, EXCLUDED.bevoegdheden, EXCLUDED.bevoegdheidsverkrijgingen, EXCLUDED.bronhouder, EXCLUDED.classificaties, EXCLUDED.contact, EXCLUDED.datumInwerkingtreding, EXCLUDED.datumOpheffing, EXCLUDED.doel, EXCLUDED.eindDatum, EXCLUDED.geldendeCAO, EXCLUDED.ictuCode, EXCLUDED.installatie, EXCLUDED.instellingsbesluiten, EXCLUDED.inwonersPerKm2, EXCLUDED.kaderwetZboVanToepassing, EXCLUDED.kvkNummer, EXCLUDED.laatsteEvaluatie, EXCLUDED.omvatPlaats, EXCLUDED.oppervlakte, EXCLUDED.organisatiecode, EXCLUDED.partijFunctie, EXCLUDED.personeelsomvang, EXCLUDED.provincieAfkorting, EXCLUDED.rechtsvorm, EXCLUDED.registratiehouder, EXCLUDED.relatieMetMinisterie, EXCLUDED.resourceIdentifiers, EXCLUDED.samenwerkingsvorm, EXCLUDED.standplaats, EXCLUDED.startDatum, EXCLUDED.subnaam, EXCLUDED.subtype, EXCLUDED.taalcode, EXCLUDED.takenEnBevoegdheden, EXCLUDED.titel, EXCLUDED.totaalZetels, EXCLUDED.wettelijkeVoorschriften, EXCLUDED.zetels)
 			)::text;
 
 INSERT INTO almanak.medewerkers
@@ -118,6 +128,21 @@ INSERT INTO almanak.parents AS p
 		WHERE p.ordering != EXCLUDED.ordering;
 
 -- Delete stuff no longer used, the order is important here since there are foreign key constraints
+
+DELETE FROM enrich.logo
+	WHERE systemId NOT IN (SELECT systemId FROM tmp_overheidsorganisatie);
+DELETE FROM enrich.photo
+	WHERE systemId NOT IN (SELECT systemId FROM tmp_overheidsorganisatie);
+DELETE FROM enrich.persoon
+	WHERE systemId NOT IN (SELECT systemId FROM tmp_overheidsorganisatie);
+DELETE FROM enrich.contact
+	WHERE systemId NOT IN (SELECT systemId FROM tmp_overheidsorganisatie);
+DELETE FROM enrich.sociallink
+	WHERE systemId NOT IN (SELECT systemId FROM tmp_overheidsorganisatie);
+DELETE FROM enrich.commissie
+	WHERE systemId NOT IN (SELECT systemId FROM tmp_overheidsorganisatie);
+DELETE FROM enrich.kandidaatmatch
+	WHERE systemId NOT IN (SELECT systemId FROM tmp_overheidsorganisatie);
 
 DELETE FROM almanak.medewerkers
 	WHERE (systemId, persoonId) NOT IN (SELECT systemId, persoonId FROM tmp_medewerkers);

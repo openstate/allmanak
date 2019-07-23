@@ -16,7 +16,7 @@
 	export let entity;
 
 	const show = (key) => {
-		return ['systemId', 'categorie', 'naam', 'afkorting', 'type'].indexOf(key) == -1;
+		return ['systemId', 'categorie', 'naam', 'afkorting', 'types'].indexOf(key) == -1;
 	};
 
 	const showname = (key) => {
@@ -35,7 +35,7 @@
 	const sortValues = {
 		"naam": 1,
 		"afkorting": 2,
-		"type": 3,
+		"types": 3,
 		"categorie": 4,
 		"telefoon": 5,
 		"fax": 6,
@@ -54,7 +54,7 @@
 <svelte:head>
 	<title>{name(entity)} - Allmanak</title>
 </svelte:head>
-<div class="imagebar" alt="" style="background-image: url('{url(functie ? 'gebouw.jpg' : entity.photo) || (entity.type == 'Gemeente' ? 'landschap.jpg' : 'gebouw.jpg')}')"></div>
+<div class="imagebar" alt="" style="background-image: url('{url(functie ? 'gebouw.jpg' : entity.photo) || (entity.types == ['Gemeente'] ? 'landschap.jpg' : 'gebouw.jpg')}')"></div>
 <div class="headerbar">
 	<div class="breadcrumb">
 		<div class="container">
@@ -79,8 +79,8 @@
 	<div class="content">
 		<h1>{name(entity)}</h1>
 		<p>
-			{#if entity.type}
-				<div class="keyvalue"><div class="key">Type</div><div class="values">{entity.type}</div></div>
+			{#if entity.types}
+				<div class="keyvalue"><div class="key">Type</div><div class="values">{entity.types.join(", ")}</div></div>
 			{/if}
 			{#if entity.partij}
 				<div class="keyvalue"><div class="key">Partij</div><div class="values">{entity.partij}</div></div>

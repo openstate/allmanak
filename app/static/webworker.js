@@ -19,7 +19,7 @@ const options = {
 		    "weight": 1
 		},
 		{
-		    "name": "type",
+		    "name": "types",
 		    "weight": 0.6
 		},
 		{
@@ -44,7 +44,7 @@ const options = {
 		}
 	]
 };
-self.importScripts('fuse.min.js', 'fuseindex2.js');
+self.importScripts('fuse.min.js', 'fuseindex.js');
 const fuse = new Fuse(fuseIndex, options);
 
 onmessage = function(e) {

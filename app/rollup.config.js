@@ -51,8 +51,14 @@ export default {
 				module: true,
 			}),
 			copy({
-				targets: ['node_modules/swagger-ui-dist/swagger-ui-bundle.js', 'node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js', 'node_modules/swagger-ui-dist/swagger-ui.css'],
-				outputFolder: 'static',
+				targets: [{
+					src: [
+						'node_modules/swagger-ui-dist/swagger-ui-bundle.js',
+						'node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js',
+						'node_modules/swagger-ui-dist/swagger-ui.css'
+					],
+					dest: 'static'
+				}],
 			}),
 		],
 	},

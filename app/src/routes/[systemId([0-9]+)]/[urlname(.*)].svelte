@@ -1,4 +1,7 @@
 <script context="module">
+	import {apiBaseUri} from '../../apibase.js';
+	import { urlname, name } from '../../utils.js';
+
 	export async function preload({ params, query }) {
 		// if (process.browser) {
 		// 	debugger;
@@ -34,9 +37,6 @@
 </script>
 
 <script>
-	import {apiBaseUri} from '../../apibase.js';
-	import { urlname, name } from '../../utils.js';
-
 	export let entity;
 
 	import EntityView from '../../components/EntityView.svelte';

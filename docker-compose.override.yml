@@ -1,0 +1,9 @@
+networks:
+  default: null
+  nginx-load-balancer:
+    external:
+      name: docker_nginx-load-balancer
+services:
+  web:
+    networks: [nginx-load-balancer, default]
+version: '3.1'

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Author: Benjamin W. Broersma <bw@broersma.com> -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://almanak.overheid.nl/static/schema/oo/export/2.4.9 https://almanak.overheid.nl/static/schema/oo/export/oo-export-2.4.9.xsd" xmlns:p="https://almanak.overheid.nl/static/schema/oo/export/2.4.9">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://almanak.overheid.nl/static/schema/oo/export/2.4.10 https://almanak.overheid.nl/static/schema/oo/export/oo-export-2.4.10.xsd" xmlns:p="https://almanak.overheid.nl/static/schema/oo/export/2.4.10">
   <xsl:output omit-xml-declaration="yes" encoding="UTF-8"/>
   <!--http://stackoverflow.com/a/7523245-->
   <!--how this works: it checks if the text contains the replace search value, if not return text, else get substring-before+replacement+recursive call self with substring-after as text-->
@@ -71,7 +71,7 @@
           </xsl:when>
           <xsl:otherwise>
             <xsl:if test="local-name() != substring(local-name(..), 1, string-length(local-name())) and local-name(preceding-sibling::node()[1]) != local-name()">
-              "<xsl:value-of select="local-name()" />":</xsl:if><xsl:if test="local-name(preceding-sibling::node()[1]) != local-name() and local-name(following-sibling::node()[1]) = local-name()">[</xsl:if> {
+              "<xsl:value-of select="local-name()" />":<xsl:if test="local-name(following-sibling::node()[1]) = local-name()">[</xsl:if></xsl:if> {
               <xsl:for-each select="./@*">
                  "<xsl:choose>
                     <xsl:when test="substring(local-name(), 1, string-length(local-name(..))) = local-name(..)"><!--remove prefix attributes-->
@@ -99,13 +99,13 @@
               <xsl:if test="text()">
                 ,"value": "<xsl:value-of select="text()"/>"
               </xsl:if>
-            }<xsl:if test="local-name(preceding-sibling::node()[1]) = local-name() and local-name(following-sibling::node()[1]) != local-name()">]</xsl:if>
+            }<xsl:if test="local-name() != substring(local-name(..), 1, string-length(local-name())) and local-name(preceding-sibling::node()[1]) = local-name() and local-name(following-sibling::node()[1]) != local-name()">]</xsl:if>
           </xsl:otherwise>
         </xsl:choose>
         <xsl:if test="position() != last()">,</xsl:if>
       </xsl:when>
       <xsl:when test="text()">
-        <xsl:if test="local-name(preceding-sibling::node()[1]) != local-name()">"<xsl:value-of select="local-name()" />":</xsl:if>
+        <xsl:if test="local-name(preceding-sibling::node()[1]) != local-name() and local-name() != substring(local-name(..), 1, string-length(local-name()))">"<xsl:value-of select="local-name()" />":</xsl:if>
         <xsl:if test="local-name(preceding-sibling::node()[1]) != local-name() and local-name(following-sibling::node()[1]) = local-name()">[</xsl:if> "<xsl:call-template name="replace-string"><!--Yes this is needed!-->
             <xsl:with-param name="text" select="text()"/>
             <xsl:with-param name="replace" select="'&quot;'" />
