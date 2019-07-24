@@ -18,7 +18,7 @@ services:
       PGRST_MAX_ROWS: 100000
       PGRST_SERVER_PROXY_URI: https://rest-api.allmanak.nl/v1/
 # Use custom build image instead, see README Custom PostgREST in v1
-    image: postgrest:v6.0.0-enum-arrays
+    image: postgrest:v6.0.0-openstate
 #force-check    image: postgrest/postgrest:v6.0.0 #check-outdated
     restart: always
   app:

@@ -82,22 +82,22 @@ E.g.:
 
 ## Custom PostgREST in `v1`
 
-We have made some custimized docker image for PostgREST based on the 6.0.0 master:
+We have made some custimized docker image for PostgREST based on the 6.0.0 master and [some](https://github.com/PostgREST/postgrest/pull/1361) [pull](https://github.com/PostgREST/postgrest/pull/1362) requests we're awaiting:
 ```bash
 # Custom build PostgREST
 git clone https://github.com/openstate/postgrest.git
 cd postgrest
-git checkout enum-arrays
+git checkout openstate
 docker build -f docker/distro_release/Dockerfile.ubuntu -t postgrest_builder .
 # note the ~/.stack folder will become about 3.5G in size, after quite some compiling
 # $(pwd)/.stack-work will be about 163MB, the binary will be 45MB and the docker tar 112MB
 docker run --rm -it -v $HOME/.stack:/root/.stack -v $(pwd):/source -v $(pwd)/docker/dist/:/root/.local/bin/ postgrest_builder build --allow-different-user --install-ghc --copy-bins
 
 # Instead of download postgREST, use the binary just build
-sed -z -r 's/\nARG POSTGREST_VERSION\n//;s@\nRUN BUILD_DEPS([^\n]*|\n[^\n]+)*@\nCOPY dist/postgrest /usr/local/bin/postgrest@g' docker/Dockerfile | docker build -f - -t postgrest:v6.0.0-enum-arrays docker
+sed -z -r 's/\nARG POSTGREST_VERSION\n//;s@\nRUN BUILD_DEPS([^\n]*|\n[^\n]+)*@\nCOPY dist/postgrest /usr/local/bin/postgrest@g' docker/Dockerfile | docker build -f - -t postgrest:v6.0.0-openstate docker
 
 # Export docker image to tar (since building takes some time + space, you might not want to do this on your production server)
-docker save postgrest:v6.0.0-enum-arrays -o postgrest_v6.0.0-enum-arrays.tar
+docker save postgrest:v6.0.0-openstate -o postgrest_v6.0.0-openstate.tar
 # scp the tar to your production server and load the binary
-docker load -i postgrest_v6.0.0-enum-arrays.tar
+docker load -i postgrest_v6.0.0-openstate.tar
 ```
