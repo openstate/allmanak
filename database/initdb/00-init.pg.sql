@@ -243,6 +243,11 @@ CREATE TABLE kiesraad.verkiezing (
   verkiezingsdatum DATE NOT NULL, -- 2018-03-22
   naam VARCHAR(255) NOT NULL,
   zetels SMALLINT NOT NULL,
+  voorkeurdrempel SMALLINT NOT NULL, -- in procenten
+  opgeroepen INTEGER,
+  geldigeStemmen INTEGER,
+  blanco INTEGER,
+  ongeldig INTEGER,
   PRIMARY KEY(code),
   UNIQUE(id)
 );
@@ -268,7 +273,10 @@ CREATE TABLE kiesraad.kandidaat (
   achternaam VARCHAR(255),
   woonplaats VARCHAR(255),
   geslacht enrich.geslacht,
-  voorkeurstemmen INT,
+  verkozen BOOLEAN,
+  verkozenpositie SMALLINT,
+  voorkeurdrempel BOOLEAN,
+  voorkeurstemmen INTEGER,
   PRIMARY KEY(kieslijst, kandidaatnummer),
   UNIQUE(id)
 );
