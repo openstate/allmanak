@@ -41,6 +41,6 @@
     "sapper": "^0.27.4",
     "svelte": "^3.6.8",
     "svelte-select": "^2.0.3",
-    "swagger-ui-dist": "^3.23.1"
+    "swagger-ui-dist": "^4.1.3"
   }
 }
