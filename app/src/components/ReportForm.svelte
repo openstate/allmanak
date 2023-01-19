@@ -18,9 +18,9 @@
 <div class="main" on:click|stopPropagation="{() => console.log()}">
 	<h2>Fout melden</h2>
 	<div class="choose">
-		Betreft het een fout van inhoud of een technische fout van de website?
+		Betreft het een technische fout van de website? Inhoudelijke fouten kunnen momenteel voorkomen omdat deze website niet meer up to date wordt gehouden. Correcties hierop zijn helaas niet mogelijk.
 		<div class="line">
-			<label class:active='{errortype=="content"}'><input bind:group={errortype} type=radio value=content>Inhoudelijke fout</label>
+			<label class:disabled='{errortype=="content"}'><input bind:group={errortype} type=radio value=content>Inhoudelijke fout</label>
 			<label class:active='{errortype=="tech"}'><input bind:group={errortype} type=radio value=tech>Technische fout</label>
 		</div>
 	</div>
