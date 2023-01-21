@@ -7,6 +7,7 @@
     <div class='lead'>
         <div class='container'>
             <h1 class='brand-header'><a href='.'><img class='logo' src='allmanak-logo-white.svg' alt='Allmanak'></a></h1><p class='lead-text'>Zoeken naar contactgegevens overheden en politici</p>
+          <p class='sub-text'>Deze website is niet meer up to date.</p>
         </div>
     </div>
    <div class='navbar'>
@@ -65,7 +66,7 @@
         font-family: 'montserratregular';
     }
     .lead > .container {
-        padding-bottom: 1rem;
+        padding-bottom: 1.5rem;
         padding-top: 1rem;
     }
     .brand-header {
@@ -78,6 +79,12 @@
     .lead-text {
         display: inline-block;
         font-size: 1.5rem;
+        margin-left: 2rem;
+        vertical-align: bottom;
+    }
+      .sub-text {
+        display: inline-block;
+        font-size: 1.2rem;
         margin-left: 2rem;
         vertical-align: bottom;
     }
