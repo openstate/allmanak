@@ -18,14 +18,14 @@ services:
       PGRST_MAX_ROWS: 100000
       PGRST_SERVER_PROXY_URI: https://rest-api.allmanak.nl/v1/
 # Use custom build image instead, see README Custom PostgREST in v1
-    image: postgrest:v6.0.0-openstate
+    image: postgrest/postgrest:v6.0.2
 #force-check    image: postgrest/postgrest:v6.0.0 #check-outdated
     restart: always
   app:
     command: sh -c "yarn && yarn build && node __sapper__/build"
     depends_on: [api-rest-v1]
     expose: ['3000']
-    image: node:12.6.0-alpine #check-outdated: alpine
+    image: node:12.22.0-alpine #check-outdated: alpine
     restart: always
     volumes:
       - './app:/app'
@@ -36,7 +36,7 @@ services:
   build-static:
     command: sh -c '/sbin/inotifyd - /web/build_static:e | xargs -I% yarn export+process'
     depends_on: [api-rest-v1, web]
-    image: node:12.6.0-alpine #check-outdated: alpine
+    image: node:12.22.0-alpine #check-outdated: alpine
     restart: always
     volumes:
       - './app:/app'
@@ -65,6 +65,7 @@ services:
       - './nginx/shared:/etc/nginx/shared'
       - './staticapp:/web'
       - './app:/app'
+      - './import-cron:/work'
   web:
     command: sh -c 'nginx -g "daemon off;" & (/sbin/inotifyd - /web/nginx_reload:e | xargs -I% nginx -s reload)'
     depends_on: [app, api-rest-v1]

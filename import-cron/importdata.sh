@@ -74,7 +74,7 @@ CODE="$(curl -sSfRA 'Mozilla/5.0 (compatible; OpenStateBot/1.0; +https://opensta
 	-w "%{http_code}" \
 	-H "If-Modified-Since: $(date -r "$FILE" -u +"%a, %d %b %Y %T GMT" 2>/dev/null || echo "Thu, 01 Jan 1970 00:00:00 GMT")" \
 	-o "$TMPFILE" \
-	"https://almanak.overheid.nl/archive/$FILE")";
+	"https://organisaties.overheid.nl/archive/$FILE")";
 if [ "$CODE" != "200" ]; then
 	rm "$TMPFILE";
 	if [ "$CODE" == "304" ]; then
