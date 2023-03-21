@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Author: Benjamin W. Broersma <bw@broersma.com> -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://organisaties.overheid.nl/static/schema/oo/export/2.6.1 https://almanak.overheid.nl/static/schema/oo/export/oo-export-2.4.10.xsd" xmlns:p="https://almanak.overheid.nl/static/schema/oo/export/2.6.1">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://organisaties.overheid.nl/static/schema/oo/export/2.6.1 https://almanak.overheid.nl/static/schema/oo/export/oo-export-2.4.10.xsd" xmlns:p="https://organisaties.overheid.nl/static/schema/oo/export/2.6.1">
   <xsl:output omit-xml-declaration="yes" encoding="UTF-8"/>
   <!--http://stackoverflow.com/a/7523245-->
   <!--how this works: it checks if the text contains the replace search value, if not return text, else get substring-before+replacement+recursive call self with substring-after as text-->
@@ -26,10 +26,19 @@
       </xsl:choose>
     </xsl:template>
   <xsl:template match="p:overheidsorganisaties">[
-    <xsl:apply-templates select="p:organisaties/p:organisatie"/>,
-    <xsl:apply-templates select="p:gemeenten/p:gemeente"/>,
-    <xsl:apply-templates select="p:gemeenschappelijkeRegelingen/p:gemeenschappelijkeRegeling"/>,
-    <xsl:apply-templates select="p:zelfstandigeBestuursorganen/p:zelfstandigBestuursorgaan"/>
+    <xsl:apply-templates select="p:organisaties/p:organisatie"/>
+    <xsl:if test="count(./p:gemeenten/p:gemeente) &gt; 0">
+      ,
+      <xsl:apply-templates select="p:gemeenten/p:gemeente"/>
+    </xsl:if>
+    <xsl:if test="count(./p:gemeenschappelijkeRegelingen/p:gemeenschappelijkeRegeling) &gt; 0">
+      ,
+      <xsl:apply-templates select="p:gemeenschappelijkeRegelingen/p:gemeenschappelijkeRegeling"/>
+    </xsl:if>
+    <xsl:if test="count(./p:zelfstandigeBestuursorganen/p:zelfstandigBestuursorgaan) &gt; 0">
+      ,
+      <xsl:apply-templates select="p:zelfstandigeBestuursorganen/p:zelfstandigBestuursorgaan"/>
+    </xsl:if>
   ]
   </xsl:template>
   <!--xsl:template match="p:ministeries"><!- -consume it!- ->
@@ -52,7 +61,7 @@
   <!-- takenEnBevoegdheden & aantekening have &lt;![CDATA[...]]&gt; crap-->
   <!-- unwrap adres node -->
   <xsl:template match="p:adres">
-    <xsl:apply-templates select="*"/>
+    {<xsl:apply-templates select="*"/>}<xsl:if test="position() != last()">,</xsl:if>
   </xsl:template>
   <!--unwrap ictuCode, note that codes can have 0-prefix, so we store them as string  -->
   <xsl:template match="p:ictuCode">
