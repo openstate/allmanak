@@ -127,6 +127,14 @@
         </xsl:when>
       <xsl:when test="self::*">
         <xsl:choose>
+          <xsl:when test="local-name() = 'socialMedia'">
+              "socialMedia": [<xsl:apply-templates select="*"/>]
+          </xsl:when>
+          <xsl:when test="local-name() = 'socialmedium'">
+            {
+              <xsl:apply-templates select="*"/>
+            }
+          </xsl:when>
           <xsl:when test="local-name() = 'emailadres'">
             {
               "email": <xsl:apply-templates select="*"/>

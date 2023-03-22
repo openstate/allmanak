@@ -129,16 +129,18 @@ E="$( (psql -h db -U postgres -Xtf clone-schema.pg.sql allmanak >> import.pg.sql
 check_error 'PSQL export schema error';
 
 # Copy data to tmp tables
+# for info on the layout of these tables see database/initdb/00-init.pg.sql
 json2sql 'categorie' '(map(.categorie? //empty)|unique|map([.catnr,.naam])[]|@tsv)';
 json2sql 'samenwerkingsvorm' 'map(select(.samenwerkingsvorm)|.samenwerkingsvorm)|flatten|unique|.[]|[.afkorting,.naam]|@tsv';
-json2sql 'overheidsorganisatie' 'def jsonify:if type == "null" then null else . | @json end;map([.systemId?,.naam,.partij,(.types?|if type != "null" then "{"+join(",")+"}" else . end),(.categorie?|.catnr),.citeertitel?,.aangeslotenBijPensioenfonds?,.aantalInwoners?,.aantekening?,.afkorting?,(.afwijkendeBepaling?|jsonify),(.archiefzorgdrager?|.[0].systemId),(.beleidsterreinen?|jsonify),.beschrijving?,.bevoegdheden?,(.bevoegdheidsverkrijgingen?|if type != "null" then "{"+join(",")+"}" else . end),(.bronhouder?|.[0].systemId),(.classificaties?|jsonify),(.contact?|jsonify),.datumInwerkingtreding?,.datumOpheffing?,.doel?,.eindDatum?,.geldendeCAO?,.ictuCode?,.installatie?,(.instellingsbesluiten?|if type != "null" then map(gsub('"\"'\";\"''\""')|@json)|"{"+join(",")+"}" else . end),.inwonersPerKm2?,.kaderwetZboVanToepassing?,.kvkNummer?,(.laatsteEvaluatie?|jsonify),.omvatPlaats?,.oppervlakte?,.organisatiecode?,.partijFunctie?,(.personeelsomvang?|jsonify),.provincieAfkorting?,.rechtsvorm?,.registratiehouder?,(.relatieMetMinisterie?|.[0].systemId),(.resourceIdentifiers?|jsonify),(.samenwerkingsvorm?|.afkorting?),.standplaats?,.startDatum?,.subnaam?,.subtype?,.taalcode?,.takenEnBevoegdheden?,.titel?,.totaalZetels?,(.wettelijkeVoorschriften?|jsonify),(.zetels|jsonify)]|walk(if type == "null" then "<<NULL>>" else . end))[]|@tsv|gsub("<<NULL>>";"\\N")';
-json2sql 'medewerkers' '.[]|select(.medewerkers)|.systemId as $systemId|.medewerkers[]|[$systemId,.]|@tsv';
-json2sql 'functies' '.[]|select(.functies)|.systemId as $systemId|.functies[]|[$systemId,.]|@tsv';
-json2sql 'organisaties' '.[]|select(.organisaties)|.systemId as $systemId|.organisaties[]|[$systemId,.]|@tsv';
-json2sql 'parents' '.[]|select(.parents)|.systemId as $systemId|.parents|to_entries|.[]|[$systemId,.value,.key]|@tsv';
-json2sql 'clusteronderdelen' '.[]|select(.clusterOnderdelen)|.systemId as $systemId|.clusterOnderdelen[]|[$systemId,.]|@tsv';
-json2sql 'deelnemendeorganisaties' 'def jsonify:if type == "null" then null else . | @json end;.[]|select(.deelnemendeOrganisaties)|.systemId as $systemId|.deelnemendeOrganisaties[]|[$systemId,.organisatieId,.toetredingsDatum,.verdeelsleutel?,(.bestuursorganen?|jsonify)]|walk(if type == "null" then "<<NULL>>" else . end)|@tsv|gsub("<<NULL>>";"\\N")';
-rm export-flat.json;
+json2sql 'overheidsorganisatie' 'def jsonify:if type == "null" then null else . | @json end;map([.systeemId?,.naam,.partij,(.types?|if type != "null" then "{"+join(",")+"}" else . end),(.categorie?|.catnr),.citeertitel?,.aangeslotenBijPensioenfonds?,.aantalInwoners?,.aantekening?,.afkorting?,(.afwijkendeBepaling?|jsonify),(.archiefzorgdrager?|.[0].systeemId),(.beleidsterreinen?|jsonify),.beschrijving?,.bevoegdheden?,(.bevoegdheidsverkrijgingen?|if type != "null" then "{"+join(",")+"}" else . end),(.bronhouder?|.[0].systeemId),(.classificaties?|jsonify),(.contact?|jsonify),.datumInwerkingtreding?,.datumOpheffing?,.doel?,.eindDatum?,.geldendeCAO?,.ictuCode?,.installatie?,(.instellingsbesluiten?|if type != "null" then map(gsub('"\"'\";\"''\""')|@json)|"{"+join(",")+"}" else . end),.inwonersPerKm2?,.kaderwetZboVanToepassing?,.kvkNummer?,(.laatsteEvaluatie?|jsonify),.omvatPlaats?,.oppervlakte?,.organisatiecode?,.partijFunctie?,(.personeelsomvang?|jsonify),.provincieAfkorting?,.rechtsvorm?,.registratiehouder?,(.relatieMetMinisterie?|.[0].systeemId),(.resourceIdentifiers?|jsonify),(.samenwerkingsvorm?|.afkorting?),.standplaats?,.startDatum?,.subnaam?,.subtype?,.taalcode?,.takenEnBevoegdheden?,.titel?,.totaalZetels?,(.wettelijkeVoorschriften?|jsonify),(.zetels|jsonify)]|walk(if type == "null" then "<<NULL>>" else . end))[]|@tsv|gsub("<<NULL>>";"\\N")';
+json2sql 'medewerkers' '.[]|select(.medewerkers)|.systeemId as $systemId|.medewerkers[]|[$systemId,.systeemId]|@tsv';
+json2sql 'functies' '.[]|select(.functies)|.systeemId as $systemId|.functies[]|[$systemId,.systeemId]|@tsv';
+json2sql 'organisaties' '.[]|select(.organisaties)|.systeemId as $systemId|.organisaties[]|[$systemId,.systeemId]|@tsv';
+json2sql 'parents' '.[]|select(.parents)|.systeemId as $systemId|.parents|to_entries|.[]|[$systemId,.value,.key]|@tsv';
+json2sql 'clusteronderdelen' '.[]|select(.clusterOnderdelen)|.systeemId as $systemId|.clusterOnderdelen[]|[$systemId,.systeemId]|@tsv';
+json2sql 'deelnemendeorganisaties' 'def jsonify:if type == "null" then null else . | @json end;.[]|select(.deelnemendeOrganisaties)|.systeemId as $systemId|.deelnemendeOrganisaties[]|[$systemId,.organisatieId,.toetredingsDatum,.verdeelsleutel?,(.bestuursorganen?|jsonify)]|walk(if type == "null" then "<<NULL>>" else . end)|@tsv|gsub("<<NULL>>";"\\N")';
+exit 0
+#rm export-flat.json;
 
 # UPSERT all data (and DELETE old)
 echo "\ir update.pg.sql" >> import.pg.sql;
@@ -150,7 +152,7 @@ check_error 'PSQL run import error';
 
 echo "$$: Postgres result: $E";
 
-rm import.pg.sql;
+#rm import.pg.sql;
 
 echo "$$: API fetch to build new search index";
 TMPFILE=$(mktemp);
