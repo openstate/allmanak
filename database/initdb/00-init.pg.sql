@@ -26,15 +26,20 @@ CREATE TABLE almanak.samenwerkingsvorm (
   naam VARCHAR(255)
 );
 
-CREATE TYPE almanak.subtype AS ENUM ('Afzonderlijke zbo', 'Cluster van zbo''s', 'Onderdeel van een cluster');
+CREATE TYPE almanak.subtype AS ENUM ('Gerechtshof', 'Rechtbank', 'Rechterlijk college in Caribisch Nederland', 'Staten-Generaal');
 
 CREATE TYPE almanak.taalcode AS ENUM ('nl-NL');
 
 CREATE TYPE almanak.registratiehouder AS ENUM ('Ministerie van Binnenlandse Zaken en Koninkrijksrelaties');
 
 CREATE TYPE almanak.rechtsvorm AS ENUM (
+  'Privaatrechtelijk - Besloten vennootschap (BV)',
+  'Privaatrechtelijk - Commanditaire vennootschap (CV)',
+  'Privaatrechtelijk - Coöperatie',
+  'Privaatrechtelijk - Naamloze vennootschap (NV)',
   'Privaatrechtelijk - Overig',
   'Privaatrechtelijk - Stichting',
+  'Privaatrechtelijk - Vereniging',
   'Publiekrechtelijk - Eigen rechtspersoonlijkheid',
   'Publiekrechtelijk - Onderdeel Staat der Nederlanden'
 );
@@ -48,10 +53,14 @@ CREATE TYPE almanak.bevoegdheidsverkrijging AS ENUM (
 --xmlstarlet sel -t -m '//p:type' -v 'text()' -n exportOO.xml | sort | uniq
 CREATE TYPE almanak.ootype AS ENUM (
   'Adviescollege',
+  'Agentschap',
   'Caribisch Nederland',
+  'Caribisch openbaar lichaam',
   'Gemeenschappelijke regeling',
   'Gemeente',
+  'Grensoverschrijdend regionaal samenwerkingsorgaan',
   'Hoog College van Staat', -- Renamed since 2019-06-18 (oo-export 2.4.10) before 'Hoge Colleges van Staat'
+  'Interdepartementale commissie',
   'Kabinet van de Koning', -- Added 2019-04-04 (since oo-export 2.4.9)
   'Koepelorganisatie', -- Added 2019-04-04 (since oo-export 2.4.9)
   'Ministerie',
@@ -61,6 +70,7 @@ CREATE TYPE almanak.ootype AS ENUM (
   'Organisatieonderdeel', -- Added 2019-07-17
   'Politie en brandweer',
   'Provincie',
+  'Rechtspraak',
   'Rechterlijke macht',
   'Regionaal samenwerkingsorgaan', -- Added 2019-07-17
   'Staten-Generaal',
@@ -126,14 +136,14 @@ CREATE TABLE almanak.overheidsorganisatie (
 
 CREATE TABLE almanak.medewerkers (
 	systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
-	persoonId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+	persoonId INTEGER,
 	PRIMARY KEY (systemId, persoonId),
 	CONSTRAINT no_loops CHECK (systemId != persoonId)
 );
 
 CREATE TABLE almanak.functies (
 	systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
-	functieId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+	functieId INTEGER,
 	PRIMARY KEY(systemId, functieId),
 	CONSTRAINT no_loops CHECK (systemId != functieId)
 );
@@ -147,14 +157,14 @@ CREATE TABLE almanak.clusterOnderdelen (
 
 CREATE TABLE almanak.organisaties (
 	systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
-	organisatieId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+	organisatieId INTEGER,
 	PRIMARY KEY(systemId, organisatieId),
 	CONSTRAINT no_loops CHECK (systemId != organisatieId)
 );
 
 CREATE TABLE almanak.deelnemendeOrganisaties (
 	systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
-	organisatieId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
+	organisatieId INTEGER,
 	toetredingsDatum DATE NOT NULL,
 --  bronhouder BOOLEAN, -- Removed in oo-export 2.4.9
   verdeelsleutel NUMERIC(6,6),

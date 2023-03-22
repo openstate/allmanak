@@ -3,7 +3,7 @@ map([
   .systeemId?,
   .naam,
   .partij,
-  (.types?|.[] |if type == "array" then "{"+(join(","))+"}" else . end),
+  (.types?|.[] |if type == "array" then "{"+(join(","))+"}" else "{"+.+"}" end),
   (.categorie?|.catnr),
   .citeertitel?,
   .aangeslotenBijPensioenfonds?,

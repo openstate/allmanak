@@ -185,9 +185,9 @@ fi;
 rm "$TMPFILE";
 
 LENGTH="$(jq -r 'length' "$TMPFILE2")";
-if [ "$LENGTH" -lt 10000 ]; then
+if [ "$LENGTH" -lt 1000 ]; then
 	rm "$TMPFILE2";
-	>&2 echo -e "$$: Search index size is $LENGTH < 10000, so abort overwriting";
+	>&2 echo -e "$$: Search index size is $LENGTH < 1000, so abort overwriting";
 	exit 1;
 fi;
 (echo -n "var fuseIndex="; cat "$TMPFILE2"; echo -n ";") > '/app/static/fuseindex.js';
