@@ -40,7 +40,7 @@ map([
   .rechtsvorm?,
   .registratiehouder?,
   (.relatieMetMinisterie?|.systeemId),
-  (.resourceIdentifiers?|jsonify),
+  (.identificatiecodes.resourceIdentifier|jsonify),
   (.samenwerkingsvorm?|.afkorting?),
   .standplaats?,
   .startDatum?,
@@ -49,7 +49,7 @@ map([
   .taalcode?,
   .takenEnBevoegdheden?,
   .titel?,
-  .totaalZetels?,
+  .raad.totaalZetels?,
   (.wettelijkeVoorschriften?|jsonify),
-  (.zetels|jsonify)
+  (.raad.partijen|jsonify)
 ]|walk(if type == "null" then "<<NULL>>" else . end))[]|@tsv|gsub("<<NULL>>";"\\N")
