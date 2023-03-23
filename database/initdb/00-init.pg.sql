@@ -26,7 +26,14 @@ CREATE TABLE almanak.samenwerkingsvorm (
   naam VARCHAR(255)
 );
 
-CREATE TYPE almanak.subtype AS ENUM ('Gerechtshof', 'Rechtbank', 'Rechterlijk college in Caribisch Nederland', 'Staten-Generaal');
+CREATE TYPE almanak.subtype AS ENUM (
+  'Gerechtshof',
+  'Rechtbank',
+  'Rechterlijk college in Caribisch Nederland',
+  'Staten-Generaal',
+  'KOOP redacteur',
+  'Management'
+);
 
 CREATE TYPE almanak.taalcode AS ENUM ('nl-NL');
 
