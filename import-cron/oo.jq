@@ -53,6 +53,6 @@ def overheidsorganisatie: [
   (.wettelijkeVoorschriften?|jsonify),
   (.raad.partijen|jsonify)
 ];
+def overheidsorganisaties: . |overheidsorganisatie as $oo |if .functies? then (([.functies[] |overheidsorganisatie]) + [$oo]) else [$oo] end;
 
-#.[] |select(.functies) |.functies[] |overheidsorganisatie |@tsv
-map(overheidsorganisatie |walk(if type == "null" then "<<NULL>>" else . end))[]|@tsv|gsub("<<NULL>>";"\\N")
+map(overheidsorganisaties[] |walk(if type == "null" then "<<NULL>>" else . end))[]|@tsv|gsub("<<NULL>>";"\\N")
