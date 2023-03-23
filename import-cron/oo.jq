@@ -1,9 +1,9 @@
 def jsonify:if type == "null" then null else . | @json end;
-map([
+def overheidsorganisatie: [
   .systeemId?,
   .naam,
   .partij,
-  (.types?|.[] |if type == "array" then "{"+(join(","))+"}" else "{"+.+"}" end),
+  (.types?|if type != "array" then null else (.[] |if type == "array" then "{"+(join(","))+"}" else "{"+.+"}" end) end),
   (.categorie?|.catnr),
   .citeertitel?,
   .aangeslotenBijPensioenfonds?,
@@ -52,4 +52,7 @@ map([
   .raad.totaalZetels?,
   (.wettelijkeVoorschriften?|jsonify),
   (.raad.partijen|jsonify)
-]|walk(if type == "null" then "<<NULL>>" else . end))[]|@tsv|gsub("<<NULL>>";"\\N")
+];
+
+#.[] |select(.functies) |.functies[] |overheidsorganisatie |@tsv
+map(overheidsorganisatie |walk(if type == "null" then "<<NULL>>" else . end))[]|@tsv|gsub("<<NULL>>";"\\N")
