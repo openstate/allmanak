@@ -142,7 +142,7 @@ check_error 'PSQL export schema error';
 json2sql 'categorie' '(map(.categorie? //empty)|unique|map([.catnr,.naam])[]|@tsv)';
 json2sql 'samenwerkingsvorm' 'map(select(.samenwerkingsvorm)|.samenwerkingsvorm)|flatten|unique|.[]|[.afkorting,.naam]|@tsv';
 json2sql_file 'overheidsorganisatie' 'oo.jq';
-#json2sql 'medewerkers' '.[]|select(.medewerkers)|.systeemId as $systemId|.medewerkers[]|[$systemId,.systeemId]|@tsv';
+
 json2sql 'medewerkers' '.[]|.systeemId as $systemId| if .functies? then .functies[] |.medewerkers[] |[$systemId, .systeemId] else ["<<NULL>>"] end |select(length > 1) |@tsv|gsub("<<NULL>>";"\\N")';
 json2sql 'functies' '.[]|select(.functies)|.systeemId as $systemId|.functies[]|[$systemId,.systeemId]|@tsv';
 json2sql 'organisaties' '.[]|select(.organisaties)|.systeemId as $systemId|.organisaties[]|[$systemId,.systeemId]|@tsv';
