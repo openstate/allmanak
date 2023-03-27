@@ -31,9 +31,9 @@
       ,
       <xsl:apply-templates select="p:gemeenten/p:gemeente"/>
     </xsl:if>
-    <xsl:if test="count(./p:gemeenschappelijkeRegelingen/p:gemeenschappelijkeRegeling) &gt; 0">
+    <xsl:if test="count(./p:gemeenschappelijkeRegelingen/p:regeling) &gt; 0">
       ,
-      <xsl:apply-templates select="p:gemeenschappelijkeRegelingen/p:gemeenschappelijkeRegeling"/>
+      <xsl:apply-templates select="p:gemeenschappelijkeRegelingen/p:regeling"/>
     </xsl:if>
     <xsl:if test="count(./p:zelfstandigeBestuursorganen/p:zelfstandigBestuursorgaan) &gt; 0">
       ,
@@ -47,6 +47,9 @@
       {  <xsl:apply-templates select="*"/>}<xsl:if test="position() != last()">,</xsl:if>
   </xsl:template-->
   <!--store systemId as numbers, and unwrap them -->
+  <xsl:template match="p:regeling">
+    {<xsl:apply-templates select="*"/>}<xsl:if test="position() != last()">,</xsl:if>
+  </xsl:template>
   <xsl:template match="p:systemId">
     "systemId": <xsl:value-of select="p:systemId" /><xsl:if test="position() != last()">,</xsl:if>
   </xsl:template>
