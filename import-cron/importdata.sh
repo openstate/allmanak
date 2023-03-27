@@ -128,7 +128,7 @@ E="$( (jq -c 'walk(if type == "object" then with_entries(select(.value != [])) e
 		| jq -c 'walk(if type=="object" and (.emailadres|type)=="object" and .emailadres.value and (.emailadres.value|contains("@")|not) and (.emailadres.value|test("^[a-zA-Z0-9+/=]+$")) then .emailadres.value|=(.|@base64d) else . end)' \
 		| jq -c -f flatten-structure.jq > export-flat.json) 2>&1)";
 check_error 'JQ post processing error';
-rm export.json;
+#rm export.json;
 echo "$$: Flattened JSON";
 
 # Generate import.sql

@@ -54,7 +54,7 @@
     "systemId": <xsl:value-of select="p:systemId" /><xsl:if test="position() != last()">,</xsl:if>
   </xsl:template>
   <!--store all nonNegativeInteger, boolean and double types without quotes -->
-  <xsl:template match="p:vergoeding | p:aantal | p:aantalInwoners | p:inwonersPerKm2 | p:totaalZetels | p:organisatieId | p:verdeelsleutel">
+  <xsl:template match="p:vergoeding | p:aantal | p:aantalInwoners | p:inwonersPerKm2 | p:totaalZetels | p:organisatieId">
     "<xsl:value-of select="local-name()" />": <xsl:value-of select="." /><xsl:if test="position() != last()">,</xsl:if>
   </xsl:template>
   <!-- convert ja/nee to true/false -->
