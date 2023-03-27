@@ -151,6 +151,15 @@
               <xsl:apply-templates select="*"/>
             }
           </xsl:when>
+          <xsl:when test="local-name() = 'bevoegdheidsverkrijgingen'">
+            "<xsl:value-of select="local-name()" />":
+            <xsl:if test="count(./p:bevoegdheidsverkrijging) &gt; 1">
+              <xsl:apply-templates select="*"/>
+            </xsl:if>
+            <xsl:if test="count(./p:bevoegdheidsverkrijging) = 1">
+              [<xsl:apply-templates select="*"/>]
+            </xsl:if>
+          </xsl:when>
           <xsl:when test="local-name(self::*/*[1]) = substring(local-name(), 1, string-length(local-name(self::*/*[1]))) or local-name() = 'clusterOnderdelen' or local-name() = 'bevoegdheden'">
             "<xsl:value-of select="local-name()" />": [
               <xsl:apply-templates select="*"/>
