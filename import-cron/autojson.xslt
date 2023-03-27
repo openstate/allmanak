@@ -133,6 +133,9 @@
           <xsl:when test="local-name() = 'socialMedia'">
               "socialMedia": [<xsl:apply-templates select="*"/>]
           </xsl:when>
+          <xsl:when test="local-name() = 'bevoegdheid'">
+            {<xsl:apply-templates select="*"/>}
+          </xsl:when>
           <xsl:when test="local-name() = 'socialmedium'">
             {
               <xsl:apply-templates select="*"/>
@@ -148,7 +151,7 @@
               <xsl:apply-templates select="*"/>
             }
           </xsl:when>
-          <xsl:when test="local-name(self::*/*[1]) = substring(local-name(), 1, string-length(local-name(self::*/*[1]))) or local-name() = 'clusterOnderdelen'">
+          <xsl:when test="local-name(self::*/*[1]) = substring(local-name(), 1, string-length(local-name(self::*/*[1]))) or local-name() = 'clusterOnderdelen' or local-name() = 'bevoegdheden'">
             "<xsl:value-of select="local-name()" />": [
               <xsl:apply-templates select="*"/>
             ]
