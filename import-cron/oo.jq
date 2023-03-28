@@ -26,7 +26,7 @@ def overheidsorganisatie: [
   .geldendeCAO?,
   .ictuCode?,
   .installatie?,
-#  (.instellingsbesluiten?|if type != "null" then map(gsub("'";"''")|@json)|"{"+join(",")+"}" else . end),
+  (.instellingsbesluiten?|if type == "null" then null else (.referentie |if type == "array" then map(gsub("'";"''")|@json)|"{"+join(",")+"}" else "{" + . +"}" end) end),
   .inwonersPerKm2?,
   .kaderwetZboVanToepassing?,
   .kvkNummer?,
