@@ -14,7 +14,7 @@ def overheidsorganisatie: [
   (.archiefzorgdrager?|.systeemId),
   (.beleidsterreinen?|jsonify),
   .beschrijving?,
-#  .bevoegdheden?,
+  (.bevoegdheden?|if type == "null" then null else map(.kopArtikel + " " + .inhoudArtikel)|join(" ") end),
   (.bevoegdheidsverkrijgingen?|if type == "null" then null else .|join(",") end),
   (.bronhouder?|.systeemId),
   (.classificaties?|jsonify),
