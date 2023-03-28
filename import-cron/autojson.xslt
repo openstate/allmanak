@@ -48,10 +48,13 @@
   </xsl:template-->
   <!--store systemId as numbers, and unwrap them -->
   <xsl:template match="p:regeling">
-    {<xsl:apply-templates select="*"/>}<xsl:if test="position() != last()">,</xsl:if>
+    {
+      "systeemId": <xsl:value-of select="./@p:systeemId" />,
+      <xsl:apply-templates select="*"/>
+    }<xsl:if test="position() != last()">,</xsl:if>
   </xsl:template>
-  <xsl:template match="p:systemId">
-    "systemId": <xsl:value-of select="p:systemId" /><xsl:if test="position() != last()">,</xsl:if>
+  <xsl:template match="p:systeemId">
+    "systeemId": <xsl:value-of select="p:systeemId" /><xsl:if test="position() != last()">,</xsl:if>
   </xsl:template>
   <!--store all nonNegativeInteger, boolean and double types without quotes -->
   <xsl:template match="p:vergoeding | p:aantal | p:aantalInwoners | p:inwonersPerKm2 | p:totaalZetels | p:organisatieId">
@@ -93,7 +96,7 @@
                       <xsl:value-of select="local-name()"/>
                     </xsl:otherwise>
                   </xsl:choose>": <xsl:choose>
-                    <xsl:when test="local-name() = 'systemId' or local-name() = 'catnr'">
+                    <xsl:when test="local-name() = 'systeemId' or local-name() = 'catnr'">
                       <xsl:value-of select="."/>
                     </xsl:when>
                     <xsl:otherwise>

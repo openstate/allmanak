@@ -148,7 +148,7 @@ json2sql 'functies' '.[]|select(.functies)|.systeemId as $systemId|.functies[]|[
 json2sql 'organisaties' '.[]|select(.organisaties)|.systeemId as $systemId|.organisaties[]|[$systemId,.systeemId]|@tsv';
 json2sql 'parents' '.[]|select(.parents)|.systeemId as $systemId|.parents|to_entries|.[]|[$systemId,.value,.key]|@tsv';
 json2sql 'clusteronderdelen' '.[]|select(.clusterOnderdelen)|.systeemId as $systemId|.clusterOnderdelen[]|[$systemId,.systeemId]|@tsv';
-json2sql 'deelnemendeorganisaties' 'def jsonify:if type == "null" then null else . | @json end;.[]|select(.deelnemendeOrganisaties)|.systeemId as $systemId|.deelnemendeOrganisaties[]|[$systemId,.organisatieId,.toetredingsDatum,.verdeelsleutel?,(.bestuursorganen?|jsonify)]|walk(if type == "null" then "<<NULL>>" else . end)|@tsv|gsub("<<NULL>>";"\\N")';
+json2sql 'deelnemendeorganisaties' 'def jsonify:if type == "null" then null else . | @json end;.[]|select(.deelnemendeOrganisaties)|.systeemId as $systemId|.deelnemendeOrganisaties[]|[$systemId,.systeemId,.toetredingsDatum,(.verdeelsleutel?|if type == "null" then null else .|gsub(",";".") |tonumber/100 end),(.bestuursorganen?|jsonify)]|walk(if type == "null" then "<<NULL>>" else . end)|@tsv|gsub("<<NULL>>";"\\N")';
 #rm export-flat.json;
 
 # UPSERT all data (and DELETE old)
