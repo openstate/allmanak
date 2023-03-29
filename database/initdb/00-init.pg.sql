@@ -138,7 +138,9 @@ CREATE TABLE almanak.overheidsorganisatie (
   titel VARCHAR(255),
   totaalZetels SMALLINT,
   wettelijkeVoorschriften JSONB,
-  zetels JSONB
+  zetels JSONB,
+  datumTerVerificatie DATE,
+  datumMutatie DATE
 );
 
 CREATE TABLE almanak.medewerkers (

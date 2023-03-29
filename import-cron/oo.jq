@@ -51,7 +51,9 @@ def overheidsorganisatie: [
   .titel?,
   .raad.totaalZetels?,
   (.wettelijkeVoorschriften?|jsonify),
-  (.raad.partijen|jsonify)
+  (.raad.partijen|jsonify),
+  .datumTerVerificatie?,
+  .datumMutatie?
 ];
 def overheidsorganisaties: . |overheidsorganisatie as $oo |if .functies? then (([.functies[] |overheidsorganisatie]) + ([.functies[] |.medewerkers[] |overheidsorganisatie]) + [$oo]) else [$oo] end;
 
