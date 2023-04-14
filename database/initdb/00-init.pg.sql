@@ -145,14 +145,14 @@ CREATE TABLE almanak.overheidsorganisatie (
 
 CREATE TABLE almanak.medewerkers (
 	systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
-	persoonId INTEGER,
+	persoonId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
 	PRIMARY KEY (systemId, persoonId),
 	CONSTRAINT no_loops CHECK (systemId != persoonId)
 );
 
 CREATE TABLE almanak.functies (
 	systemId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
-	functieId INTEGER,
+	functieId INTEGER REFERENCES almanak.overheidsorganisatie(systemId) NOT NULL,
 	PRIMARY KEY(systemId, functieId),
 	CONSTRAINT no_loops CHECK (systemId != functieId)
 );
