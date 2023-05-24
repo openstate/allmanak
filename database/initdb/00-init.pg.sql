@@ -140,7 +140,9 @@ CREATE TABLE almanak.overheidsorganisatie (
   wettelijkeVoorschriften JSONB,
   zetels JSONB,
   datumTerVerificatie DATE,
-  datumMutatie DATE
+  datumMutatie DATE,
+  wooInfoUrl VARCHAR(4095),
+  wooOverzichtUrl VARCHAR(4095)
 );
 
 CREATE TABLE almanak.medewerkers (

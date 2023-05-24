@@ -53,7 +53,9 @@ def overheidsorganisatie: [
   (.wettelijkeVoorschriften?|jsonify),
   (.raad.partijen|jsonify),
   .datumTerVerificatie?,
-  .datumMutatie?
+  .datumMutatie?,
+  (.woo?|if type == "null" then null else (.wooInformatie.url?) end),
+  (.woo?|if type == "null" then null else (.wooInformatie.overzichtURL?) end)
 ];
 def overheidsorganisaties: . |overheidsorganisatie as $oo |if .functies? then (([.functies[] |overheidsorganisatie]) + ([.functies[] |.medewerkers[] |overheidsorganisatie]) + [$oo]) else [$oo] end;
 
