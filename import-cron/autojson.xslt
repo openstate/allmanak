@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Author: Benjamin W. Broersma <bw@broersma.com> -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://organisaties.overheid.nl/static/schema/oo/export/2.6.1 https://almanak.overheid.nl/static/schema/oo/export/oo-export-2.4.10.xsd" xmlns:p="https://organisaties.overheid.nl/static/schema/oo/export/2.6.1">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://organisaties.overheid.nl/static/schema/oo/export/2.6.3 https://almanak.overheid.nl/static/schema/oo/export/oo-export-2.6.3.xsd" xmlns:p="https://organisaties.overheid.nl/static/schema/oo/export/2.6.3">
   <xsl:output omit-xml-declaration="yes" encoding="UTF-8"/>
   <!--http://stackoverflow.com/a/7523245-->
   <!--how this works: it checks if the text contains the replace search value, if not return text, else get substring-before+replacement+recursive call self with substring-after as text-->
@@ -73,6 +73,10 @@
   <xsl:template match="p:ictuCode">
     "ictuCode": "<xsl:value-of select="p:ictuCode" />"<xsl:if test="position() != last()">,</xsl:if>
   </xsl:template>
+  <xsl:template match="p:urls">
+    "url": <xsl:apply-templates select="*"/><xsl:if test="position() != last()">,</xsl:if>
+  </xsl:template>
+
 <!-- using 'node()[]' will make it extremely slow, and using this setup created trailing comma issues, so better strip it in JQ
   <xsl:template match="p:contactpaginas[not(child::node())]|p:classificaties[not(child::node())]|p:organisaties[not(child::node())]|p:functies[not(child::node())]">
   </xsl:template>
